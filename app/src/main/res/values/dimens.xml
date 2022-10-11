@@ -1,0 +1,30 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="splash_tvName_margimBottom">200dp</dimen>
+    <dimen name="splash_tvName_textSize">56sp</dimen>
+    <dimen name="splash_imgLogo_margimTop">50dp</dimen>
+    <dimen name="tvLogin_marginTop">50dp</dimen>
+    <dimen name="login_tvLogin_textSize">50sp</dimen>
+    <dimen name="login_tilUser_marginTop">15dp</dimen>
+    <dimen name="login_tilPassword_marginTop">10dp</dimen>
+    <dimen name="tvOtherLogin_paddingBotom">10dp</dimen>
+    <dimen name="login_btSignIn_layout_width">150dp</dimen>
+    <dimen name="signup_tvtitle_textsize">40dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dashboardfragment_view_layout_height">40dp</dimen>
+    <dimen name="dashboardfragment_view_layout_width">50dp</dimen>
+    <dimen name="dashboardfragment_tablelayout_padding">20dp</dimen>
+    <dimen name="fragmentAddInventory_Guide">15dp</dimen>
+    <dimen name="fragmentAddInventory_GuideEnd">20dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="dependency_item_margim_bottom">5dp</dimen>
+    <dimen name="dependency_item_paddin">5dp</dimen>
+    <dimen name="dependency_item_textSize">24sp</dimen>
+    <dimen name="dependency_item_paddingBottom">7dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="section_item_textSize">24sp</dimen>
+    <dimen name="section_item_margim_bottom">5dp</dimen>
+    <dimen name="section_item_paddin">5dp</dimen>
+    <dimen name="section_item_paddingBottom">7dp</dimen>
+</resources>

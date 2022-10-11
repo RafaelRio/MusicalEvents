@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "582029215559",
+    "project_id": "musicevent-2335e",
+    "storage_bucket": "musicevent-2335e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582029215559:android:fbe256d863d24e93ce6e62",
+        "android_client_info": {
+          "package_name": "com.example.musicevent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582029215559-dn6b8s48pgsvfn3n1p48jlul47st9cfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA487K8fLe-TKk0Mhm17CfcDsj2j0lyyAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582029215559-dn6b8s48pgsvfn3n1p48jlul47st9cfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
