@@ -35,7 +35,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
     @Override
     public void login(Userkt user) {
 
-        db.collection("personas").document(user.getEmail())
+        db.collection("personas").document(Objects.requireNonNull(user.getEmail()))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -58,7 +58,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
     @Override
     public void SignUp(String user, String email, String password, String comfirmPassword) {
         Userkt databaseUser = new Userkt(email, password, false);
-        db.collection("personas").document(databaseUser.getEmail())
+        db.collection("personas").document(Objects.requireNonNull(databaseUser.getEmail()))
                 .set(databaseUser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

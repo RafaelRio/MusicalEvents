@@ -42,7 +42,8 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.On
 
     @Override
     public void onSuccess(Userkt u) {
-
+        view.hideProgress();
+        view.onSuccess(u);
     }
 
     @Override

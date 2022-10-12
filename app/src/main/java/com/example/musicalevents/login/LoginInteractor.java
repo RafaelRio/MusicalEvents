@@ -38,7 +38,7 @@ public class LoginInteractor implements OnRepositoryCallback {
     }
 
 
-    //Estos metodos vienen de la respuesta que nos da el Repositorio
+    //This methods come from the Repository callback
     @Override
     public void onSuccess(Userkt e) {
         listener.onSuccess(e);
