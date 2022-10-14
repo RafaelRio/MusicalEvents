@@ -99,6 +99,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:id="@+id/tieHoraComienzoEvento"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_til"
                     android:hint="@string/event_starthour"
@@ -131,7 +133,7 @@
                 android:layout_marginBottom="60dp"
                 android:layout_marginEnd="30dp"
                 android:backgroundTint="@color/primaryColor"
-                android:src="@drawable/ic_add_event"
+                android:src="@drawable/ic_add_event_white"
                 tools:ignore="SpeakableTextPresentCheck"
                 android:contentDescription="@string/add_event" />
 

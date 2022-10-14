@@ -21,6 +21,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
     private static final String TAG = "AAAAAAAAAAA";
     private static LoginRepository instance;
     private OnRepositoryCallback callback;
+    public static Userkt currentUser;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
@@ -45,6 +46,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
                             if (databaseUser == null) {
                                 callback.onFailure("Usuario incorrecto");
                             }else if (Objects.equals(user.getPassword(), databaseUser.getPassword())) {
+                                currentUser = databaseUser;
                                 callback.onSuccess(databaseUser);
                             }
                             else {
