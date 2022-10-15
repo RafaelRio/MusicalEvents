@@ -51,4 +51,6 @@
     <string name="event_description">Descripcion</string>
     <string name="error_adding_event">Error añadiendo el evento</string>
     <string name="success_uploading_event">Evento subido correctamente</string>
+    <string name="my_events">Mis eventos</string>
+    <string name="mis_eventos">Mis eventos</string>
 </resources>

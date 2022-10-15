@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:cardBackgroundColor="@color/secondaryColor"
+        android:elevation="4dp"
+        app:cardMaxElevation="4dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNombreEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Concierto de marchas"
+                android:textSize="25sp"
+                android:fontFamily="@font/bodoni_mediumitalic"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/tvUbicacionEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Plaza del obispo"
+                android:textSize="15sp"
+                android:fontFamily="@font/bodoni_regular"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                app:drawableStartCompat="@drawable/ic_location_event" />
+
+            <TextView
+                android:id="@+id/tvHoraEvento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="15:30"
+                android:textSize="15sp"
+                android:fontFamily="@font/bodoni_regular"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                app:drawableStartCompat="@drawable/ic_hour_event"
+                android:layout_marginBottom="15dp"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

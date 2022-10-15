@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_adminFragment_to_addEventFragment"
             app:destination="@id/addEventFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_uploadedEventsFragment"
+            app:destination="@id/uploadedEventsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
         android:name="com.example.musicalevents.adminUser.fragment.AddEventFragment"
         android:label="fragment_add_event"
         tools:layout="@layout/fragment_add_event" />
+    <fragment
+        android:id="@+id/uploadedEventsFragment"
+        android:name="com.example.musicalevents.adminUser.fragment.UploadedEventsFragment"
+        android:label="fragment_uploaded_events"
+        tools:layout="@layout/fragment_uploaded_events" />
 </navigation>

@@ -8,23 +8,28 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.NavHostFragment
 import com.example.musicalevents.R
+import com.example.musicalevents.databinding.FragmentAdminBinding
 
 class AdminFragment : Fragment() {
+
+    private lateinit var binding : FragmentAdminBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentAdminBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        menuCreation()
+
+    }
+
+    private fun menuCreation(){
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -37,6 +42,12 @@ class AdminFragment : Fragment() {
                     R.id.add_event -> {
                         NavHostFragment.findNavController(this@AdminFragment)
                             .navigate(R.id.action_adminFragment_to_addEventFragment)
+                        return true
+                    }
+
+                    R.id.my_events -> {
+                        NavHostFragment.findNavController(this@AdminFragment)
+                            .navigate(R.id.action_adminFragment_to_uploadedEventsFragment)
                         return true
                     }
                     else -> {
