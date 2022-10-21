@@ -1,6 +1,8 @@
 package com.example.musicalevents.signup;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
@@ -11,6 +13,7 @@ import com.example.musicalevents.R;
 import com.example.musicalevents.base.Event;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.databinding.ActivitySignUpBinding;
+import com.example.musicalevents.login.LoginActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -25,10 +28,18 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setTitle(R.string.tvTitleSignUp);
 
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        binding.btAlreadyAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateUpTo(new Intent(SignUpActivity.this, LoginActivity.class));
+            }
+        });
 
         /**
          * Se utiliza el metodo on backpressed para elemiminar la activivity signUpActivity y restaurar

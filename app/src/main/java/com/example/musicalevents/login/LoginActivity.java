@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setTitle(R.string.tvLogin_login);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         View decorView = getWindow().getDecorView();

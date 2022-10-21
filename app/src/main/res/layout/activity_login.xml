@@ -16,10 +16,11 @@
         android:id="@+id/tvLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/bodoni_bold"
         android:gravity="center"
         android:text="@string/tvLogin_login"
+        android:visibility="visible"
         android:textColor="@color/black"
         android:textSize="@dimen/login_tvLogin_textSize" />
 
@@ -27,7 +28,7 @@
         android:id="@+id/tilEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:boxStrokeWidth="0dp"
         app:errorEnabled="true"
         app:boxStrokeColor="@color/transparent"
@@ -95,12 +96,13 @@
 
     <Button
         android:id="@+id/btSignIn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/primaryColor"
+        android:background="@drawable/background_blue_button"
         android:fontFamily="@font/bodoni_bold"
         android:text="@string/btSignIn_text"
         android:textColor="@color/white"

@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/bodoni_bold"
-            android:text="@string/mis_eventos"
+            android:text="@string/my_events"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/login_tvLogin_textSize"
