@@ -33,12 +33,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:boxStrokeColor="@color/transparent"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
+            style="@style/RegisterTextInputLayout"
             app:layout_constraintTop_toBottomOf="@id/tvTitleSignUp"
             app:startIconDrawable="@drawable/ic_tiluser_person">
 
@@ -52,12 +47,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/RegisterTextInputLayout"
             android:layout_marginTop="32dp"
-            app:boxStrokeColor="@color/transparent"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
             app:startIconDrawable="@drawable/ic_action_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -70,12 +61,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:boxStrokeColor="@color/transparent"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
+            style="@style/RegisterTextInputLayout"
             app:endIconMode="password_toggle"
             app:layout_constraintTop_toBottomOf="@id/tilEmail"
             app:startIconDrawable="@drawable/ic_action_password">
@@ -90,12 +76,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:boxStrokeColor="@color/transparent"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
+            style="@style/RegisterTextInputLayout"
             app:endIconMode="password_toggle"
             app:layout_constraintTop_toBottomOf="@id/tilPassword"
             app:startIconDrawable="@drawable/ic_action_password">
