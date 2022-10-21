@@ -23,13 +23,11 @@ class AddEventFragment : Fragment() {
     private lateinit var binding : FragmentAddEventBinding
     private lateinit var eventRepository : EventRepository
 
-    companion object{
-        var currentUser: Userkt = LoginRepository.currentUser
-    }
+
     var e = Event()
-    var dia: String? = null
-    var mes: String? = null
-    var anio: String? = null
+    var dia: Int? = null
+    var mes: Int? = null
+    var anio: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +60,7 @@ class AddEventFragment : Fragment() {
             e.dia = dia
             e.mes = mes
             e.anio = anio
-            e.horaComienzo = onTimeSelected(binding.tieHoraComienzoEvento.text.toString()).toString()
+            e.horaComienzo = binding.tieHoraComienzoEvento.text.toString()
             eventRepository.uploadEvent(e)
             Handler(Looper.getMainLooper()).postDelayed({
                 //Esto simplemente espera un momento para volver atrás
@@ -75,22 +73,15 @@ class AddEventFragment : Fragment() {
     private fun showDatePickerDialog() {
         val newFragment: DatePickerFragment =
             DatePickerFragment.newInstance { datePicker, year, month, day -> // +1 because January is zero
-                var selectedDate = day.toString() + "/" + (month + 1) + "/" + year
-                if (day < 10 && month + 1 >= 10) {
-                    selectedDate = "0" + day + "/" + (month + 1) + "/" + year
-                }
-                if (day >= 10 && month + 1 < 10) {
-                    selectedDate = day.toString() + "/" + "0" + (month + 1) + "/" + year
-                }
-                if (day < 10 && month + 1 < 10) {
-                    selectedDate = "0" + day + "/" + "0" + (month + 1) + "/" + year
-                }
-                binding.tieFecha.setText(selectedDate)
+                val monthFormatted = String.format("%02d", month + 1)
+                val dayOfMonthFormatted = String.format("%02d", day)
+                binding.tieFecha.setText("$dayOfMonthFormatted/$monthFormatted/$year")
+
                 val fecha: Array<String> =
                     binding.tieFecha.text.toString().split("/").toTypedArray()
-                dia = fecha[0]
-                mes = fecha[1]
-                anio = fecha[2]
+                dia = Integer.parseInt(fecha[0])
+                mes = Integer.parseInt(fecha[1])
+                anio = Integer.parseInt(fecha[2])
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
     }

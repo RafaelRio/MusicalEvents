@@ -53,4 +53,6 @@
     <string name="success_uploading_event">Evento subido correctamente</string>
     <string name="my_events">Mis eventos</string>
     <string name="mis_eventos">Mis eventos</string>
+    <string name="title_activity_loginkt">Loginkt</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>

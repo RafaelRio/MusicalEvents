@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/adminFragment"
-        android:name="com.example.musicalevents.adminUser.fragment.AdminFragment"
+        android:name="com.example.musicalevents.adminUser.allEvents.AdminFragment"
         android:label="AdminFragment" >
         <action
             android:id="@+id/action_adminFragment_to_addEventFragment"
@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_add_event" />
     <fragment
         android:id="@+id/uploadedEventsFragment"
-        android:name="com.example.musicalevents.adminUser.fragment.UploadedEventsFragment"
+        android:name="com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsFragment"
         android:label="fragment_uploaded_events"
         tools:layout="@layout/fragment_uploaded_events" />
 </navigation>

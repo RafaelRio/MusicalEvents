@@ -5,40 +5,37 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.musicalevents.R;
 import com.example.musicalevents.adminUser.AdminActivity;
 import com.example.musicalevents.base.Event;
+import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.databinding.ActivityLoginBinding;
 import com.example.musicalevents.normalUser.MainActivity;
-import com.example.musicalevents.R;
-import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.signup.SignUpActivity;
 import com.example.musicalevents.utils.CommonUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     Userkt e1 = new Userkt();
     private ActivityLoginBinding binding;
     private LoginContract.Presenter presenter;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
@@ -56,10 +53,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 }
         );
 
-
-        //Se inicializa el listener que escucha los eventos de los campos editables
-        binding.tieEmail.addTextChangedListener(new LoginTextWatcher(binding.tieEmail));
-        binding.tiePassword.addTextChangedListener(new LoginTextWatcher(binding.tiePassword));
         presenter = new LoginPresenter(this);
         //la vista se registra como subscriptor del EventBus
         EventBus.getDefault().register(this);
@@ -73,7 +66,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         //Se quita como subcriptor del EventBus
         EventBus.getDefault().unregister(this);
     }
-
 
 
     private void startActivityLogin() {
@@ -122,14 +114,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      */
     @Override
     public void onSuccess(Userkt e) {
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-
-        if (binding.chkRemember.isChecked()) {
-            editor.putString(Userkt.TAG, binding.tieEmail.getText().toString());
-            editor.apply();
-            //O BIEN APPLY O BIEN COMMIT QUE SINO NO SE HACEN LOS CAMBIOS EN EK FICHERO
-
-        }
+//        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+////        editor.putBoolean("isAdmin", e.isAdmin());
+////        editor.apply();
+//        if (binding.chkRemember.isChecked()) {
+//            editor.putString(Userkt.TAG, binding.tieEmail.getText().toString());
+//            editor.apply();
+//            //O BIEN APPLY O BIEN COMMIT QUE SINO NO SE HACEN LOS CAMBIOS EN EK FICHERO
+//
+//        }
+//
 
         if (Boolean.TRUE.equals(e.isAdmin())) {
             //Carga una vista
@@ -138,6 +132,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             //Carga otra vista
             startMainActivity();
         }
+
     }
 
     private void startAdminActivity() {
@@ -198,37 +193,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         hideProgress();
         Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
 
-    }
-
-    class LoginTextWatcher implements TextWatcher {
-        private View view;
-
-        private LoginTextWatcher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            //se deja vacio
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            //se deja vacio
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            switch (view.getId()) {
-                case R.id.tieEmail:
-                    validateEmail(((EditText) view).getText().toString());
-                    break;
-                case R.id.tiePassword:
-                    validatePassword(((EditText) view).getText().toString());
-                    break;
-            }
-        }
     }
 
 

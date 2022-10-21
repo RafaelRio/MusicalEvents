@@ -38,20 +38,17 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
 
         db.collection("personas").document(Objects.requireNonNull(user.getEmail()))
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            Userkt databaseUser = task.getResult().toObject(Userkt.class);
-                            if (databaseUser == null) {
-                                callback.onFailure("Usuario incorrecto");
-                            }else if (Objects.equals(user.getPassword(), databaseUser.getPassword())) {
-                                currentUser = databaseUser;
-                                callback.onSuccess(databaseUser);
-                            }
-                            else {
-                                callback.onFailure("Usuario incorrecto");
-                            }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Userkt databaseUser = task.getResult().toObject(Userkt.class);
+                        if (databaseUser == null) {
+                            callback.onFailure("Usuario incorrecto");
+                        }else if (Objects.equals(user.getPassword(), databaseUser.getPassword())) {
+                            currentUser = databaseUser;
+                            callback.onSuccess(databaseUser);
+                        }
+                        else {
+                            callback.onFailure("Usuario incorrecto");
                         }
                     }
                 });

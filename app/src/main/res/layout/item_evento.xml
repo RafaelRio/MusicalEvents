@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:cardBackgroundColor="@color/secondaryColor"
-        android:elevation="4dp"
+        app:cardBackgroundColor="@color/primaryLightColor"
+        app:cardElevation="4dp"
         app:cardMaxElevation="4dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="15dp">
