@@ -2,13 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/my_events"
-        android:icon="@drawable/ic_my_events"
-        app:showAsAction="always"
-        android:title="@string/my_events"/>
-
     <item android:id="@+id/add_event"
         android:icon="@drawable/ic_add_event"
-        app:showAsAction="always"
         android:title="@string/add_event"/>
+
+    <item android:id="@+id/my_events"
+        android:icon="@drawable/ic_my_events"
+        android:title="@string/my_events"/>
 </menu>
