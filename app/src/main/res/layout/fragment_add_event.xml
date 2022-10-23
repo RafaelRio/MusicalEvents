@@ -29,11 +29,8 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                style="@style/InfoEventTextView"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
 
@@ -47,11 +44,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                style="@style/InfoEventTextView"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
 
@@ -65,11 +59,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                style="@style/InfoEventTextView"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
 
@@ -88,11 +79,8 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                style="@style/InfoEventTextView"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
 
@@ -108,11 +96,25 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                style="@style/InfoEventTextView"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/tieHoraFinEvento"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_til"
+                    android:hint="@string/event_endHour"
+                    android:drawableEnd="@drawable/ic_hour_event"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/InfoEventTextView"
+                android:layout_marginTop="20dp"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
 

@@ -11,6 +11,7 @@ data class Event  @JvmOverloads constructor(
     var mes : Int? = null,
     var anio : Int? = null,
     var horaComienzo : String? = null,
+    var horaFin : String? = null,
     var descripcion : String? = null
 ) : Serializable{
 }

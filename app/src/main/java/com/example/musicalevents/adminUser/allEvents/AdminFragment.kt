@@ -92,7 +92,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     }
 
     override fun onInfoEvent(l: Event) {
-        var action = AdminFragmentDirections.actionAdminFragmentToInfoEventFragment(l)
+        val action = AdminFragmentDirections.actionAdminFragmentToInfoEventFragment(l)
         NavHostFragment.findNavController(this@AdminFragment).navigate(action)
     }
 
