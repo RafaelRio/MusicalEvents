@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondaryColor"
+    tools:context=".eventInfo.InfoEventFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/bodoni_bold"
+            android:text="@string/event_info"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_tvLogin_textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lblEventName"
+            style="@style/InfoEventLabel"
+            android:layout_marginTop="20dp"
+            android:text="@string/event_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvtitle" />
+
+        <TextView
+            android:id="@+id/infoNombreEvento"
+            style="@style/InfoEventTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblEventName"
+            tools:text="Nombre del evento" />
+
+        <TextView
+            android:id="@+id/lblEventLocation"
+            style="@style/InfoEventLabel"
+            android:text="@string/event_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoNombreEvento" />
+
+        <TextView
+            android:id="@+id/infoUbicacionEvento"
+            style="@style/InfoEventTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblEventLocation"
+            tools:text="Ubicacion del evento" />
+
+        <TextView
+            android:id="@+id/lblEventDate"
+            style="@style/InfoEventLabel"
+            android:text="@string/event_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoUbicacionEvento" />
+
+        <TextView
+            android:id="@+id/infoFechaEvento"
+            style="@style/InfoEventTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblEventDate"
+            tools:text="Fecha del evento" />
+
+        <TextView
+            android:id="@+id/lblEventHour"
+            style="@style/InfoEventLabel"
+            android:text="@string/event_starthour"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoFechaEvento" />
+
+        <TextView
+            android:id="@+id/infoHoraEvento"
+            style="@style/InfoEventTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblEventHour"
+            tools:text="Hora del evento" />
+
+        <TextView
+            android:id="@+id/lblEventDescription"
+            style="@style/InfoEventLabel"
+            android:text="@string/event_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoHoraEvento" />
+
+        <TextView
+            android:id="@+id/infoDescripcionEvento"
+            style="@style/InfoEventTextView"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblEventDescription"
+            tools:text="Descripcion del evento" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

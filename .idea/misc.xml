@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_blue_button.xml" value="0.2425" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_event_cardview.xml" value="0.1785" />
+        <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_til.xml" value="0.2425" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/font/font.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/activity_admin.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
@@ -15,9 +16,11 @@
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/content_loginkt.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/fragment_add_event.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/fragment_admin.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/fragment_info_event.xml" value="0.264" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/fragment_uploaded_events.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/item_evento.xml" value="0.259375" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/menu/admin_menu.xml" value="0.264" />
+        <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/menu/event_info_menu.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.117" />
       </map>
     </option>

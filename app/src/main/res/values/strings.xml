@@ -19,10 +19,12 @@
     <string name="add_event">Add event</string>
     <string name="event_name">Event name</string>
     <string name="event_location">Location</string>
-    <string name="event_day">Day</string>
+    <string name="event_date">Date</string>
     <string name="event_starthour">Start hour</string>
     <string name="event_description">Description</string>
     <string name="success_uploading_event">Event uploaded successfully</string>
     <string name="my_events">My events</string>
     <string name="btAlreadyAccount">Do yo have an account?</string>
+    <string name="calendar">Calendar</string>
+    <string name="event_info">Event info</string>
 </resources>

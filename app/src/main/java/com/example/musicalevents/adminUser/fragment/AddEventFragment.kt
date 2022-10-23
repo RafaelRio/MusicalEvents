@@ -25,9 +25,9 @@ class AddEventFragment : Fragment() {
 
 
     var e = Event()
-    var dia: Int? = null
-    var mes: Int? = null
-    var anio: Int? = null
+    var dia: Int = 0
+    var mes: Int = 0
+    var anio: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
