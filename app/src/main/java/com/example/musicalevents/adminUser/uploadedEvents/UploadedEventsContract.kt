@@ -23,6 +23,7 @@ interface UploadedEventsContract {
     interface OnRepositoryCallback {
         fun onListSuccess(eventList: List<Event>)
         fun onDeleteSuccess(deletedEvent : Event)
+        fun onEditSuccess(editedEvent : Event)
         fun onNoData()
     }
 

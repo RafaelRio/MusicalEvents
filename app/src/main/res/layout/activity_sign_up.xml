@@ -55,6 +55,7 @@
                 android:id="@+id/tieEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions|textEmailAddress"
                 android:background="@drawable/background_til"
                 android:hint="@string/SignUp_tieEmail_hint" />
         </com.google.android.material.textfield.TextInputLayout>

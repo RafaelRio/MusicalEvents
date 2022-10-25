@@ -9,6 +9,7 @@ import com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsContract
 import com.example.musicalevents.data.model.Event;
 import com.example.musicalevents.data.model.Userkt;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -18,18 +19,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+import java.util.Objects;
 
 public class JavaEventRepository implements UploadedEventsContract.Repository {
 
-    private static JavaEventRepository instance;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Userkt currentUser = LoginRepository.currentUser;
     private static final String TAG = "JAVAREPOSITORY";
+    private static JavaEventRepository instance;
 
     static {
         instance = new JavaEventRepository();
     }
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private Userkt currentUser = LoginRepository.currentUser;
 
     public static JavaEventRepository getInstance() {
         if (instance == null) {
@@ -44,22 +46,19 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
         db.collection("eventos")
                 .whereEqualTo("user", currentUser.getEmail())
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                misEventos.add(document.toObject(Event.class));
-                                callback.onListSuccess(misEventos);
-                            }
-                            if (misEventos.size() == 0){
-                                callback.onNoData();
-                            }
-                        } else {
-                            Log.d(TAG, "Error onteniendo mis documentos", task.getException());
-
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Log.d(TAG, document.getId() + " => " + document.getData());
+                            misEventos.add(document.toObject(Event.class));
+                            callback.onListSuccess(misEventos);
                         }
+                        if (misEventos.size() == 0) {
+                            callback.onNoData();
+                        }
+                    } else {
+                        Log.d(TAG, "Error onteniendo mis documentos", task.getException());
+
                     }
                 });
     }
@@ -72,19 +71,16 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
                 whereEqualTo("mes", month).
                 whereEqualTo("anio", year)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                allEvents.add(document.toObject(Event.class));
-                                callback.onListSuccess(allEvents);
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                            callback.onNoData();
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Log.d(TAG, document.getId() + " => " + document.getData());
+                            allEvents.add(document.toObject(Event.class));
+                            callback.onListSuccess(allEvents);
                         }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                        callback.onNoData();
                     }
                 });
 
@@ -92,10 +88,12 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     @Override
     public void delete(UploadedEventsContract.OnRepositoryCallback callback, Event deletedEvent) {
-        db.collection("eventos").document(deletedEvent.getNombreEvento().trim()+ deletedEvent.getDescripcion().trim() +
-                deletedEvent.getUbicacion().trim() + deletedEvent.getDescripcion().trim() + deletedEvent.getUser().trim() +
-                deletedEvent.getDia().toString().trim() + deletedEvent.getAnio().toString().trim() + deletedEvent.getMes().toString().trim()).
-                delete();
+        /*db.collection("eventos").document(deletedEvent.getNombreEvento().trim() + deletedEvent.getDescripcion().trim() +
+                        deletedEvent.getUbicacion().trim() + deletedEvent.getDescripcion().trim() + deletedEvent.getUser().trim() +
+                        deletedEvent.getDia().toString().trim() + deletedEvent.getAnio().toString().trim() + deletedEvent.getMes().toString().trim()).
+                delete();*/
+        db.collection("eventos").document(Objects.requireNonNull(deletedEvent.getUuid())).delete();
+        assert callback != null;
         callback.onDeleteSuccess(deletedEvent);
     }
 }

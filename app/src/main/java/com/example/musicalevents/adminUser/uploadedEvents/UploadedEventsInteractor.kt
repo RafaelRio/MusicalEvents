@@ -21,6 +21,10 @@ class UploadedEventsInteractor(private var listener: UploadedEventsContract.OnRe
         listener?.onDeleteSuccess(deletedEvent)
     }
 
+    override fun onEditSuccess(editedEvent: Event) {
+        listener?.onEditSuccess(editedEvent)
+    }
+
     override fun onNoData() {
         listener?.onNoData()
     }

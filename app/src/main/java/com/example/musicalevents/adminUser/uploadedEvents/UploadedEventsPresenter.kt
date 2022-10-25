@@ -32,6 +32,10 @@ class UploadedEventsPresenter (var view: UploadedEventsContract.View?) : Uploade
         view?.onDeleteSuccess(deletedEvent)
     }
 
+    override fun onEditSuccess(editedEvent: Event) {
+        view?.onEditSuccess(editedEvent)
+    }
+
     override fun onNoData() {
         view?.onNoData()
     }

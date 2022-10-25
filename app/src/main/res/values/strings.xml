@@ -28,4 +28,7 @@
     <string name="calendar">Calendar</string>
     <string name="event_info">Event info</string>
     <string name="event_endHour">End hour</string>
+    <string name="edit_event">Edit event</string>
+    <string name="delete_succeded">Event deleted successfuly</string>
+    <string name="edited_event">Event updated successfuly</string>
 </resources>

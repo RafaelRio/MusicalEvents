@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentUploadedEventsBinding
 import com.example.musicalevents.utils.EventoCrudAdapter
@@ -28,7 +30,7 @@ class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentUploadedEventsBinding.inflate(inflater, container, false)
         return binding.root
@@ -63,17 +65,21 @@ class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
 
     }
 
-    override fun onListSuccess(eventos: List<Event>) {
+    override fun onListSuccess(eventList: List<Event>) {
         binding.imvNodata.visibility = View.GONE
-        adapter.update(eventos)
+        adapter.update(eventList)
     }
 
     override fun onDeleteSuccess(deletedEvent: Event) {
         adapter.removeItem(deletedEvent)
-        Toast.makeText(context, "Evento borrado con exito", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.delete_succeded, Toast.LENGTH_SHORT).show()
         if(adapter.itemCount == 0){
             onNoData()
         }
+    }
+
+    override fun onEditSuccess(editedEvent: Event) {
+        Toast.makeText(context, R.string.edited_event, Toast.LENGTH_SHORT).show()
     }
 
     override fun onNoData() {
@@ -81,8 +87,9 @@ class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
         binding.rvMyEvents.visibility = View.GONE
     }
 
-    override fun onEditEvento(l: Event?) {
-
+    override fun onEditEvento(l: Event) {
+        val action = UploadedEventsFragmentDirections.actionUploadedEventsFragmentToEditEventFragment(l)
+        NavHostFragment.findNavController(this@UploadedEventsFragment).navigate(action)
     }
 
     override fun onDeleteEvento(l: Event) {

@@ -75,11 +75,25 @@
             app:layout_constraintTop_toBottomOf="@+id/infoFechaEvento" />
 
         <TextView
-            android:id="@+id/infoHoraEvento"
+            android:id="@+id/infoFinEvento"
             style="@style/InfoEventTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblEventHour"
             tools:text="Hora del evento" />
+
+        <TextView
+            android:id="@+id/lblEventEnd"
+            style="@style/InfoEventLabel"
+            android:text="@string/event_endHour"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/infoFinEvento" />
+
+        <TextView
+            android:id="@+id/infoHoraEvento"
+            style="@style/InfoEventTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblEventEnd"
+            tools:text="Fin del evento" />
 
         <TextView
             android:id="@+id/lblEventDescription"
