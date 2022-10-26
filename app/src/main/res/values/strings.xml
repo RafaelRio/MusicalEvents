@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MusicalEvents</string>
-    <string name="tvLogin_login" translatable="false">Login</string>
+    <string name="tvLogin_login">Login</string>
     <string name="tieUser">User</string>
     <string name="tiePassword">Password</string>
     <string name="chkRemember">Remember me</string>
@@ -30,4 +30,5 @@
     <string name="edit_event">Edit event</string>
     <string name="delete_succeded">Event deleted successfuly</string>
     <string name="edited_event">Event updated successfuly</string>
+    <string name="ivNodata">No data</string>
 </resources>
