@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".adminUser.allEvents.AdminFragment"
     android:orientation="vertical"
-    android:background="@color/secondaryColor">
+    android:background="@color/secondary_color">
 
     <CalendarView
         android:id="@+id/calendarView"

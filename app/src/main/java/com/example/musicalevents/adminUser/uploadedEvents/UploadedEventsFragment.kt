@@ -46,7 +46,7 @@ class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
         presenter.getMyEvents()
     }
 
-    fun initRv() {
+    private fun initRv() {
         adapter =
             EventoCrudAdapter(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view

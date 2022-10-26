@@ -10,13 +10,12 @@
 
     <color name="transparent">#00FFFFFF</color>
 
-    <color name="primaryColor">#448aff</color>
-    <color name="primaryLightColor">#83b9ff</color>
-    <color name="primaryDarkColor">#005ecb</color>
-    <color name="secondaryColor">#e1f5fe</color>
+    <color name="primary_color">#448aff</color>
+    <color name="primary_light_color">#83b9ff</color>
+    <color name="primary_dark_color">#005ecb</color>
+    <color name="secondary_color">#e1f5fe</color>
     <color name="secondaryLightColor">#ffffff</color>
     <color name="secondaryDarkColor">#afc2cb</color>
     <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
     <color name="red">#f4645f</color>
 </resources>

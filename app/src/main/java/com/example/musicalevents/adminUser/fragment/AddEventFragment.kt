@@ -1,6 +1,5 @@
 package com.example.musicalevents.adminUser.fragment
 
-import android.icu.number.IntegerWidth
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,9 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
-import com.example.musicalevents.data.model.Userkt
-import com.example.musicalevents.data.repository.EventRepository
-import com.example.musicalevents.data.repository.LoginRepository
+import com.example.musicalevents.data.repository.JavaEventRepository
 import com.example.musicalevents.databinding.FragmentAddEventBinding
 import com.example.musicalevents.utils.DatePickerFragment
 import com.example.musicalevents.utils.TimePickerFragment
@@ -22,7 +19,7 @@ import com.example.musicalevents.utils.TimePickerFragment
 class AddEventFragment : Fragment() {
 
     private lateinit var binding : FragmentAddEventBinding
-    private lateinit var eventRepository : EventRepository
+    private lateinit var eventRepository : JavaEventRepository
     var e = Event()
     var dia: Int = 0
     var mes: Int = 0
@@ -31,7 +28,7 @@ class AddEventFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        eventRepository = EventRepository().getInstance()
+        eventRepository = JavaEventRepository()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

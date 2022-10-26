@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondaryColor"
+    android:background="@color/secondary_color"
     tools:context=".adminUser.fragment.AddEventFragment">
 
 
@@ -131,7 +131,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="60dp"
-            android:backgroundTint="@color/primaryColor"
+            android:backgroundTint="@color/primary_color"
             android:contentDescription="@string/edit_event"
             android:foregroundTint="@color/white"
             android:src="@drawable/ic_add_event_white"

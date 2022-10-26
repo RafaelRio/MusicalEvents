@@ -20,11 +20,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     private static final String TAG = "JAVAREPOSITORY";
     private static JavaEventRepository instance;
+    private UUID uuidEvent = UUID.randomUUID();
 
     static {
         instance = new JavaEventRepository();
@@ -88,12 +90,15 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     @Override
     public void delete(UploadedEventsContract.OnRepositoryCallback callback, Event deletedEvent) {
-        /*db.collection("eventos").document(deletedEvent.getNombreEvento().trim() + deletedEvent.getDescripcion().trim() +
-                        deletedEvent.getUbicacion().trim() + deletedEvent.getDescripcion().trim() + deletedEvent.getUser().trim() +
-                        deletedEvent.getDia().toString().trim() + deletedEvent.getAnio().toString().trim() + deletedEvent.getMes().toString().trim()).
-                delete();*/
         db.collection("eventos").document(Objects.requireNonNull(deletedEvent.getUuid())).delete();
         assert callback != null;
         callback.onDeleteSuccess(deletedEvent);
+    }
+
+    public void uploadEvent(Event uploadedEvent) {
+        uploadedEvent.setUuid(uuidEvent.toString());
+        db.collection("eventos")
+                .document(uuidEvent.toString())
+                .set(uploadedEvent);
     }
 }
