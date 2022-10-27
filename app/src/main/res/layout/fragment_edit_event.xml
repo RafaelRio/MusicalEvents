@@ -55,59 +55,95 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/InfoEventTextView"
-            android:layout_marginTop="20dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTieFecha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_til"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_calendar"
-                android:focusable="false"
-                android:hint="@string/event_date"
-                android:inputType="date"
-                android:maxLines="1" />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/InfoEventTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittieFechaInicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_til"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/event_startdate"
+                    android:inputType="date"
+                    android:maxLines="1" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/InfoEventTextView"
-            android:layout_marginTop="20dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTieHoraComienzoEvento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_til"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_hour_event"
-                android:focusable="false"
-                android:hint="@string/event_starthour" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/InfoEventTextView"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/InfoEventTextView"
-            android:layout_marginTop="20dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittieHoraComienzo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_til"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/event_starthour" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTieHoraFinEvento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_til"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_hour_event"
-                android:focusable="false"
-                android:hint="@string/event_endHour" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/InfoEventTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittieFechaFin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_til"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/event_enddate"
+                    android:inputType="date"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/InfoEventTextView"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittieHoraFin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_til"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/event_endHour" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/InfoEventTextView"

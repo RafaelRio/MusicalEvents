@@ -53,54 +53,116 @@
             app:layout_constraintTop_toBottomOf="@id/lblEventLocation"
             tools:text="Ubicacion del evento" />
 
-        <TextView
-            android:id="@+id/lblEventDate"
-            style="@style/InfoEventLabel"
-            android:text="@string/event_date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoUbicacionEvento" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/infoUbicacionEvento">
 
-        <TextView
-            android:id="@+id/infoFechaEvento"
-            style="@style/InfoEventTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblEventDate"
-            tools:text="Fecha del evento" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/lblEventHour"
-            style="@style/InfoEventLabel"
-            android:text="@string/event_starthour"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoFechaEvento" />
+                <TextView
+                    android:id="@+id/lblEventStartDate"
+                    style="@style/InfoEventLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/event_startdate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/infoUbicacionEvento" />
 
-        <TextView
-            android:id="@+id/infoFinEvento"
-            style="@style/InfoEventTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblEventHour"
-            tools:text="Hora del evento" />
+                <TextView
+                    android:id="@+id/infoInicioFechaEvento"
+                    style="@style/InfoEventTextView"
+                    android:layout_width="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblEventStartDate"
+                    tools:text="Fecha del evento" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <TextView
-            android:id="@+id/lblEventEnd"
-            style="@style/InfoEventLabel"
-            android:text="@string/event_endHour"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoFinEvento" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+            <TextView
+                android:id="@+id/lblStartEventHour"
+                style="@style/InfoEventLabel"
+                android:text="@string/event_starthour"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/infoFechaEvento" />
 
-        <TextView
-            android:id="@+id/infoHoraEvento"
-            style="@style/InfoEventTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lblEventEnd"
-            tools:text="Fin del evento" />
+            <TextView
+                android:id="@+id/infoHoraInicioEvento"
+                style="@style/InfoEventTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lblStartEventHour"
+                tools:text="Hora del evento" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/llInicio">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lblEventEndDate"
+                    style="@style/InfoEventLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/event_enddate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/infoUbicacionEvento" />
+
+                <TextView
+                    android:id="@+id/infoFechaFinEvento"
+                    style="@style/InfoEventTextView"
+                    android:layout_width="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblEventEndDate"
+                    tools:text="Fecha del evento" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <TextView
+                    android:id="@+id/lblEventEndHour"
+                    style="@style/InfoEventLabel"
+                    android:text="@string/event_endHour"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/infoFechaEvento" />
+
+                <TextView
+                    android:id="@+id/infoHoraFinEvento"
+                    style="@style/InfoEventTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lblEventEndHour"
+                    tools:text="Hora del evento" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
             android:id="@+id/lblEventDescription"
             style="@style/InfoEventLabel"
             android:text="@string/event_description"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/infoHoraEvento" />
+            app:layout_constraintTop_toBottomOf="@+id/llFin" />
 
         <TextView
             android:id="@+id/infoDescripcionEvento"

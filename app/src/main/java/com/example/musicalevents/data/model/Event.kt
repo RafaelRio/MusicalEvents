@@ -9,10 +9,13 @@ data class Event  @JvmOverloads constructor(
     var nombreEvento: String? = null,
     var user : String? = LoginRepository.currentUser.email,
     var ubicacion: String? = null,
-    var dia: Int? = null,
-    var mes : Int? = null,
-    var anio : Int? = null,
+    var diaComienzo: Int? = null,
+    var mesComienzo : Int? = null,
+    var anioComienzo : Int? = null,
     var horaComienzo : String? = null,
+    var diaFin: Int? = null,
+    var mesFin : Int? = null,
+    var anioFin : Int? = null,
     var horaFin : String? = null,
     var descripcion : String? = null
 ) : Serializable{

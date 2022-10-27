@@ -31,4 +31,12 @@
     <string name="delete_succeded">Event deleted successfuly</string>
     <string name="edited_event">Event updated successfuly</string>
     <string name="ivNodata">No data</string>
+    <string name="event_startdate">Start date</string>
+    <string name="event_enddate">End date</string>
+    <string name="empty_eventName">Empty event name</string>
+    <string name="empty_eventLocation">Empty location</string>
+    <string name="empty_eventDate">Empty date</string>
+    <string name="empty_eventHour">Empty hour</string>
+    <string name="error_date">The end date must be later than the start date</string>
+    <string name="empty_eventDescription">Empty description</string>
 </resources>

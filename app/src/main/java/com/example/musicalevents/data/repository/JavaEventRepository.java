@@ -69,9 +69,9 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
         final List<Event> allEvents = new ArrayList<>();
 
         db.collection("eventos").
-                whereEqualTo("dia", day).
-                whereEqualTo("mes", month).
-                whereEqualTo("anio", year)
+                whereEqualTo("diaComienzo", day).
+                whereEqualTo("mesComienzo", month).
+                whereEqualTo("anioComienzo", year)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
