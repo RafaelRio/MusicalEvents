@@ -13,7 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
 import com.example.musicalevents.adminUser.allEvents.AdminFragmentDirections.Companion.actionAdminFragmentToInfoEventFragment
+import com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsFragmentDirections
 import com.example.musicalevents.data.model.Event
+import com.example.musicalevents.data.model.Userkt
+import com.example.musicalevents.data.repository.JavaEventRepository
+import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.utils.EventoCrudAdapter
 import com.example.musicalevents.utils.EventoListAdapter
@@ -24,6 +28,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     private lateinit var binding : FragmentAdminBinding
     private var adapter: EventoListAdapter? = null
     private lateinit var presenter : AllEventsContract.Presenter
+    private val currentUser : Userkt = LoginRepository.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,8 +90,8 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
                     }
 
                     R.id.group_info -> {
-                        NavHostFragment.findNavController(this@AdminFragment)
-                            .navigate(R.id.action_adminFragment_to_groupInformationFillFragment)
+                        val action = AdminFragmentDirections.actionAdminFragmentToGroupInformationFillFragment(currentUser)
+                        NavHostFragment.findNavController(this@AdminFragment).navigate(action)
                         return true
                     }
                     else -> {

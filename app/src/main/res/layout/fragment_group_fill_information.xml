@@ -48,6 +48,7 @@
                     android:src="@drawable/instagram_icon" />
 
                 <EditText
+                    android:id="@+id/etInsta"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="20dp"
@@ -73,6 +74,7 @@
                     android:src="@drawable/twitter_icon" />
 
                 <EditText
+                    android:id="@+id/etTwitter"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="20dp"
@@ -98,6 +100,7 @@
                     android:src="@drawable/facebook_icon" />
 
                 <EditText
+                    android:id="@+id/etFacebook"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="20dp"
@@ -123,6 +126,7 @@
                     android:src="@drawable/website_icon" />
 
                 <EditText
+                    android:id="@+id/etWebsite"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="20dp"

@@ -47,4 +47,6 @@
     <string name="facebook" translatable="false">Facebook</string>
     <string name="website">Website</string>
     <string name="acceptLinks">Accept</string>
+    <string name="error_createUser">Error creating user</string>
+    <string name="err_createUser">User already exists</string>
 </resources>

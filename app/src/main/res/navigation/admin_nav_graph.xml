@@ -58,5 +58,9 @@
         android:id="@+id/groupInformationFillFragment"
         android:name="com.example.musicalevents.adminUser.groupInformation.GroupInformationFillFragment"
         android:label="fragment_group_fill_information"
-        tools:layout="@layout/fragment_group_fill_information" />
+        tools:layout="@layout/fragment_group_fill_information" >
+        <argument
+            android:name="usuarioAct"
+            app:argType="com.example.musicalevents.data.model.Userkt" />
+    </fragment>
 </navigation>

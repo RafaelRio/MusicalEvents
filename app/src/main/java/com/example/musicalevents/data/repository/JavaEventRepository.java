@@ -32,8 +32,8 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
         instance = new JavaEventRepository();
     }
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Userkt currentUser = LoginRepository.currentUser;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final Userkt currentUser = LoginRepository.currentUser;
 
     public static JavaEventRepository getInstance() {
         if (instance == null) {
