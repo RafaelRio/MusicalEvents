@@ -200,70 +200,29 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/lblGroupInformation">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/iv_instagram"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="100dp"
-                android:layout_marginStart="15dp"
-                app:cardElevation="1dp"
-                app:cardMaxElevation="0dp">
+                android:layout_weight="0.5"
+                android:src="@drawable/instagram_icon" />
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/instagram_icon" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/iv_twitter"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="100dp"
-                app:cardElevation="1dp"
-                android:layout_marginStart="15dp"
-                app:cardMaxElevation="0dp">
+                android:layout_weight="0.5"
+                android:src="@drawable/twitter_icon" />
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/twitter_icon" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/iv_facebook"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="100dp"
-                app:cardElevation="1dp"
-                android:layout_marginStart="15dp"
-                app:cardMaxElevation="0dp">
+                android:layout_weight="0.5"
+                android:src="@drawable/facebook_icon" />
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/facebook_icon" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/iv_website"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="100dp"
-                app:cardElevation="1dp"
-                android:layout_marginStart="15dp"
-                app:cardMaxElevation="0dp"
-                android:layout_marginBottom="20dp">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/web_icon" />
-            </com.google.android.material.card.MaterialCardView>
+                android:layout_weight="0.5"
+                android:src="@drawable/website_icon" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
