@@ -83,6 +83,12 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
                             .navigate(R.id.action_adminFragment_to_uploadedEventsFragment)
                         return true
                     }
+
+                    R.id.group_info -> {
+                        NavHostFragment.findNavController(this@AdminFragment)
+                            .navigate(R.id.action_adminFragment_to_groupInformationFillFragment)
+                        return true
+                    }
                     else -> {
                         false
                     }

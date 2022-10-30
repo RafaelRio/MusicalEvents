@@ -7,7 +7,7 @@ import java.util.*
 data class Event  @JvmOverloads constructor(
     var uuid: String? = null,
     var nombreEvento: String? = null,
-    var user : String? = LoginRepository.currentUser.email,
+    var user : Userkt? = LoginRepository.currentUser,
     var ubicacion: String? = null,
     var diaComienzo: Int? = null,
     var mesComienzo : Int? = null,

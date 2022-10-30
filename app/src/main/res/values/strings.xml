@@ -39,4 +39,12 @@
     <string name="empty_eventHour">Empty hour</string>
     <string name="error_date">The end date must be later than the start date</string>
     <string name="empty_eventDescription">Empty description</string>
+    <string name="group_name">Group name</string>
+    <string name="group_info">Info</string>
+    <string name="group_links">Group links</string>
+    <string name="instagram" translatable="false">Instagram</string>
+    <string name="twitter" translatable="false">Twitter</string>
+    <string name="facebook" translatable="false">Facebook</string>
+    <string name="website">Website</string>
+    <string name="acceptLinks">Accept</string>
 </resources>

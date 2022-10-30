@@ -18,4 +18,5 @@
     <color name="secondaryDarkColor">#afc2cb</color>
     <color name="primaryTextColor">#000000</color>
     <color name="red">#f4645f</color>
+    <color name="instagram_button">#DD2A7B</color>
 </resources>

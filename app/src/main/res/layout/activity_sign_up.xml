@@ -107,14 +107,9 @@
             app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword"/>
 
         <Button
-            android:layout_gravity="center_horizontal"
             android:id="@+id/btRegistrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bodoni_bold"
-            android:textColor="@color/white"
-            android:background="@drawable/background_blue_button"
-            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            style="@style/button"
             android:text="@string/btSignUp_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword"
