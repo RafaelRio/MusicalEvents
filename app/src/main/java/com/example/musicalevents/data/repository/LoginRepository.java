@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -58,22 +59,19 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
     @Override
     public void SignUp(String user, String email, String password, String comfirmPassword) {
         Userkt databaseUser = new Userkt(email, password, false);
+        ArrayList<String> usedEmails = new ArrayList<>();
 
         db.collection("personas")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                if (document.getId().equals(databaseUser.getEmail())) {
-                                    Log.d(TAG, "El usuario ya existe");
-                                    callback.onFailure("El usuario ya existe");
-                                } else {
-                                    createUser(user, email, password, comfirmPassword);
-                                }
-
-                            }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            usedEmails.add(document.getId());
+                        }
+                        if (!usedEmails.contains(databaseUser.getEmail())){
+                            createUser(user, email, password, comfirmPassword);
+                        }else {
+                            callback.onFailure("El usuario ya existe");
                         }
                     }
                 });
