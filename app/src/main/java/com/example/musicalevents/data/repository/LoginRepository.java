@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.musicalevents.R;
 import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.login.LoginContract;
@@ -25,7 +26,6 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
     private static LoginRepository instance;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private OnRepositoryCallback callback;
-    private UUID uuidUser = UUID.randomUUID();
 
 
     public static LoginRepository getInstance(OnRepositoryCallback listener) {
@@ -45,12 +45,12 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
                     if (task.isSuccessful()) {
                         Userkt databaseUser = task.getResult().toObject(Userkt.class);
                         if (databaseUser == null) {
-                            callback.onFailure("Usuario incorrecto");
+                            callback.onFailure(R.string.error_createUser);
                         } else if (Objects.equals(user.getPassword(), databaseUser.getPassword())) {
                             currentUser = databaseUser;
                             callback.onSuccess(databaseUser);
                         } else {
-                            callback.onFailure("Usuario incorrecto");
+                            callback.onFailure(R.string.error_createUser);
                         }
                     }
                 });
@@ -71,7 +71,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
                         if (!usedEmails.contains(databaseUser.getEmail())){
                             createUser(user, email, password, comfirmPassword);
                         }else {
-                            callback.onFailure("El usuario ya existe");
+                            callback.onFailure(R.string.error_userExists);
                         }
                     }
                 });
@@ -82,7 +82,6 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
         db.collection("personas").document(Objects.requireNonNull(databaseUser.getEmail()))
                 .set(databaseUser)
                 .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "DocumentSnapshot successfully written!");
                     callback.onSuccess(databaseUser);
                 })
                 .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));

@@ -47,7 +47,7 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.On
     }
 
     @Override
-    public void onFailure(String message) {
+    public void onFailure(int message) {
         view.hideProgress();
         view.onFailure(message);
     }

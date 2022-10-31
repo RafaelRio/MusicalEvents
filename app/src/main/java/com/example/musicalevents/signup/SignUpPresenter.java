@@ -59,7 +59,7 @@ public class SignUpPresenter implements SignUpContract.Presenter,SignUpContract.
     }
 
     @Override
-    public void onFailure(String message) {
+    public void onFailure(int message) {
         view.onFailure(message);
     }
 

@@ -3,7 +3,6 @@ package com.example.musicalevents.signup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     @Override
     public void setEmailEmptyError() {
-        binding.tilEmail.setError(getString(R.string.errEmailEmpty));
+        binding.tilEmail.setError(getString(R.string.error_EmailEmpty));
     }
 
     @Override
@@ -83,12 +82,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     @Override
     public void setPasswordError() {
-        binding.tilPassword.setError(getString(R.string.errorPassword));
+        binding.tilPassword.setError(getString(R.string.error_passwordFormat));
     }
 
     @Override
     public void setEmailError() {
-        binding.tilEmail.setError(getString(R.string.errEmail));
+        binding.tilEmail.setError(getString(R.string.error_email));
     }
 
     @Override
@@ -103,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
-    public void onFailure(String message) {
+    public void onFailure(int message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

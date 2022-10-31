@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">MusicalEvents</string>
-    <string name="tvLogin_login">Login</string>
+    <string name="tvLogin_login" translatable="false">Login</string>
     <string name="tieUser">User</string>
     <string name="tiePassword">Password</string>
     <string name="chkRemember">Remember me</string>
     <string name="btSignUp_text">Sign up</string>
     <string name="btSignIn_text">Sign in</string>
     <string name="errorPasswordEmpty">Empty password</string>
-    <string name="errorPassword">No valid format</string>
-    <string name="errEmailEmpty">Empty email</string>
-    <string name="errEmail">Invalid email</string>
     <string name="tvTitleSignUp">Register</string>
     <string name="SignUp_tieEmail_hint">Email</string>
     <string name="SignUp_tiePassword_hint">Password</string>
@@ -33,12 +30,6 @@
     <string name="ivNodata">No data</string>
     <string name="event_startdate">Start date</string>
     <string name="event_enddate">End date</string>
-    <string name="empty_eventName">Empty event name</string>
-    <string name="empty_eventLocation">Empty location</string>
-    <string name="empty_eventDate">Empty date</string>
-    <string name="empty_eventHour">Empty hour</string>
-    <string name="error_date">The end date must be later than the start date</string>
-    <string name="empty_eventDescription">Empty description</string>
     <string name="group_name">Group name</string>
     <string name="group_info">Info</string>
     <string name="group_links">Group links</string>
@@ -47,6 +38,25 @@
     <string name="facebook" translatable="false">Facebook</string>
     <string name="website">Website</string>
     <string name="acceptLinks">Accept</string>
+    <string name="updatedLinks">Links updated successfuly</string>
+
+
+
+    <!-- Errors -->
+    <string name="error_empty_eventName">Empty event name</string>
+    <string name="error_empty_eventLocation">Empty location</string>
+    <string name="error_empty_eventDate">Empty date</string>
+    <string name="error_empty_eventHour">Empty hour</string>
+    <string name="error_date">The end date must be later than the start date</string>
+    <string name="error_empty_eventDescription">Empty description</string>
+    <string name="error_passwordFormat">No valid format</string>
+    <string name="error_EmailEmpty">Empty email</string>
+    <string name="error_email">Invalid email</string>
     <string name="error_createUser">Error creating user</string>
-    <string name="err_createUser">User already exists</string>
+    <string name="error_userExists">User already exists</string>
+    <string name="error_instagramnotfound">Instragam not found</string>
+    <string name="error_twitternotfound">Twitter not found</string>
+    <string name="error_facebooknotfound">Facebook not found</string>
+    <string name="error_websitenotfound">Website not found</string>
+    <string name="error_badLink">Invalid link</string>
 </resources>

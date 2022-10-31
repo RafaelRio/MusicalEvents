@@ -5,5 +5,5 @@ import com.example.musicalevents.data.model.Userkt;
 public interface OnRepositoryCallback {
 
     void onSuccess(Userkt u);
-    void onFailure(String message);
+    void onFailure(int message);
 }

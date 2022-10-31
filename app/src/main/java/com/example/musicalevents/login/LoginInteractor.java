@@ -45,7 +45,7 @@ public class LoginInteractor implements OnRepositoryCallback {
     }
 
     @Override
-    public void onFailure(String message) {
+    public void onFailure(int message) {
         listener.onFailure(message);
     }
 }

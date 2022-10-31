@@ -2,9 +2,7 @@ package com.example.musicalevents.login;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -81,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      */
     @Override
     public void setEmailEmptyError() {
-        binding.tilEmail.setError(getString(R.string.errEmailEmpty));
+        binding.tilEmail.setError(getString(R.string.error_EmailEmpty));
     }
 
     @Override
@@ -91,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void setPasswordError() {
-        binding.tilPassword.setError(getString(R.string.errorPassword));
+        binding.tilPassword.setError(getString(R.string.error_passwordFormat));
     }
 
     @Override
@@ -145,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void onFailure(String message) {
+    public void onFailure(int message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
     //endregion
@@ -164,7 +162,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         if (TextUtils.isEmpty(password)) {
             binding.tilPassword.setError(getString(R.string.errorPasswordEmpty));
         } else if (!CommonUtils.isPasswordValid(password)) {
-            binding.tilPassword.setError(getString(R.string.errorPassword));
+            binding.tilPassword.setError(getString(R.string.error_passwordFormat));
         } else {
             //desaparece el error
             binding.tilPassword.setError(null);
@@ -180,9 +178,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      */
     private void validateEmail(String email) {
         if (TextUtils.isEmpty(email)) {
-            binding.tilEmail.setError(getString(R.string.errEmailEmpty));
+            binding.tilEmail.setError(getString(R.string.error_EmailEmpty));
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.tilEmail.setError(getString(R.string.errEmail));
+            binding.tilEmail.setError(getString(R.string.error_email));
         } else {
             //desaparece el error
             binding.tilEmail.setError(null);

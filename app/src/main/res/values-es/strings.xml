@@ -31,5 +31,4 @@
     <string name="delete_succeded">Evento eliminado con éxito</string>
     <string name="edited_event">Evento actualizado con éxito</string>
     <string name="ivNodata">Sin datos</string>
-    <string name="tvLogin_login">Inicio de sesión</string>
 </resources>
