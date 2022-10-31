@@ -46,7 +46,7 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
         final List<Event> misEventos = new ArrayList<>();
 
         db.collection("eventos")
-                .whereEqualTo("user", currentUser.getEmail())
+                .whereEqualTo("user.email", currentUser.getEmail())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -65,13 +65,13 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
                 });
     }
 
-    public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, int year, int month, int day) {
+    public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, String year, String month, String day) {
         final List<Event> allEvents = new ArrayList<>();
 
         db.collection("eventos").
-                whereEqualTo("diaComienzo", day).
-                whereEqualTo("mesComienzo", month).
-                whereEqualTo("anioComienzo", year)
+                whereEqualTo("diaInicio", day).
+                whereEqualTo("mesInicio", month).
+                whereEqualTo("anioInicio", year)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

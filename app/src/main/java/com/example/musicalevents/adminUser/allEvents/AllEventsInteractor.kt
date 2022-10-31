@@ -5,7 +5,7 @@ import com.example.musicalevents.data.repository.JavaEventRepository
 
 class AllEventsInteractor(private var listener: AllEventsContract.OnRepositoryCallback?) : AllEventsContract.Interactor {
 
-    override fun getAllEvents(year: Int, month: Int, day: Int) {
+    override fun getAllEvents(year: String, month: String, day: String) {
         JavaEventRepository.getInstance().getAllEvents(this, year, month, day)
     }
 

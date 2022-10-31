@@ -10,7 +10,7 @@ class AllEventsPresenter(var view: AllEventsContract.View?) : AllEventsContract.
         interactor = AllEventsInteractor(this)
     }
 
-    override fun getAllEvents(year: Int, month: Int, day: Int) {
+    override fun getAllEvents(year: String, month: String, day: String) {
         view?.showProgress()
         interactor?.getAllEvents(year, month, day)
     }

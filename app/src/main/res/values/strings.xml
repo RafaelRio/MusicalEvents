@@ -59,4 +59,5 @@
     <string name="error_facebooknotfound">Facebook not found</string>
     <string name="error_websitenotfound">Website not found</string>
     <string name="error_badLink">Invalid link</string>
+    <string name="event_updated_successfuly">Event updated successfuly</string>
 </resources>

@@ -9,12 +9,12 @@ interface AllEventsContract {
     }
 
     interface Presenter : OnRepositoryCallback {
-        fun getAllEvents(year : Int, month : Int, day: Int)
+        fun getAllEvents(year : String, month : String, day: String)
         fun onDestroy()
     }
 
     interface Interactor : OnRepositoryCallback {
-        fun getAllEvents(year : Int, month : Int, day: Int)
+        fun getAllEvents(year : String, month : String, day: String)
     }
 
     interface OnRepositoryCallback {

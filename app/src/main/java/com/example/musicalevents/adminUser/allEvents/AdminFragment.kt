@@ -38,7 +38,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     override fun onStart() {
         super.onStart()
         val actualDate = LocalDate.now()
-        presenter.getAllEvents(actualDate.year, actualDate.monthValue, actualDate.dayOfMonth)
+        presenter.getAllEvents((actualDate.year).toString(), (actualDate.monthValue).toString(), (actualDate.dayOfMonth).toString())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -52,7 +52,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
-            presenter.getAllEvents(year, (month + 1), day)
+            presenter.getAllEvents(year.toString(), (month + 1).toString(), day.toString())
         }
 
     }
