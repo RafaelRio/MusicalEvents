@@ -2,32 +2,26 @@ package com.example.musicalevents.data.repository;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.example.musicalevents.adminUser.allEvents.AllEventsContract;
 import com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsContract;
 import com.example.musicalevents.data.model.Event;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.normalUser.allEvents.UserAllEventsContract;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     private static final String TAG = "JAVAREPOSITORY";
     private static JavaEventRepository instance;
-    private UUID uuidEvent = UUID.randomUUID();
 
     static {
         instance = new JavaEventRepository();
@@ -66,24 +60,34 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
                 });
     }
 
-    public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, String year, String month, String day) {
+    public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, Long fechaUnix) {
         final List<Event> allEvents = new ArrayList<>();
 
-        db.collection("eventos").
-                whereEqualTo("diaInicio", day).
-                whereEqualTo("mesInicio", month).
-                whereEqualTo("anioInicio", year)
+        //ToDo Obtener todos los eventos con toObjects
+        db.collection("eventos")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d(TAG, document.getId() + " => " + document.getData());
-                            allEvents.add(document.toObject(Event.class));
-                            callback.onListSuccess(allEvents);
+                            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTimeInMillis(fechaUnix);
+                            String fechaSeleccionada = df.format(cal.getTime());
+
+                            Event evento = document.toObject(Event.class);
+                            Calendar eventDate = Calendar.getInstance();
+                            eventDate.setTimeInMillis(evento.getFechaInicioMiliSegundos());
+                            String fechaEvento = df.format(eventDate.getTime());
+                            if (fechaEvento.equals(fechaSeleccionada)) {
+                                allEvents.add(document.toObject(Event.class));
+                            }
+                        }
+                        callback.onListSuccess(allEvents);
+                        if (allEvents.isEmpty()) {
+                            callback.onNoData();
                         }
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
-                        callback.onNoData();
                     }
                 });
 
@@ -104,9 +108,11 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
                             allEvents.add(document.toObject(Event.class));
                             callback.onListSuccess(allEvents);
                         }
+                        if (allEvents.isEmpty()) {
+                            callback.onNoData();
+                        }
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
-                        callback.onNoData();
                     }
                 });
 
@@ -120,9 +126,8 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
     }
 
     public void uploadEvent(Event uploadedEvent) {
-        uploadedEvent.setUuid(uuidEvent.toString());
         db.collection("eventos")
-                .document(uuidEvent.toString())
+                .document(uploadedEvent.getUuid())
                 .set(uploadedEvent);
     }
 }

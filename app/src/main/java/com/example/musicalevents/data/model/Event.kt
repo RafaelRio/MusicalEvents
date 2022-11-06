@@ -5,18 +5,12 @@ import java.io.Serializable
 import java.util.*
 
 data class Event  @JvmOverloads constructor(
-    var uuid: String? = null,
-    var nombreEvento: String? = null,
-    var user : Userkt? = LoginRepository.currentUser,
-    var ubicacion: String? = null,
-    var diaInicio: String? = null,
-    var mesInicio : String? = null,
-    var anioInicio : String? = null,
-    var horaComienzo : String? = null,
-    var diaFin: String? = null,
-    var mesFin : String? = null,
-    var anioFin : String? = null,
-    var horaFin : String? = null,
-    var descripcion : String? = null
+    val uuid: String = UUID.randomUUID().toString(),
+    val nombreEvento: String = "",
+    val user : Userkt = LoginRepository.currentUser,
+    val ubicacion: String = "",
+    val fechaInicioMiliSegundos: Long = 0L,
+    val fechaFinMiliSegundos: Long = 0L,
+    val descripcion : String = ""
 ) : Serializable{
 }

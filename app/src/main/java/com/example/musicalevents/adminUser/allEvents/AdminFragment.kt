@@ -21,6 +21,7 @@ import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.utils.EventoCrudAdapter
 import com.example.musicalevents.utils.EventoListAdapter
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 
 class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllEventsContract.View{
@@ -38,7 +39,10 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     override fun onStart() {
         super.onStart()
         val actualDate = LocalDate.now()
-        presenter.getAllEvents((actualDate.year).toString(), (actualDate.monthValue).toString(), (actualDate.dayOfMonth).toString())
+        val anio = String.format("%04d", actualDate.year)
+        val mes = String.format("%02d", actualDate.monthValue)
+        val dia = String.format("%02d", actualDate.dayOfMonth)
+        presenter.getAllEvents(System.currentTimeMillis())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -52,9 +56,10 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
-            presenter.getAllEvents(year.toString(), (month + 1).toString(), day.toString())
-        }
+            val fechaInicio = SimpleDateFormat("d/M/y").parse("$day/${month + 1}/$year")
 
+            presenter.getAllEvents(fechaInicio.time)
+        }
     }
 
     private fun initRv(){
