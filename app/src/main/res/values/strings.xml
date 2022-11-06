@@ -1,63 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">MusicalEvents</string>
-    <string name="tvLogin_login" translatable="false">Login</string>
-    <string name="tieUser">User</string>
-    <string name="tiePassword">Password</string>
-    <string name="chkRemember">Remember me</string>
-    <string name="btSignUp_text">Sign up</string>
-    <string name="btSignIn_text">Sign in</string>
-    <string name="errorPasswordEmpty">Empty password</string>
-    <string name="tvTitleSignUp">Register</string>
+    <string name="SignUp_tieConfirmPassword_hint">Confirm password</string>
     <string name="SignUp_tieEmail_hint">Email</string>
     <string name="SignUp_tiePassword_hint">Password</string>
-    <string name="SignUp_tieConfirmPassword_hint">Confirm password</string>
-    <string name="errUserEmpty">Empty user</string>
+
+    <string name="acceptLinks">Accept</string>
+
     <string name="add_event">Add event</string>
-    <string name="event_name">Event name</string>
-    <string name="event_location">Location</string>
-    <string name="event_date">Date</string>
-    <string name="event_starthour">Start hour</string>
-    <string name="event_description">Description</string>
-    <string name="success_uploading_event">Event uploaded successfully</string>
-    <string name="my_events">My events</string>
+
+    <string name="app_name" translatable="false">MusicalEvents</string>
+
     <string name="btAlreadyAccount">Do yo have an account?</string>
+
+    <string name="btSignIn_text">Sign in</string>
+
+    <string name="btSignUp_text">Sign up</string>
+
     <string name="calendar">Calendar</string>
-    <string name="event_info">Event info</string>
-    <string name="event_endHour">End hour</string>
-    <string name="edit_event">Edit event</string>
+
+    <string name="chkRemember">Remember me</string>
+
     <string name="delete_succeded">Event deleted successfuly</string>
+
+    <string name="edit_event">Edit event</string>
+
     <string name="edited_event">Event updated successfuly</string>
-    <string name="ivNodata">No data</string>
-    <string name="event_startdate">Start date</string>
+
+    <string name="errUserEmpty">Empty user</string>
+
+    <string name="errorPasswordEmpty">Empty password</string>
+
+    <string name="error_EmailEmpty">Empty email</string>
+    <string name="error_badLink">Invalid link</string>
+    <string name="error_createUser">Error creating user</string>
+    <string name="error_date">The end date must be later than the start date</string>
+    <string name="error_email">Invalid email</string>
+    <string name="error_empty_eventDate">Empty date</string>
+    <string name="error_empty_eventDescription">Empty description</string>
+    <string name="error_empty_eventHour">Empty hour</string>
+    <string name="error_empty_eventLocation">Empty location</string>
+    <string name="error_empty_eventName">Empty event name</string>
+    <string name="error_facebooknotfound">Facebook not found</string>
+    <string name="error_instagramnotfound">Instragam not found</string>
+    <string name="error_passwordFormat">No valid format</string>
+    <string name="error_twitternotfound">Twitter not found</string>
+    <string name="error_userExists">User already exists</string>
+    <string name="error_websitenotfound">Website not found</string>
+
+    <string name="event_date">Date</string>
+    <string name="event_description">Description</string>
+    <string name="event_endHour">End hour</string>
     <string name="event_enddate">End date</string>
-    <string name="group_name">Group name</string>
+    <string name="event_info">Event info</string>
+    <string name="event_location">Location</string>
+    <string name="event_name">Event name</string>
+    <string name="event_startdate">Start date</string>
+    <string name="event_starthour">Start hour</string>
+    <string name="event_updated_successfuly">Event updated successfuly</string>
+
+    <string name="facebook" translatable="false">Facebook</string>
+
     <string name="group_info">Info</string>
     <string name="group_links">Group links</string>
+    <string name="group_name">Group name</string>
+
     <string name="instagram" translatable="false">Instagram</string>
+
+    <string name="ivNodata">No data</string>
+
+    <string name="my_events">My events</string>
+
+    <string name="success_uploading_event">Event uploaded successfully</string>
+
+    <string name="tiePassword">Password</string>
+
+    <string name="tieUser">User</string>
+
+    <string name="tvLogin_login" translatable="false">Login</string>
+
+    <string name="tvTitleSignUp">Register</string>
+
     <string name="twitter" translatable="false">Twitter</string>
-    <string name="facebook" translatable="false">Facebook</string>
-    <string name="website">Website</string>
-    <string name="acceptLinks">Accept</string>
+
     <string name="updatedLinks">Links updated successfuly</string>
 
-
-
-    <!-- Errors -->
-    <string name="error_empty_eventName">Empty event name</string>
-    <string name="error_empty_eventLocation">Empty location</string>
-    <string name="error_empty_eventDate">Empty date</string>
-    <string name="error_empty_eventHour">Empty hour</string>
-    <string name="error_date">The end date must be later than the start date</string>
-    <string name="error_empty_eventDescription">Empty description</string>
-    <string name="error_passwordFormat">No valid format</string>
-    <string name="error_EmailEmpty">Empty email</string>
-    <string name="error_email">Invalid email</string>
-    <string name="error_createUser">Error creating user</string>
-    <string name="error_userExists">User already exists</string>
-    <string name="error_instagramnotfound">Instragam not found</string>
-    <string name="error_twitternotfound">Twitter not found</string>
-    <string name="error_facebooknotfound">Facebook not found</string>
-    <string name="error_websitenotfound">Website not found</string>
-    <string name="error_badLink">Invalid link</string>
-    <string name="event_updated_successfuly">Event updated successfuly</string>
+    <string name="website">Website</string>
 </resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="error_EmailEmpty">Correu electrònic buit</string>
+    <string name="error_badLink">Enllaç no vàlid</string>
+    <string name="error_createUser">S\'ha produït un error en crear l\'usuari</string>
+    <string name="error_date">La data de finalització ha de ser posterior a la data d\'inici</string>
+    <string name="error_email">Email invàlid</string>
+    <string name="error_empty_eventDate">Data buida</string>
+    <string name="error_empty_eventDescription">Descripció buida</string>
+    <string name="error_empty_eventHour">Hora buida</string>
+    <string name="error_empty_eventLocation">Localització buida</string>
+    <string name="error_empty_eventName">Nom de l\'esdeveniment buit</string>
+    <string name="error_facebooknotfound">Facebook no trobat</string>
+    <string name="error_instagramnotfound">Instragam no trobat</string>
+    <string name="error_passwordFormat">No hi ha format vàlid</string>
+    <string name="error_twitternotfound">Twitter no trobat</string>
+    <string name="error_userExists">L\'usuari ja existeix</string>
+    <string name="error_websitenotfound">No s\'ha trobat el lloc web</string>
+
+    <string name="event_updated_successfuly">L\'esdeveniment s\'ha actualitzat correctament</string>
+</resources>

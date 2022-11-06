@@ -3,11 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/uploadedEventsFragment2">
-
+    app:startDestination="@id/userFragment">
     <fragment
-        android:id="@+id/uploadedEventsFragment2"
-        android:name="com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsFragment"
-        android:label="fragment_uploaded_events"
-        tools:layout="@layout/fragment_uploaded_events" />
+        android:id="@+id/userFragment"
+        android:name="com.example.musicalevents.normalUser.allEvents.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_userEventInfoFragment"
+            app:destination="@id/userEventInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userEventInfoFragment"
+        android:name="com.example.musicalevents.normalUser.userEventInfo.UserEventInfoFragment"
+        android:label="fragment_user_event_info"
+        tools:layout="@layout/fragment_user_event_info" >
+        <argument
+            android:name="userEvent"
+            app:argType="com.example.musicalevents.data.model.Event" />
+    </fragment>
 </navigation>

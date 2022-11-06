@@ -8,6 +8,7 @@ import com.example.musicalevents.adminUser.allEvents.AllEventsContract;
 import com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsContract;
 import com.example.musicalevents.data.model.Event;
 import com.example.musicalevents.data.model.Userkt;
+import com.example.musicalevents.normalUser.allEvents.UserAllEventsContract;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +67,29 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
     }
 
     public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, String year, String month, String day) {
+        final List<Event> allEvents = new ArrayList<>();
+
+        db.collection("eventos").
+                whereEqualTo("diaInicio", day).
+                whereEqualTo("mesInicio", month).
+                whereEqualTo("anioInicio", year)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            Log.d(TAG, document.getId() + " => " + document.getData());
+                            allEvents.add(document.toObject(Event.class));
+                            callback.onListSuccess(allEvents);
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                        callback.onNoData();
+                    }
+                });
+
+    }
+
+    public void userGetAllEvents(UserAllEventsContract.OnRepositoryCallback callback, String year, String month, String day) {
         final List<Event> allEvents = new ArrayList<>();
 
         db.collection("eventos").

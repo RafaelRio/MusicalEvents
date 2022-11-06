@@ -57,7 +57,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
 
     }
 
-    fun initRv(){
+    private fun initRv(){
         adapter = EventoListAdapter(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
