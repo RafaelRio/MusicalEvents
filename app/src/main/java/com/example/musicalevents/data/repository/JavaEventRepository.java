@@ -63,7 +63,6 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
     public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, Long fechaUnix) {
         final List<Event> allEvents = new ArrayList<>();
 
-        //ToDo Obtener todos los eventos con toObjects
         db.collection("eventos")
                 .get()
                 .addOnCompleteListener(task -> {
