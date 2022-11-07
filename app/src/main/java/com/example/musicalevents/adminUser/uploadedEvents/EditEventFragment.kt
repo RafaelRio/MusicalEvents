@@ -51,7 +51,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //bindingFields()
+        bindingFields()
         binding.apply {
 
             edittieFechaInicio.setOnClickListener {
@@ -73,53 +73,59 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                 if (validateFields() >= 1) {
                     return@setOnClickListener
                 } else {
-                    editedEvent.uuid?.let { it1 ->
+                    editedEvent.uuid.let { it1 ->
                         db.collection("eventos").document(it1).set(
                             hashMapOf(
                                 "uuid" to editedEvent.uuid,
                                 "user" to editedEvent.user,
                                 "nombreEvento" to editTieNombreEvento.text.toString(),
                                 "ubicacion" to editTieUbicacionEvento.text.toString(),
-                                "diaInicio" to edittieFechaInicio.text.toString().split("/")[0],
-                                "mesInicio" to edittieFechaInicio.text.toString().split("/")[1],
-                                "anioInicio" to edittieFechaInicio.text.toString().split("/")[2],
-                                "horaComienzo" to edittieHoraComienzo.text.toString(),
-                                "diaFin" to edittieFechaFin.text.toString().split("/")[0],
-                                "mesFin" to edittieFechaFin.text.toString().split("/")[1],
-                                "anioFin" to edittieFechaFin.text.toString().split("/")[2],
-                                "horaFin" to edittieHoraFin.text.toString(),
+                                "fechaInicioMiliSegundos" to startCalendar.timeInMillis,
+                                "fechaFinMiliSegundos" to endCalendar.timeInMillis,
                                 "descripcion" to editTieDescripcionEvento.text.toString()
                             )
                         )
                     }
                 }
-                Toast.makeText(context, R.string.event_updated_successfuly, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, R.string.event_updated_successfuly, Toast.LENGTH_LONG)
+                    .show()
                 findNavController().navigateUp()
             }
         }
 
     }
 
-//    private fun bindingFields() {
-//
-//        val fechaInicio =
-//            editedEvent.diaInicio + "/" + editedEvent.mesInicio + "/" + editedEvent.anioInicio
-//
-//        val fechaFin =
-//            editedEvent.diaFin + "/" + editedEvent.mesFin + "/" + editedEvent.anioFin
-//
-//        binding.apply {
-//            editTieNombreEvento.setText(editedEvent.nombreEvento)
-//            editTieUbicacionEvento.setText(editedEvent.ubicacion)
-//            edittieFechaInicio.setText(fechaInicio)
-//            edittieFechaFin.setText(fechaFin)
-//            edittieHoraComienzo.setText(editedEvent.horaComienzo)
-//            edittieHoraFin.setText(editedEvent.horaFin)
-//            editTieDescripcionEvento.setText(editedEvent.descripcion)
-//        }
-//        editedEvent.user = LoginRepository.currentUser
-//
-//    }
+    private fun bindingFields() {
+
+        val calInicio = Calendar.getInstance()
+        calInicio.timeInMillis = editedEvent.fechaInicioMiliSegundos
+
+        val calFin = Calendar.getInstance()
+        calFin.timeInMillis = editedEvent.fechaFinMiliSegundos
+
+        binding.apply {
+            editTieNombreEvento.setText(editedEvent.nombreEvento)
+            editTieUbicacionEvento.setText(editedEvent.ubicacion)
+            edittieFechaInicio.setText(
+                "${calInicio.get(Calendar.DAY_OF_MONTH)}/${calInicio.get(Calendar.MONTH)}/${
+                    calInicio.get(Calendar.YEAR)
+                }"
+            )
+            edittieFechaFin.setText(
+                "${calFin.get(Calendar.DAY_OF_MONTH)}/${calFin.get(Calendar.MONTH)}/${
+                    calFin.get(Calendar.YEAR)
+                }"
+            )
+            edittieHoraComienzo.setText(
+                "${calInicio.get(Calendar.HOUR_OF_DAY)}:${calInicio.get(Calendar.MINUTE)}"
+            )
+            edittieHoraFin.setText(
+                "${calFin.get(Calendar.HOUR_OF_DAY)}:${calFin.get(Calendar.MINUTE)}"
+            )
+            editTieDescripcionEvento.setText(editedEvent.descripcion)
+        }
+
+    }
 
     private fun validateFields(): Int {
         errorCount = 0
@@ -170,7 +176,8 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         }
 
         if (binding.editTieDescripcionEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDescription, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.error_empty_eventDescription, Toast.LENGTH_SHORT)
+                .show()
             errorCount += 1
             return errorCount
         }
