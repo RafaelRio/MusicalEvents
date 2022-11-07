@@ -223,6 +223,7 @@ class InfoEventFragment : Fragment() {
 
         intent.putExtra(CalendarContract.Events.TITLE, binding.infoNombreEvento.text)
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
+        intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
 
         startActivity(intent)
 

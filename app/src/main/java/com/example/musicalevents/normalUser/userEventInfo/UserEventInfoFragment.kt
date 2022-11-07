@@ -34,7 +34,7 @@ class UserEventInfoFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentUserEventInfoBinding.inflate(inflater, container, false)
         return binding.root
@@ -47,18 +47,18 @@ class UserEventInfoFragment : Fragment() {
 
         binding.apply {
             instagramButton2.setOnClickListener{
-                eventCalendar.user?.instagram?.let { it1 -> openLinks(it1, R.string.error_instagramnotfound) }
+                eventCalendar.user.instagram?.let { it1 -> openLinks(it1, R.string.error_instagramnotfound) }
             }
             twitterButton2.setOnClickListener{
-                eventCalendar.user?.twitter?.let { it1 -> openLinks(it1, R.string.error_twitternotfound) }
+                eventCalendar.user.twitter?.let { it1 -> openLinks(it1, R.string.error_twitternotfound) }
             }
 
             facebookButton2.setOnClickListener{
-                eventCalendar.user?.facebook?.let { it1 -> openLinks(it1, R.string.error_facebooknotfound) }
+                eventCalendar.user.facebook?.let { it1 -> openLinks(it1, R.string.error_facebooknotfound) }
             }
 
             websiteButton2.setOnClickListener{
-                eventCalendar.user?.website?.let { it1 -> openLinks(it1, R.string.error_websitenotfound) }
+                eventCalendar.user.website?.let { it1 -> openLinks(it1, R.string.error_websitenotfound) }
             }
         }
 
@@ -81,19 +81,29 @@ class UserEventInfoFragment : Fragment() {
 
     private fun bindingFields() {
 
-//        val fechaInicio = eventCalendar.diaInicio + "/" + eventCalendar.mesInicio + "/" + eventCalendar.anioInicio
-//
-//        val fechaFin = eventCalendar.diaFin.toString() + "/" + eventCalendar.mesFin.toString() + "/" + eventCalendar.anioFin.toString()
-//
-//        binding.apply {
-//            infoNombreEvento.text = eventCalendar.nombreEvento
-//            infoUbicacionEvento.text = eventCalendar.ubicacion
-//            infoInicioFechaEvento.text = fechaInicio
-//            infoFechaFinEvento.text = fechaFin
-//            infoHoraInicioEvento.text = eventCalendar.horaComienzo
-//            infoHoraFinEvento.text = eventCalendar.horaFin
-//            infoDescripcionEvento.text = eventCalendar.descripcion
-//        }
+        val calInicio = Calendar.getInstance()
+        calInicio.timeInMillis = eventCalendar.fechaInicioMiliSegundos
+
+        val calFin = Calendar.getInstance()
+        calFin.timeInMillis = eventCalendar.fechaFinMiliSegundos
+
+        binding.apply {
+            infoNombreEvento.text = eventCalendar.nombreEvento
+            infoUbicacionEvento.text = eventCalendar.ubicacion
+            infoInicioFechaEvento.text =
+                "${calInicio.get(Calendar.DAY_OF_MONTH)}/${calInicio.get(Calendar.MONTH)}/${
+                    calInicio.get(Calendar.YEAR)
+                }"
+            infoFechaFinEvento.text =
+                "${calFin.get(Calendar.DAY_OF_MONTH)}/${calFin.get(Calendar.MONTH)}/${
+                    calFin.get(Calendar.YEAR)
+                }"
+            infoHoraInicioEvento.text =
+                "${calInicio.get(Calendar.HOUR_OF_DAY)}:${calInicio.get(Calendar.MINUTE)}"
+            infoHoraFinEvento.text =
+                "${calFin.get(Calendar.HOUR_OF_DAY)}:${calFin.get(Calendar.MINUTE)}"
+            infoDescripcionEvento.text = eventCalendar.descripcion
+        }
 
     }
 
@@ -107,7 +117,7 @@ class UserEventInfoFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.create_calendar_event -> {
-                        agregar()
+                        createGoogleCalendarEvent()
                         return true
                     }
                     R.id.share_event -> {
@@ -129,7 +139,7 @@ class UserEventInfoFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    fun agregar() {
+    fun createGoogleCalendarEvent() {
         val startEvent = Calendar.getInstance()
         val endEvent = Calendar.getInstance()
         val boolean = false
@@ -161,6 +171,8 @@ class UserEventInfoFragment : Fragment() {
         intent.putExtra(CalendarContract.Events.ALL_DAY, false)
 
         intent.putExtra(CalendarContract.Events.TITLE, binding.infoNombreEvento.text)
+        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
+        intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
 
         startActivity(intent)
 
