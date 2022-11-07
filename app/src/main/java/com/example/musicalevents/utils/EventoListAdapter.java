@@ -41,7 +41,7 @@ public class EventoListAdapter extends RecyclerView.Adapter<EventoListAdapter.Vi
         holder.nombre.setText(eventos.get(position).getNombreEvento());
         Calendar eventDate = Calendar.getInstance();
         eventDate.setTimeInMillis(eventos.get(position).getFechaInicioMiliSegundos());
-        holder.hora.setText(eventDate.get(Calendar.HOUR_OF_DAY) + ":" +eventDate.get(Calendar.MINUTE));
+        holder.hora.setText(String.format("%02d", eventDate.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", eventDate.get(Calendar.MINUTE)));
         holder.bind(eventos.get(position), listener);
     }
 

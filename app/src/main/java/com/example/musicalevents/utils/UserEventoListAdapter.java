@@ -11,14 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.musicalevents.R;
 import com.example.musicalevents.data.model.Event;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-public class UserEventoListAdapter extends RecyclerView.Adapter<UserEventoListAdapter.ViewHolder>{
+public class UserEventoListAdapter extends RecyclerView.Adapter<UserEventoListAdapter.ViewHolder> {
 
     List<Event> eventos;
     onManageEventoListener listener;
@@ -41,7 +38,7 @@ public class UserEventoListAdapter extends RecyclerView.Adapter<UserEventoListAd
         holder.nombre.setText(eventos.get(position).getNombreEvento());
         Calendar eventDate = Calendar.getInstance();
         eventDate.setTimeInMillis(eventos.get(position).getFechaInicioMiliSegundos());
-        holder.hora.setText(eventDate.get(Calendar.HOUR_OF_DAY) + ":" +eventDate.get(Calendar.MINUTE));
+        holder.hora.setText(String.format("%02d", eventDate.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", eventDate.get(Calendar.MINUTE)));
         holder.bind(eventos.get(position), listener);
     }
 
