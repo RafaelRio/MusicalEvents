@@ -7,7 +7,11 @@ import java.util.regex.Pattern
 
 class UtilsKt {
 
+
+
     companion object{
+        val eventosTable = "eventos"
+        val personasTable = "personas"
         fun setDateHour(text: TextInputEditText, hour: TextInputEditText, calendar: Calendar) {
             text.setText(
                 String.format("%02d", calendar[Calendar.DAY_OF_MONTH]) + "/" + String.format(

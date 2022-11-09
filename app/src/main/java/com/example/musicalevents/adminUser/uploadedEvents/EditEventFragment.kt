@@ -80,7 +80,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                     return@setOnClickListener
                 } else {
                     editedEvent.uuid.let { it1 ->
-                        db.collection("eventos").document(it1).set(
+                        db.collection(UtilsKt.eventosTable).document(it1).set(
                             hashMapOf(
                                 "uuid" to editedEvent.uuid,
                                 "user" to editedEvent.user,
@@ -131,7 +131,6 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         }
         setError(binding.editTieDescripcionEvento.text.toString(), R.string.error_empty_eventDescription)
 
-
         return errorCount
     }
 
@@ -158,7 +157,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
                 calendar.set(Calendar.YEAR, anioInicio.toInt())
                 calendar.set(Calendar.MONTH, mesInicio.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaInicio))
+                calendar.set(Calendar.DAY_OF_MONTH, diaInicio.toInt())
 
                 startDate.time = calendar.timeInMillis
             }
@@ -180,10 +179,9 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
                 calendar.timeInMillis = endDate.time
 
-                calendar.set(Calendar.YEAR, Integer.parseInt(anioFin))
-                calendar.set(Calendar.MONTH, Integer.parseInt(mesFin) - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaFin))
-
+                calendar.set(Calendar.YEAR, anioFin.toInt())
+                calendar.set(Calendar.MONTH, mesFin.toInt() - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, diaFin.toInt())
                 endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -195,8 +193,8 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
             calendar.timeInMillis = startDate.time
 
-            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
-            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            calendar.set(Calendar.HOUR_OF_DAY, it.split(":")[0].toInt())
+            calendar.set(Calendar.MINUTE, it.split(":")[1].toInt())
 
             startDate.time = calendar.timeInMillis
         }
@@ -211,8 +209,8 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         val newFragment = TimePickerFragment {
             onTimeSelected2(it)
             calendar.timeInMillis = endDate.time
-            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
-            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            calendar.set(Calendar.HOUR_OF_DAY, it.split(":")[0].toInt())
+            calendar.set(Calendar.MINUTE, it.split(":")[1].toInt())
 
             endDate.time = calendar.timeInMillis
         }

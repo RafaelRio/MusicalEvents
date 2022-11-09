@@ -7,6 +7,7 @@ import com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsContract
 import com.example.musicalevents.data.model.Event;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.normalUser.allEvents.UserAllEventsContract;
+import com.example.musicalevents.utils.UtilsKt;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -39,7 +40,7 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
     public void getMyEvents(UploadedEventsContract.OnRepositoryCallback callback) {
         final List<Event> misEventos = new ArrayList<>();
 
-        db.collection("eventos")
+        db.collection(UtilsKt.Companion.getEventosTable())
                 .whereEqualTo("user.email", currentUser.getEmail())
                 .get()
                 .addOnCompleteListener(task -> {
@@ -62,7 +63,7 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
     public void getAllEvents(AllEventsContract.OnRepositoryCallback callback, Long fechaUnix) {
         final List<Event> allEvents = new ArrayList<>();
 
-        db.collection("eventos")
+        db.collection(UtilsKt.Companion.getEventosTable())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -91,10 +92,12 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     }
 
+
+    //ToDo Cambiar este metodo para ser igual al de arriba
     public void userGetAllEvents(UserAllEventsContract.OnRepositoryCallback callback, String year, String month, String day) {
         final List<Event> allEvents = new ArrayList<>();
 
-        db.collection("eventos").
+        db.collection(UtilsKt.Companion.getEventosTable()).
                 whereEqualTo("diaInicio", day).
                 whereEqualTo("mesInicio", month).
                 whereEqualTo("anioInicio", year)
@@ -118,13 +121,13 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     @Override
     public void delete(UploadedEventsContract.OnRepositoryCallback callback, Event deletedEvent) {
-        db.collection("eventos").document(Objects.requireNonNull(deletedEvent.getUuid())).delete();
+        db.collection(UtilsKt.Companion.getEventosTable()).document(Objects.requireNonNull(deletedEvent.getUuid())).delete();
         assert callback != null;
         callback.onDeleteSuccess(deletedEvent);
     }
 
     public void uploadEvent(Event uploadedEvent) {
-        db.collection("eventos")
+        db.collection(UtilsKt.Companion.getEventosTable())
                 .document(uploadedEvent.getUuid())
                 .set(uploadedEvent);
     }

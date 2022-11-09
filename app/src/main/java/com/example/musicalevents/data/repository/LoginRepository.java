@@ -10,6 +10,7 @@ import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.login.LoginContract;
 import com.example.musicalevents.signup.SignUpContract;
+import com.example.musicalevents.utils.UtilsKt;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -39,7 +40,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
     @Override
     public void login(Userkt user) {
 
-        db.collection("personas").document(Objects.requireNonNull(user.getEmail()))
+        db.collection(UtilsKt.Companion.getPersonasTable()).document(Objects.requireNonNull(user.getEmail()))
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -61,7 +62,7 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
         Userkt databaseUser = new Userkt(email, password, false);
         ArrayList<String> usedEmails = new ArrayList<>();
 
-        db.collection("personas")
+        db.collection(UtilsKt.Companion.getPersonasTable())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
