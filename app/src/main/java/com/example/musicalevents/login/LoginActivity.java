@@ -17,7 +17,7 @@ import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.databinding.ActivityLoginBinding;
 import com.example.musicalevents.normalUser.MainActivity;
 import com.example.musicalevents.signup.SignUpActivity;
-import com.example.musicalevents.utils.CommonUtils;
+import com.example.musicalevents.utils.UtilsKt;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         if (TextUtils.isEmpty(password)) {
             binding.tilPassword.setError(getString(R.string.errorPasswordEmpty));
-        } else if (!CommonUtils.isPasswordValid(password)) {
+        } else if (!UtilsKt.isPasswordValid(password)) {
             binding.tilPassword.setError(getString(R.string.error_passwordFormat));
         } else {
             //desaparece el error

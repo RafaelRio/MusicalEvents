@@ -7,7 +7,7 @@ import android.util.Patterns;
 import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.data.repository.LoginRepository;
-import com.example.musicalevents.utils.CommonUtils;
+import com.example.musicalevents.utils.UtilsKt;
 
 public class SignUpInteractor implements OnRepositoryCallback {
 
@@ -36,7 +36,7 @@ public class SignUpInteractor implements OnRepositoryCallback {
                     listener.onConfirmPasswordEmptyError();
                     return;
                 }
-                if (!CommonUtils.isPasswordValid(password)){
+                if (!UtilsKt.isPasswordValid(password)){
                     listener.onPasswordError();
                     return;
                 }

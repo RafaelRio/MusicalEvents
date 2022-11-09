@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
-import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentEditEventBinding
 import com.example.musicalevents.utils.DatePickerFragment
 import com.example.musicalevents.utils.TimePickerFragment
+import com.example.musicalevents.utils.UtilsKt
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
@@ -23,15 +24,16 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
     private val args: EditEventFragmentArgs by navArgs()
     private lateinit var editedEvent: Event
     private val db = FirebaseFirestore.getInstance()
-    val startCalendar = Calendar.getInstance()
-    val endCalendar = Calendar.getInstance()
+    val calendar = Calendar.getInstance()
     private var errorCount = 0
     var diaInicio: String = "0"
-    var mesInicio: String = "0"
+    var mesInicio: String = "1"
     var anioInicio: String = "0"
     var diaFin: String = "0"
-    var mesFin: String = "0"
+    var mesFin: String = "1"
     var anioFin: String = "0"
+    lateinit var startDate: Date
+    lateinit var endDate: Date
     private lateinit var presenter: UploadedEventsContract.Presenter
 
 
@@ -51,22 +53,26 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        startDate = Date(editedEvent.fechaInicioMiliSegundos)
+        endDate = Date(editedEvent.fechaFinMiliSegundos)
+
         bindingFields()
         binding.apply {
 
             edittieFechaInicio.setOnClickListener {
-                showDatePickerDialog()
+                setStartDate()
             }
             edittieFechaFin.setOnClickListener {
-                showDatePickerDialog2()
+                setEndDate()
             }
 
             edittieHoraComienzo.setOnClickListener {
-                showTimePickerDialog()
+                setStartHour()
             }
 
             edittieHoraFin.setOnClickListener {
-                showTimePickerDialog2()
+                setEndHour()
             }
 
             fabEditEvento.setOnClickListener {
@@ -80,8 +86,8 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                                 "user" to editedEvent.user,
                                 "nombreEvento" to editTieNombreEvento.text.toString(),
                                 "ubicacion" to editTieUbicacionEvento.text.toString(),
-                                "fechaInicioMiliSegundos" to startCalendar.timeInMillis,
-                                "fechaFinMiliSegundos" to endCalendar.timeInMillis,
+                                "fechaInicioMiliSegundos" to startDate.time,
+                                "fechaFinMiliSegundos" to endDate.time,
                                 "descripcion" to editTieDescripcionEvento.text.toString()
                             )
                         )
@@ -92,144 +98,107 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                 findNavController().navigateUp()
             }
         }
-
     }
 
     private fun bindingFields() {
 
-        val calInicio = Calendar.getInstance()
-        calInicio.timeInMillis = editedEvent.fechaInicioMiliSegundos
-
-        val calFin = Calendar.getInstance()
-        calFin.timeInMillis = editedEvent.fechaFinMiliSegundos
-
         binding.apply {
             editTieNombreEvento.setText(editedEvent.nombreEvento)
             editTieUbicacionEvento.setText(editedEvent.ubicacion)
-            edittieFechaInicio.setText(
-                "${calInicio.get(Calendar.DAY_OF_MONTH)}/${calInicio.get(Calendar.MONTH)}/${
-                    calInicio.get(Calendar.YEAR)
-                }"
-            )
-            edittieFechaFin.setText(
-                "${calFin.get(Calendar.DAY_OF_MONTH)}/${calFin.get(Calendar.MONTH)}/${
-                    calFin.get(Calendar.YEAR)
-                }"
-            )
-            edittieHoraComienzo.setText(
-                "${calInicio.get(Calendar.HOUR_OF_DAY)}:${calInicio.get(Calendar.MINUTE)}"
-            )
-            edittieHoraFin.setText(
-                "${calFin.get(Calendar.HOUR_OF_DAY)}:${calFin.get(Calendar.MINUTE)}"
-            )
             editTieDescripcionEvento.setText(editedEvent.descripcion)
-        }
 
+            calendar.timeInMillis = startDate.time
+            UtilsKt.setDateHour(edittieFechaInicio, edittieHoraComienzo, calendar)
+
+            calendar.timeInMillis = endDate.time
+            UtilsKt.setDateHour(edittieFechaFin, edittieHoraFin, calendar)
+        }
     }
 
     private fun validateFields(): Int {
         errorCount = 0
 
-        val startDate: Date = startCalendar.time
-        val endDate: Date = endCalendar.time
-
-        if (binding.editTieNombreEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventName, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.editTieUbicacionEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventLocation, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.edittieFechaInicio.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDate, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.edittieFechaFin.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDate, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.edittieHoraComienzo.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventHour, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.edittieHoraFin.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventHour, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
+        setError(binding.editTieNombreEvento.text.toString(), R.string.error_empty_eventName)
+        setError(binding.editTieUbicacionEvento.text.toString(), R.string.error_empty_eventLocation)
+        setError(binding.edittieFechaInicio.text.toString(), R.string.error_empty_eventDate)
+        setError(binding.edittieFechaFin.text.toString(), R.string.error_empty_eventDate)
+        setError(binding.edittieHoraComienzo.text.toString(), R.string.error_empty_eventHour)
+        setError(binding.edittieHoraFin.text.toString(), R.string.error_empty_eventHour)
         if (!endDate.after(startDate)) {
             Toast.makeText(context, R.string.error_date, Toast.LENGTH_SHORT).show()
             errorCount += 1
             return errorCount
         }
+        setError(binding.editTieDescripcionEvento.text.toString(), R.string.error_empty_eventDescription)
 
-        if (binding.editTieDescripcionEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDescription, Toast.LENGTH_SHORT)
-                .show()
-            errorCount += 1
-            return errorCount
-        }
 
         return errorCount
     }
 
-    private fun showDatePickerDialog() {
-        val newFragment: DatePickerFragment =
+    private fun setError(text: String, @StringRes error: Int) {
+        if (text.isBlank()) {
+            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            errorCount += 1
+        }
+    }
+
+    private fun setStartDate() {
+        val newFragment =
             DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.edittieFechaInicio.setText("$dayOfMonthFormatted/$monthFormatted/$year")
 
-                val fecha: Array<String> =
-                    binding.edittieFechaInicio.text.toString().split("/").toTypedArray()
+                val fecha = binding.edittieFechaInicio.text.toString().split("/")
                 diaInicio = fecha[0]
                 mesInicio = fecha[1]
                 anioInicio = fecha[2]
 
-                startCalendar.set(Calendar.YEAR, Integer.parseInt(anioInicio))
-                startCalendar.set(Calendar.MONTH, Integer.parseInt(mesInicio))
-                startCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaInicio))
+                calendar.timeInMillis = startDate.time
+
+                calendar.set(Calendar.YEAR, anioInicio.toInt())
+                calendar.set(Calendar.MONTH, mesInicio.toInt() - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaInicio))
+
+                startDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
     }
 
-    private fun showDatePickerDialog2() {
-        val newFragment: DatePickerFragment =
+    private fun setEndDate() {
+        val newFragment =
             DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.edittieFechaFin.setText("$dayOfMonthFormatted/$monthFormatted/$year")
 
-                val fecha: Array<String> =
-                    binding.edittieFechaFin.text.toString().split("/").toTypedArray()
+                val fecha = binding.edittieFechaFin.text.toString().split("/")
+
                 diaFin = fecha[0]
                 mesFin = fecha[1]
                 anioFin = fecha[2]
 
-                endCalendar.set(Calendar.YEAR, Integer.parseInt(anioFin))
-                endCalendar.set(Calendar.MONTH, Integer.parseInt(mesFin))
-                endCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaFin))
+                calendar.timeInMillis = endDate.time
+
+                calendar.set(Calendar.YEAR, Integer.parseInt(anioFin))
+                calendar.set(Calendar.MONTH, Integer.parseInt(mesFin) - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaFin))
+
+                endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
     }
 
-    private fun showTimePickerDialog() {
+    private fun setStartHour() {
         val newFragment = TimePickerFragment {
             onTimeSelected(it)
-            startCalendar.set(Calendar.HOUR, Integer.parseInt(it.split(":")[0]))
-            startCalendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+
+            calendar.timeInMillis = startDate.time
+
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
+            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+
+            startDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
     }
@@ -238,11 +207,14 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         binding.edittieHoraComienzo.setText(time)
     }
 
-    private fun showTimePickerDialog2() {
+    private fun setEndHour() {
         val newFragment = TimePickerFragment {
             onTimeSelected2(it)
-            endCalendar.set(Calendar.HOUR, Integer.parseInt(it.split(":")[0]))
-            endCalendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            calendar.timeInMillis = endDate.time
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
+            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+
+            endDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
     }

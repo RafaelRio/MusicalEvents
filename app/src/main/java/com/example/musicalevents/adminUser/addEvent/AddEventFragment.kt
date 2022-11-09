@@ -92,7 +92,7 @@ class AddEventFragment : Fragment() {
                 //Esto simplemente espera un momento para volver atrás
                 Toast.makeText(
                     context,
-                    getString(R.string.success_uploading_event),
+                    R.string.success_uploading_event,
                     Toast.LENGTH_LONG
                 ).show()
                 findNavController().navigateUp()
@@ -103,8 +103,11 @@ class AddEventFragment : Fragment() {
     private fun validateFields(): Int {
         errorCount = 0
 
-        val startDate: Date = startCalendar.time
-        val endDate: Date = endCalendar.time
+        val calendarCheckStart = Calendar.getInstance()
+        calendarCheckStart.time = startCalendar.time
+
+        val calendarCheckEnd = Calendar.getInstance()
+        calendarCheckEnd.time = endCalendar.time
 
         if (binding.tieNombreEvento.text?.isBlank() == true) {
             Toast.makeText(context, R.string.error_empty_eventName, Toast.LENGTH_SHORT).show()
@@ -142,7 +145,7 @@ class AddEventFragment : Fragment() {
             return errorCount
         }
 
-        if (!endDate.after(startDate)) {
+        if (!calendarCheckEnd.time.after(calendarCheckStart.time)) {
             Toast.makeText(context, R.string.error_date, Toast.LENGTH_SHORT).show()
             errorCount += 1
             return errorCount

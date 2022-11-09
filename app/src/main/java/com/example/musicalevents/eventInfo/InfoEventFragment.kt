@@ -16,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentInfoEventBinding
+import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
 class InfoEventFragment : Fragment() {
@@ -28,10 +29,6 @@ class InfoEventFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         eventCalendar = args.calendarEvent
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 
     override fun onCreateView(
@@ -51,38 +48,22 @@ class InfoEventFragment : Fragment() {
 
         binding.apply {
             instagramButton.setOnClickListener {
-                eventCalendar.user?.instagram?.let { it1 ->
-                    openLinks(
-                        it1,
-                        R.string.error_instagramnotfound
-                    )
+                eventCalendar.user.instagram?.let { it1 -> openLinks(it1, R.string.error_instagramnotfound)
                 }
             }
 
             twitterButton.setOnClickListener {
-                eventCalendar.user?.twitter?.let { it1 ->
-                    openLinks(
-                        it1,
-                        R.string.error_twitternotfound
-                    )
+                eventCalendar.user.twitter?.let { it1 -> openLinks(it1, R.string.error_twitternotfound)
                 }
             }
 
             facebookButton.setOnClickListener {
-                eventCalendar.user?.facebook?.let { it1 ->
-                    openLinks(
-                        it1,
-                        R.string.error_facebooknotfound
-                    )
+                eventCalendar.user.facebook?.let { it1 -> openLinks(it1, R.string.error_facebooknotfound)
                 }
             }
 
             websiteButton.setOnClickListener {
-                eventCalendar.user?.website?.let { it1 ->
-                    openLinks(
-                        it1,
-                        R.string.error_websitenotfound
-                    )
+                eventCalendar.user.website?.let { it1 -> openLinks(it1, R.string.error_websitenotfound)
                 }
             }
         }
@@ -115,19 +96,8 @@ class InfoEventFragment : Fragment() {
         binding.apply {
             infoNombreEvento.text = eventCalendar.nombreEvento
             infoUbicacionEvento.text = eventCalendar.ubicacion
-            infoInicioFechaEvento.text =
-                "${calInicio.get(Calendar.DAY_OF_MONTH)}/${calInicio.get(Calendar.MONTH)}/${
-                    calInicio.get(Calendar.YEAR)
-                }"
-            infoFechaFinEvento.text =
-                "${calFin.get(Calendar.DAY_OF_MONTH)}/${calFin.get(Calendar.MONTH)}/${
-                    calFin.get(Calendar.YEAR)
-                }"
-            infoHoraInicioEvento.text =
-                "${calInicio.get(Calendar.HOUR_OF_DAY)}:${calInicio.get(Calendar.MINUTE)}"
-            infoHoraFinEvento.text =
-                "${calFin.get(Calendar.HOUR_OF_DAY)}:${calFin.get(Calendar.MINUTE)}"
-            infoDescripcionEvento.text = eventCalendar.descripcion
+            UtilsKt.setDateHour(infoInicioFechaEvento, infoHoraInicioEvento, calInicio)
+            UtilsKt.setDateHour(infoFechaFinEvento, infoHoraFinEvento, calFin)
         }
     }
 
@@ -175,7 +145,7 @@ class InfoEventFragment : Fragment() {
         )
         startEvent.set(
             Calendar.MONTH,
-            Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[1])
+            Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[1]) - 1
         )
         startEvent.set(
             Calendar.DAY_OF_MONTH,
@@ -196,7 +166,7 @@ class InfoEventFragment : Fragment() {
         endEvent.set(Calendar.YEAR, Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[2]))
         endEvent.set(
             Calendar.MONTH,
-            Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[1])
+            Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[1]) - 1
         )
         endEvent.set(
             Calendar.DAY_OF_MONTH,

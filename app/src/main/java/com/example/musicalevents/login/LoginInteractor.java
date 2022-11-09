@@ -5,7 +5,9 @@ import android.text.TextUtils;
 import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.data.repository.LoginRepository;
-import com.example.musicalevents.utils.CommonUtils;
+import com.example.musicalevents.utils.UtilsKt;
+
+import java.util.Objects;
 
 public class LoginInteractor implements OnRepositoryCallback {
 
@@ -28,7 +30,7 @@ public class LoginInteractor implements OnRepositoryCallback {
             listener.onPasswordEmptyError();
             return;
         }
-        if (!CommonUtils.isPasswordValid(user.getPassword())) {
+        if (!UtilsKt.isPasswordValid(Objects.requireNonNull(user.getPassword()))) {
             listener.onPasswordError();
             return;
         }
