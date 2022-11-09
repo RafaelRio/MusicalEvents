@@ -11,7 +11,6 @@ class AllEventsPresenter(var view: AllEventsContract.View?) : AllEventsContract.
     }
 
     override fun getAllEvents(fechaUnix: Long) {
-        view?.showProgress()
         interactor?.getAllEvents(fechaUnix)
     }
 
@@ -21,7 +20,6 @@ class AllEventsPresenter(var view: AllEventsContract.View?) : AllEventsContract.
     }
 
     override fun onListSuccess(eventList: List<Event>) {
-        view?.hideProgress()
         view?.onListSuccess(eventList)
     }
 

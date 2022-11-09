@@ -11,7 +11,6 @@ class UserAllEventsPresenter(var view: UserAllEventsContract.View?) : UserAllEve
     }
 
     override fun getAllEvents(year: String, month: String, day: String) {
-        view?.showProgress()
         interactor?.getAllEvents(year, month, day)
     }
 
@@ -21,7 +20,6 @@ class UserAllEventsPresenter(var view: UserAllEventsContract.View?) : UserAllEve
     }
 
     override fun onListSuccess(eventList: List<Event>) {
-        view?.hideProgress()
         view?.onListSuccess(eventList)
     }
 

@@ -2,7 +2,6 @@ package com.example.musicalevents.utils
 
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 import java.util.regex.Pattern
 
@@ -48,6 +47,7 @@ class UtilsKt {
             val matcher = pattern.matcher(password);
             return matcher.matches();
         }
+
     }
 
 }

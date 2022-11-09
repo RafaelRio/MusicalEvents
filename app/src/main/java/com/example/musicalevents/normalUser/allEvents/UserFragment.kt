@@ -61,14 +61,6 @@ class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, 
         binding.rvEventos.adapter = adapter
     }
 
-    override fun showProgress() {
-
-    }
-
-    override fun hideProgress() {
-
-    }
-
     override fun onListSuccess(eventList: List<Event>) {
         adapter?.update(eventList)
     }

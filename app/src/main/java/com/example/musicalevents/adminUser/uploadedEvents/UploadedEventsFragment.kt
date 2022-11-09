@@ -57,14 +57,6 @@ class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
         binding.rvMyEvents.adapter = adapter
     }
 
-    override fun showProgress() {
-
-    }
-
-    override fun hideProgress() {
-
-    }
-
     override fun onListSuccess(eventList: List<Event>) {
         binding.imvNodata.visibility = View.GONE
         adapter.update(eventList)

@@ -15,8 +15,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
-import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentUserEventInfoBinding
+import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
 class UserEventInfoFragment : Fragment() {
@@ -46,26 +46,46 @@ class UserEventInfoFragment : Fragment() {
         bindingFields()
 
         binding.apply {
-            instagramButton2.setOnClickListener{
-                eventCalendar.user.instagram?.let { it1 -> openLinks(it1, R.string.error_instagramnotfound) }
+            instagramButton2.setOnClickListener {
+                eventCalendar.user.instagram?.let { it1 ->
+                    openLinks(
+                        it1,
+                        R.string.error_instagramnotfound
+                    )
+                }
             }
-            twitterButton2.setOnClickListener{
-                eventCalendar.user.twitter?.let { it1 -> openLinks(it1, R.string.error_twitternotfound) }
+            twitterButton2.setOnClickListener {
+                eventCalendar.user.twitter?.let { it1 ->
+                    openLinks(
+                        it1,
+                        R.string.error_twitternotfound
+                    )
+                }
             }
 
-            facebookButton2.setOnClickListener{
-                eventCalendar.user.facebook?.let { it1 -> openLinks(it1, R.string.error_facebooknotfound) }
+            facebookButton2.setOnClickListener {
+                eventCalendar.user.facebook?.let { it1 ->
+                    openLinks(
+                        it1,
+                        R.string.error_facebooknotfound
+                    )
+                }
             }
 
-            websiteButton2.setOnClickListener{
-                eventCalendar.user.website?.let { it1 -> openLinks(it1, R.string.error_websitenotfound) }
+            websiteButton2.setOnClickListener {
+                eventCalendar.user.website?.let { it1 ->
+                    openLinks(
+                        it1,
+                        R.string.error_websitenotfound
+                    )
+                }
             }
         }
 
     }
 
-    private fun openLinks(link: String, @StringRes error: Int){
-        if (link.isEmpty()){
+    private fun openLinks(link: String, @StringRes error: Int) {
+        if (link.isEmpty()) {
             Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
             return
         }
@@ -73,10 +93,9 @@ class UserEventInfoFragment : Fragment() {
             val uri = Uri.parse(link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
-        }catch (e : ActivityNotFoundException){
+        } catch (e: ActivityNotFoundException) {
             Toast.makeText(context, R.string.error_badLink, Toast.LENGTH_SHORT).show()
         }
-
     }
 
     private fun bindingFields() {
@@ -90,18 +109,8 @@ class UserEventInfoFragment : Fragment() {
         binding.apply {
             infoNombreEvento.text = eventCalendar.nombreEvento
             infoUbicacionEvento.text = eventCalendar.ubicacion
-            infoInicioFechaEvento.text =
-                "${calInicio.get(Calendar.DAY_OF_MONTH)}/${calInicio.get(Calendar.MONTH)}/${
-                    calInicio.get(Calendar.YEAR)
-                }"
-            infoFechaFinEvento.text =
-                "${calFin.get(Calendar.DAY_OF_MONTH)}/${calFin.get(Calendar.MONTH)}/${
-                    calFin.get(Calendar.YEAR)
-                }"
-            infoHoraInicioEvento.text =
-                "${calInicio.get(Calendar.HOUR_OF_DAY)}:${calInicio.get(Calendar.MINUTE)}"
-            infoHoraFinEvento.text =
-                "${calFin.get(Calendar.HOUR_OF_DAY)}:${calFin.get(Calendar.MINUTE)}"
+            UtilsKt.setDateHour(infoInicioFechaEvento, infoHoraInicioEvento, calInicio)
+            UtilsKt.setDateHour(infoFechaFinEvento, infoHoraFinEvento, calFin)
             infoDescripcionEvento.text = eventCalendar.descripcion
         }
 
@@ -145,35 +154,38 @@ class UserEventInfoFragment : Fragment() {
         val boolean = false
 
         //Fecha inicio
-        startEvent.set(Calendar.YEAR, Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[2]))
-        startEvent.set(Calendar.MONTH, Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[1]))
-        startEvent.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[0]))
+        startEvent.set(Calendar.YEAR, binding.infoInicioFechaEvento.text.split("/")[2].toInt())
+        startEvent.set(Calendar.MONTH, binding.infoInicioFechaEvento.text.split("/")[1].toInt() - 1)
+        startEvent.set(
+            Calendar.DAY_OF_MONTH,
+            binding.infoInicioFechaEvento.text.split("/")[0].toInt()
+        )
 
         //Hora inicio
-        startEvent.set(Calendar.HOUR_OF_DAY, Integer.parseInt(binding.infoHoraInicioEvento.text.split(":")[0]))
-        startEvent.set(Calendar.MINUTE, Integer.parseInt(binding.infoHoraInicioEvento.text.split(":")[1]))
+        startEvent.set(
+            Calendar.HOUR_OF_DAY,
+            binding.infoHoraInicioEvento.text.split(":")[0].toInt()
+        )
+        startEvent.set(Calendar.MINUTE, binding.infoHoraInicioEvento.text.split(":")[1].toInt())
 
         //Fecha fin
-        endEvent.set(Calendar.YEAR, Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[2]))
-        endEvent.set(Calendar.MONTH, Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[1]))
-        endEvent.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[0]))
+        endEvent.set(Calendar.YEAR, binding.infoFechaFinEvento.text.split("/")[2].toInt())
+        endEvent.set(Calendar.MONTH, binding.infoFechaFinEvento.text.split("/")[1].toInt() - 1)
+        endEvent.set(Calendar.DAY_OF_MONTH, binding.infoFechaFinEvento.text.split("/")[0].toInt())
 
         //Hora fin
-        endEvent.set(Calendar.HOUR_OF_DAY, Integer.parseInt(binding.infoHoraFinEvento.text.split(":")[0]))
-        endEvent.set(Calendar.MINUTE, Integer.parseInt(binding.infoHoraFinEvento.text.split(":")[1]))
+        endEvent.set(Calendar.HOUR_OF_DAY, binding.infoHoraFinEvento.text.split(":")[0].toInt())
+        endEvent.set(Calendar.MINUTE, binding.infoHoraFinEvento.text.split(":")[1].toInt())
+
+
         var intent = Intent(Intent.ACTION_INSERT)
         intent.data = CalendarContract.Events.CONTENT_URI
-
-
         intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startEvent.timeInMillis)
         intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endEvent.timeInMillis)
-
         intent.putExtra(CalendarContract.Events.ALL_DAY, false)
-
         intent.putExtra(CalendarContract.Events.TITLE, binding.infoNombreEvento.text)
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
         intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
-
         startActivity(intent)
 
     }

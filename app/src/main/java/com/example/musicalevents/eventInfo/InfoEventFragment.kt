@@ -35,7 +35,7 @@ class InfoEventFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentInfoEventBinding.inflate(inflater, container, false)
         return binding.root
@@ -96,6 +96,7 @@ class InfoEventFragment : Fragment() {
         binding.apply {
             infoNombreEvento.text = eventCalendar.nombreEvento
             infoUbicacionEvento.text = eventCalendar.ubicacion
+            infoDescripcionEvento.text = eventCalendar.descripcion
             UtilsKt.setDateHour(infoInicioFechaEvento, infoHoraInicioEvento, calInicio)
             UtilsKt.setDateHour(infoFechaFinEvento, infoHoraFinEvento, calFin)
         }
@@ -139,63 +140,32 @@ class InfoEventFragment : Fragment() {
         val boolean = false
 
         //Fecha inicio
-        startEvent.set(
-            Calendar.YEAR,
-            Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[2])
-        )
-        startEvent.set(
-            Calendar.MONTH,
-            Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[1]) - 1
-        )
-        startEvent.set(
-            Calendar.DAY_OF_MONTH,
-            Integer.parseInt(binding.infoInicioFechaEvento.text.split("/")[0])
-        )
+        startEvent.set(Calendar.YEAR, binding.infoInicioFechaEvento.text.split("/")[2].toInt())
+        startEvent.set(Calendar.MONTH, binding.infoInicioFechaEvento.text.split("/")[1].toInt() - 1)
+        startEvent.set(Calendar.DAY_OF_MONTH, binding.infoInicioFechaEvento.text.split("/")[0].toInt())
 
         //Hora inicio
-        startEvent.set(
-            Calendar.HOUR_OF_DAY,
-            Integer.parseInt(binding.infoHoraInicioEvento.text.split(":")[0])
-        )
-        startEvent.set(
-            Calendar.MINUTE,
-            Integer.parseInt(binding.infoHoraInicioEvento.text.split(":")[1])
-        )
+        startEvent.set(Calendar.HOUR_OF_DAY, binding.infoHoraInicioEvento.text.split(":")[0].toInt())
+        startEvent.set(Calendar.MINUTE, binding.infoHoraInicioEvento.text.split(":")[1].toInt())
 
         //Fecha fin
-        endEvent.set(Calendar.YEAR, Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[2]))
-        endEvent.set(
-            Calendar.MONTH,
-            Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[1]) - 1
-        )
-        endEvent.set(
-            Calendar.DAY_OF_MONTH,
-            Integer.parseInt(binding.infoFechaFinEvento.text.split("/")[0])
-        )
+        endEvent.set(Calendar.YEAR, binding.infoFechaFinEvento.text.split("/")[2].toInt())
+        endEvent.set(Calendar.MONTH, binding.infoFechaFinEvento.text.split("/")[1].toInt() - 1)
+        endEvent.set(Calendar.DAY_OF_MONTH, binding.infoFechaFinEvento.text.split("/")[0].toInt())
 
         //Hora fin
-        endEvent.set(
-            Calendar.HOUR_OF_DAY,
-            Integer.parseInt(binding.infoHoraFinEvento.text.split(":")[0])
-        )
-        endEvent.set(
-            Calendar.MINUTE,
-            Integer.parseInt(binding.infoHoraFinEvento.text.split(":")[1])
-        )
+        endEvent.set(Calendar.HOUR_OF_DAY, binding.infoHoraFinEvento.text.split(":")[0].toInt())
+        endEvent.set(Calendar.MINUTE, binding.infoHoraFinEvento.text.split(":")[1].toInt())
+
+
         var intent = Intent(Intent.ACTION_INSERT)
         intent.data = CalendarContract.Events.CONTENT_URI
-
-
         intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startEvent.timeInMillis)
         intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endEvent.timeInMillis)
-
         intent.putExtra(CalendarContract.Events.ALL_DAY, false)
-
         intent.putExtra(CalendarContract.Events.TITLE, binding.infoNombreEvento.text)
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
         intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
-
         startActivity(intent)
-
     }
 }

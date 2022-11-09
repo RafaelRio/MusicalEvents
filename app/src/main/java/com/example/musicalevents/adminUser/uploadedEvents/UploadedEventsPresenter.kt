@@ -14,7 +14,6 @@ class UploadedEventsPresenter (var view: UploadedEventsContract.View?) : Uploade
     }
 
     override fun getMyEvents() {
-        view?.showProgress()
         interactor?.getMyEvents()
     }
 
@@ -24,7 +23,6 @@ class UploadedEventsPresenter (var view: UploadedEventsContract.View?) : Uploade
     }
 
     override fun onListSuccess(eventList: List<Event>) {
-        view?.hideProgress()
         view?.onListSuccess(eventList)
     }
 

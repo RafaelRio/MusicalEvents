@@ -4,8 +4,6 @@ import com.example.musicalevents.data.model.Event
 
 interface AllEventsContract {
     interface View : OnRepositoryCallback {
-        fun showProgress()
-        fun hideProgress()
     }
 
     interface Presenter : OnRepositoryCallback {

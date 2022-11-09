@@ -112,12 +112,6 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
         NavHostFragment.findNavController(this@AdminFragment).navigate(action)
     }
 
-    override fun showProgress() {
-    }
-
-    override fun hideProgress() {
-    }
-
     override fun onListSuccess(eventList: List<Event>) {
         adapter?.update(eventList)
     }

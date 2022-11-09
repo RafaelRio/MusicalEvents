@@ -5,8 +5,6 @@ import com.example.musicalevents.data.model.Event
 interface UploadedEventsContract {
 
     interface View : OnRepositoryCallback {
-        fun showProgress()
-        fun hideProgress()
     }
 
     interface Presenter : OnRepositoryCallback {

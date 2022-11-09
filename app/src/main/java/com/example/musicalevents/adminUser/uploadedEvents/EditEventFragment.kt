@@ -223,12 +223,6 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         binding.edittieHoraFin.setText(time)
     }
 
-    override fun showProgress() {
-    }
-
-    override fun hideProgress() {
-    }
-
     override fun onListSuccess(eventList: List<Event>) {
     }
 
