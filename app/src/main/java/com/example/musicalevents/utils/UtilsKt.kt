@@ -1,6 +1,7 @@
 package com.example.musicalevents.utils
 
 import android.widget.TextView
+import com.example.musicalevents.data.model.Event
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 import java.util.regex.Pattern
@@ -34,6 +35,22 @@ class UtilsKt {
 
             text.text = "$dayOfMonth/$month/$year"
             hour.text = "$hourOfDay:$minute"
+        }
+
+        fun shareEvent(
+            eventCalendar: Event
+        ): String{
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = eventCalendar.fechaInicioMiliSegundos
+            val dayOfMonth = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
+            val month = String.format("%02d", calendar[Calendar.MONTH] + 1)
+            val year = String.format("%04d", calendar[Calendar.YEAR])
+            val hourOfDay = String.format("%02d", calendar[Calendar.HOUR_OF_DAY])
+            val minute = String.format("%02d", calendar[Calendar.MINUTE])
+
+            val fecha = "$dayOfMonth/$month/$year"
+            val hora = "$hourOfDay:$minute"
+            return "Ven a ver ${eventCalendar.nombreEvento} conmigo el $fecha a las $hora en ${eventCalendar.ubicacion}"
         }
 
         @JvmStatic

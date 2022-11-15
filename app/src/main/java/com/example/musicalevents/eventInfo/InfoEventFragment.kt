@@ -116,10 +116,11 @@ class InfoEventFragment : Fragment() {
                         return true
                     }
                     R.id.share_event -> {
+                        val texto = UtilsKt.shareEvent(eventCalendar)
                         val sendIntent: Intent = Intent().apply {
                             action = Intent.ACTION_SEND
-                            putExtra("evento", eventCalendar)
-                            type = "application/ics"
+                            putExtra(Intent.EXTRA_TEXT, texto)
+                            type = "text/plain"
                         }
 
                         val shareIntent = Intent.createChooser(sendIntent, null)
