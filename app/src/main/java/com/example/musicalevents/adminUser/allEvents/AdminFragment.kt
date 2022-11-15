@@ -97,6 +97,12 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
                         return true
                     }
 
+                    R.id.about_us -> {
+                        NavHostFragment.findNavController(this@AdminFragment)
+                            .navigate(R.id.action_adminFragment_to_aboutUsFragment)
+                        return true
+                    }
+
                     R.id.close_session -> {
                         startActivity(Intent(context, LoginActivity::class.java))
                         requireActivity().finish()

@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_adminFragment_to_groupInformationFillFragment"
             app:destination="@id/groupInformationFillFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
@@ -63,4 +66,9 @@
             android:name="usuarioAct"
             app:argType="com.example.musicalevents.data.model.Userkt" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.musicalevents.aboutUs.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>
