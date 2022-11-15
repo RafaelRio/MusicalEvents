@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.musicalevents.R
@@ -15,21 +16,23 @@ import com.example.musicalevents.data.repository.JavaEventRepository
 import com.example.musicalevents.databinding.FragmentAddEventBinding
 import com.example.musicalevents.utils.DatePickerFragment
 import com.example.musicalevents.utils.TimePickerFragment
-import java.text.SimpleDateFormat
+import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
 class AddEventFragment : Fragment() {
 
     private lateinit var binding: FragmentAddEventBinding
     private lateinit var eventRepository: JavaEventRepository
-    val startCalendar = Calendar.getInstance()
-    val endCalendar = Calendar.getInstance()
+    val calendar = Calendar.getInstance()
     var diaInicio = "0"
     var diaFin = "0"
     var mesInicio = "0"
     var mesFin = "0"
     var anioInicio = "0"
     var anioFin = "0"
+    lateinit var startDate: Date
+    lateinit var endDate: Date
+    var newEvent = Event()
 
     var errorCount = 0
 
@@ -49,139 +52,104 @@ class AddEventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.tieFecha.setOnClickListener {
-            showDatePickerDialog()
-        }
-        binding.tieEndFecha.setOnClickListener {
-            showDatePickerDialog2()
-        }
-
-        binding.tieHoraComienzoEvento.setOnClickListener {
-            showTimePickerDialog()
-        }
-        binding.tieHoraFinEvento.setOnClickListener {
-            showTimePickerDialog2()
-        }
-
-        binding.fabAddEvento.setOnClickListener {
-            if (validateFields() >= 1) {
-                return@setOnClickListener
+        startDate = Date(newEvent.fechaInicioMiliSegundos)
+        endDate = Date(newEvent.fechaFinMiliSegundos)
+        binding.apply {
+            tieFecha.setOnClickListener {
+                setStartDate()
+            }
+            tieEndFecha.setOnClickListener {
+                setEndDate()
             }
 
-            val fechaInicio = "${binding.tieFecha.text} ${binding.tieHoraComienzoEvento.text}"
-            val fechaFin = "${binding.tieEndFecha.text} ${binding.tieHoraFinEvento.text}"
-            val formato = SimpleDateFormat("dd/MM/yyyy HH:mm")
-            val fechaInicioDate = formato.parse(fechaInicio)
-            val fechaFinDate = formato.parse(fechaFin)
-            println("FECHAINICIO" + fechaInicioDate.time)
+            tieHoraComienzoEvento.setOnClickListener {
+                setStartHour()
+            }
+            tieHoraFinEvento.setOnClickListener {
+                setEndHour()
+            }
 
-            println("FECHAINICIODATE" + formato.format(fechaInicioDate))
+            fabAddEvento.setOnClickListener {
+                if (validateFields() >= 1) {
+                    return@setOnClickListener
+                }
 
+                newEvent = Event(
+                    nombreEvento = tieNombreEvento.text.toString(),
+                    ubicacion = tieUbicacionEvento.text.toString(),
+                    descripcion = tieDescripcionEvento.text.toString(),
+                    fechaInicioMiliSegundos = startDate.time,
+                    fechaFinMiliSegundos = endDate.time,
+                )
 
-            val newEvent = Event(
-                nombreEvento = binding.tieNombreEvento.text.toString(),
-                ubicacion = binding.tieUbicacionEvento.text.toString(),
-                descripcion = binding.tieDescripcionEvento.text.toString(),
-                fechaInicioMiliSegundos = fechaInicioDate.time,
-                fechaFinMiliSegundos = fechaFinDate.time
-            )
-
-            eventRepository.uploadEvent(newEvent)
-            Handler(Looper.getMainLooper()).postDelayed({
-                //Esto simplemente espera un momento para volver atrás
-                Toast.makeText(
-                    context,
-                    R.string.success_uploading_event,
-                    Toast.LENGTH_LONG
-                ).show()
-                findNavController().navigateUp()
-            }, 1500)
+                eventRepository.uploadEvent(newEvent)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    //Esto simplemente espera un momento para volver atrás
+                    Toast.makeText(
+                        context,
+                        R.string.success_uploading_event,
+                        Toast.LENGTH_LONG
+                    ).show()
+                    findNavController().navigateUp()
+                }, 1500)
+            }
         }
+
     }
 
     private fun validateFields(): Int {
         errorCount = 0
-
-        val calendarCheckStart = Calendar.getInstance()
-        calendarCheckStart.time = startCalendar.time
-
-        val calendarCheckEnd = Calendar.getInstance()
-        calendarCheckEnd.time = endCalendar.time
-
-        if (binding.tieNombreEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventName, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
+        binding.apply {
+            setError(tieNombreEvento.text.toString(), R.string.error_empty_eventName)
+            setError(tieUbicacionEvento.text.toString(), R.string.error_empty_eventLocation)
+            setError(tieFecha.text.toString(), R.string.error_empty_eventDate)
+            setError(tieEndFecha.text.toString(), R.string.error_empty_eventDate)
+            setError(tieHoraComienzoEvento.text.toString(), R.string.error_empty_eventHour)
+            setError(tieHoraFinEvento.text.toString(), R.string.error_empty_eventHour)
+            if (!endDate.after(startDate)) {
+                Toast.makeText(context, R.string.error_date, Toast.LENGTH_SHORT).show()
+                errorCount += 1
+                return errorCount
+            }
+            setError(
+                tieDescripcionEvento.text.toString(),
+                R.string.error_empty_eventDescription
+            )
         }
-
-        if (binding.tieUbicacionEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventLocation, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.tieFecha.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDate, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.tieEndFecha.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDate, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.tieHoraComienzoEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventHour, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.tieHoraFinEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventHour, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (!calendarCheckEnd.time.after(calendarCheckStart.time)) {
-            Toast.makeText(context, R.string.error_date, Toast.LENGTH_SHORT).show()
-            errorCount += 1
-            return errorCount
-        }
-
-        if (binding.tieDescripcionEvento.text?.isBlank() == true) {
-            Toast.makeText(context, R.string.error_empty_eventDescription, Toast.LENGTH_SHORT)
-                .show()
-            errorCount += 1
-            return errorCount
-        }
-
         return errorCount
     }
 
-    private fun showDatePickerDialog() {
+    private fun setError(text: String, @StringRes error: Int) {
+        if (text.isBlank()) {
+            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            errorCount += 1
+        }
+    }
+
+    private fun setStartDate() {
         val newFragment: DatePickerFragment =
             DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.tieFecha.setText("$dayOfMonthFormatted/$monthFormatted/$year")
-
                 val fecha: Array<String> =
                     binding.tieFecha.text.toString().split("/").toTypedArray()
                 diaInicio = fecha[0]
                 mesInicio = fecha[1]
                 anioInicio = fecha[2]
-
-                startCalendar.set(Calendar.YEAR, Integer.parseInt(anioInicio))
-                startCalendar.set(Calendar.MONTH, Integer.parseInt(mesInicio))
-                startCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaInicio))
+                calendar.timeInMillis = startDate.time
+                UtilsKt.calendarSetDate(
+                    calendar = calendar,
+                    anio = anioInicio,
+                    mes = mesInicio,
+                    dia = diaInicio
+                )
+                startDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
     }
 
-    private fun showDatePickerDialog2() {
+    private fun setEndDate() {
         val newFragment: DatePickerFragment =
             DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
@@ -193,19 +161,24 @@ class AddEventFragment : Fragment() {
                 diaFin = fecha[0]
                 mesFin = fecha[1]
                 anioFin = fecha[2]
-
-                endCalendar.set(Calendar.YEAR, Integer.parseInt(anioFin))
-                endCalendar.set(Calendar.MONTH, Integer.parseInt(mesFin))
-                endCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(diaFin))
+                calendar.timeInMillis = endDate.time
+                UtilsKt.calendarSetDate(
+                    calendar = calendar,
+                    anio = anioFin,
+                    mes = mesFin,
+                    dia = diaFin
+                )
+                endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
     }
 
-    private fun showTimePickerDialog() {
+    private fun setStartHour() {
         val newFragment = TimePickerFragment {
             onTimeSelected(it)
-            startCalendar.set(Calendar.HOUR, Integer.parseInt(it.split(":")[0]))
-            startCalendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            calendar.timeInMillis = startDate.time
+            UtilsKt.calendarSetHour(calendar = calendar, horaMinuto = it)
+            startDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
     }
@@ -214,11 +187,12 @@ class AddEventFragment : Fragment() {
         binding.tieHoraComienzoEvento.setText(time)
     }
 
-    private fun showTimePickerDialog2() {
+    private fun setEndHour() {
         val newFragment = TimePickerFragment {
             onTimeSelected2(it)
-            endCalendar.set(Calendar.HOUR, Integer.parseInt(it.split(":")[0]))
-            endCalendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            calendar.timeInMillis = endDate.time
+            UtilsKt.calendarSetHour(calendar = calendar, horaMinuto = it)
+            endDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
     }
@@ -226,5 +200,4 @@ class AddEventFragment : Fragment() {
     private fun onTimeSelected2(time: String) {
         binding.tieHoraFinEvento.setText(time)
     }
-
 }

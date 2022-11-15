@@ -39,7 +39,7 @@ class UtilsKt {
 
         fun shareEvent(
             eventCalendar: Event
-        ): String{
+        ): String {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = eventCalendar.fechaInicioMiliSegundos
             val dayOfMonth = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
@@ -51,6 +51,25 @@ class UtilsKt {
             val fecha = "$dayOfMonth/$month/$year"
             val hora = "$hourOfDay:$minute"
             return "Ven a ver ${eventCalendar.nombreEvento} conmigo el $fecha a las $hora en ${eventCalendar.ubicacion}"
+        }
+
+        fun calendarSetDate(
+            calendar: Calendar,
+            anio: String,
+            mes: String,
+            dia: String
+        ) {
+            calendar.set(Calendar.YEAR, anio.toInt())
+            calendar.set(Calendar.MONTH, mes.toInt() - 1)
+            calendar.set(Calendar.DAY_OF_MONTH, dia.toInt())
+        }
+
+        fun calendarSetHour(
+            calendar: Calendar,
+            horaMinuto: String
+        ) {
+            calendar.set(Calendar.HOUR, Integer.parseInt(horaMinuto.split(":")[0]))
+            calendar.set(Calendar.MINUTE, Integer.parseInt(horaMinuto.split(":")[1]))
         }
 
         @JvmStatic

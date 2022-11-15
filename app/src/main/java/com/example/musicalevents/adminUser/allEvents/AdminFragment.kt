@@ -1,25 +1,22 @@
 package com.example.musicalevents.adminUser.allEvents
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
-import com.example.musicalevents.adminUser.allEvents.AdminFragmentDirections.Companion.actionAdminFragmentToInfoEventFragment
-import com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsFragmentDirections
+import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.model.Userkt
-import com.example.musicalevents.data.repository.JavaEventRepository
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAdminBinding
-import com.example.musicalevents.utils.EventoCrudAdapter
+import com.example.musicalevents.login.LoginActivity
 import com.example.musicalevents.utils.EventoListAdapter
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -99,6 +96,12 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
                         NavHostFragment.findNavController(this@AdminFragment).navigate(action)
                         return true
                     }
+
+                    R.id.close_session -> {
+                        startActivity(Intent(context, LoginActivity::class.java))
+                        requireActivity().finish()
+                        return true
+                    }
                     else -> {
                         false
                     }
@@ -121,5 +124,10 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     override fun onNoData() {
         binding.imvNodata.visibility = View.VISIBLE
         binding.rvEventos.visibility = View.GONE
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        requireActivity().finish()
     }
 }

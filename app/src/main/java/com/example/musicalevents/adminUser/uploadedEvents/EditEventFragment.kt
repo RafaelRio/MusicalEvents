@@ -155,9 +155,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
                 calendar.timeInMillis = startDate.time
 
-                calendar.set(Calendar.YEAR, anioInicio.toInt())
-                calendar.set(Calendar.MONTH, mesInicio.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, diaInicio.toInt())
+                UtilsKt.calendarSetDate(calendar = calendar, anio = anioInicio, mes = mesInicio, dia = diaInicio)
 
                 startDate.time = calendar.timeInMillis
             }
@@ -179,9 +177,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
                 calendar.timeInMillis = endDate.time
 
-                calendar.set(Calendar.YEAR, anioFin.toInt())
-                calendar.set(Calendar.MONTH, mesFin.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, diaFin.toInt())
+                UtilsKt.calendarSetDate(calendar = calendar, anio = anioFin, mes = mesFin, dia = diaFin)
                 endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -193,8 +189,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
             calendar.timeInMillis = startDate.time
 
-            calendar.set(Calendar.HOUR_OF_DAY, it.split(":")[0].toInt())
-            calendar.set(Calendar.MINUTE, it.split(":")[1].toInt())
+            UtilsKt.calendarSetHour(calendar = calendar, horaMinuto = it)
 
             startDate.time = calendar.timeInMillis
         }
@@ -209,8 +204,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         val newFragment = TimePickerFragment {
             onTimeSelected2(it)
             calendar.timeInMillis = endDate.time
-            calendar.set(Calendar.HOUR_OF_DAY, it.split(":")[0].toInt())
-            calendar.set(Calendar.MINUTE, it.split(":")[1].toInt())
+            UtilsKt.calendarSetHour(calendar = calendar, horaMinuto = it)
 
             endDate.time = calendar.timeInMillis
         }

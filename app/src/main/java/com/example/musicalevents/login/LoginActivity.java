@@ -136,10 +136,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private void startAdminActivity() {
         startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+        finish();
     }
 
     private void startMainActivity() {
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
     }
 
     @Override

@@ -85,4 +85,6 @@
     <string name="updatedLinks">Links updated successfuly</string>
 
     <string name="website">Website</string>
+    <string name="error_login">Incorrect user</string>
+    <string name="sign_out">Sign out</string>
 </resources>

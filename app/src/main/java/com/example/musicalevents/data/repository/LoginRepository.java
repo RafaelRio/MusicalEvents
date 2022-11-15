@@ -46,12 +46,12 @@ public class LoginRepository implements LoginContract.Repository, SignUpContract
                     if (task.isSuccessful()) {
                         Userkt databaseUser = task.getResult().toObject(Userkt.class);
                         if (databaseUser == null) {
-                            callback.onFailure(R.string.error_createUser);
+                            callback.onFailure(R.string.error_login);
                         } else if (Objects.equals(user.getPassword(), databaseUser.getPassword())) {
                             currentUser = databaseUser;
                             callback.onSuccess(databaseUser);
                         } else {
-                            callback.onFailure(R.string.error_createUser);
+                            callback.onFailure(R.string.error_login);
                         }
                     }
                 });

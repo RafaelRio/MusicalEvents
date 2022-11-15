@@ -76,9 +76,10 @@ class InfoEventFragment : Fragment() {
             return
         }
         try {
-            val uri = Uri.parse(link)
+            /*val uri = Uri.parse(link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            startActivity(intent)*/
+            Toast.makeText(context, link, Toast.LENGTH_SHORT).show()
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(context, R.string.error_badLink, Toast.LENGTH_SHORT).show()
         }
@@ -138,7 +139,6 @@ class InfoEventFragment : Fragment() {
     fun createGoogleCalendarEvent() {
         val startEvent = Calendar.getInstance()
         val endEvent = Calendar.getInstance()
-        val boolean = false
 
         //Fecha inicio
         startEvent.set(Calendar.YEAR, binding.infoInicioFechaEvento.text.split("/")[2].toInt())
