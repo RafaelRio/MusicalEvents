@@ -87,7 +87,7 @@
     <string name="website">Website</string>
     <string name="error_login">Incorrect user</string>
     <string name="sign_out">Sign out</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="about_us">About us</string>
+    <string name="about_us">About me</string>
+    <string name="about_me">Hello! My name is Rafa and I am the developer behind this application. I am a Cross-platform application development student at Portada Alta. If you are a Media Manager in an musical association you can upload the next events your music group will perform indicating some relevant data. Normal users can share the events with them friends, link with Google Calendar and visit the social networks of the group</string>
+    <string name="interesting_links">Interesting links</string>
 </resources>
