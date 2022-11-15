@@ -3,6 +3,7 @@ package com.example.musicalevents.eventInfo
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.provider.CalendarContract
 import android.view.*
@@ -45,6 +46,8 @@ class InfoEventFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
         bindingFields()
+        hideButtons()
+
 
         binding.apply {
             instagramButton.setOnClickListener {
@@ -67,7 +70,21 @@ class InfoEventFragment : Fragment() {
                 }
             }
         }
+    }
 
+    fun hideButtons(){
+        if (eventCalendar.user.instagram?.isBlank() == true) {
+            binding.instagramButton.visibility = View.GONE
+        }
+        if (eventCalendar.user.twitter?.isBlank() == true) {
+            binding.twitterButton.visibility = View.GONE
+        }
+        if (eventCalendar.user.facebook?.isBlank() == true) {
+            binding.facebookButton.visibility = View.GONE
+        }
+        if (eventCalendar.user.website?.isBlank() == true) {
+            binding.websiteButton.visibility = View.GONE
+        }
     }
 
     private fun openLinks(link: String, @StringRes error: Int) {
@@ -76,10 +93,10 @@ class InfoEventFragment : Fragment() {
             return
         }
         try {
-            /*val uri = Uri.parse(link)
+            val uri = Uri.parse(link)
             val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)*/
-            Toast.makeText(context, link, Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(context, R.string.error_badLink, Toast.LENGTH_SHORT).show()
         }
