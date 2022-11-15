@@ -13,14 +13,8 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/bodoni_bold"
+            style="@style/fragmentTitle"
             android:text="@string/my_events"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/login_tvLogin_textSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -12,15 +12,9 @@
         android:layout_height="wrap_content">
 
         <TextView
+            style="@style/fragmentTitle"
             android:id="@+id/tvTitleLinks"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/bodoni_bold"
             android:text="@string/group_links"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="40sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

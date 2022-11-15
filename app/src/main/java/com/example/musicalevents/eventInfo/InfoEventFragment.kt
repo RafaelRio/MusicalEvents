@@ -48,7 +48,6 @@ class InfoEventFragment : Fragment() {
         bindingFields()
         hideButtons()
 
-
         binding.apply {
             instagramButton.setOnClickListener {
                 eventCalendar.user.instagram?.let { it1 -> openLinks(it1, R.string.error_instagramnotfound)

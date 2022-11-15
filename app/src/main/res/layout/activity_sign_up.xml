@@ -18,15 +18,8 @@
 
         <TextView
             android:id="@+id/tvTitleSignUp"
-            android:layout_width="match_parent"
-            android:textAlignment="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/bodoni_bold"
+            style="@style/fragmentTitle"
             android:text="@string/tvTitleSignUp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/login_tvLogin_textSize"
-            android:visibility="visible"
             app:layout_constraintEnd_toStartOf="@+id/gdEnd"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
