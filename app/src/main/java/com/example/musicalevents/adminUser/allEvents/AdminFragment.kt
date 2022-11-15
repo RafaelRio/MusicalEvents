@@ -113,10 +113,13 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     }
 
     override fun onListSuccess(eventList: List<Event>) {
+        binding.imvNodata.visibility = View.GONE
+        binding.rvEventos.visibility = View.VISIBLE
         adapter?.update(eventList)
     }
 
     override fun onNoData() {
-        Toast.makeText(context, "No hay datos", Toast.LENGTH_SHORT).show()
+        binding.imvNodata.visibility = View.VISIBLE
+        binding.rvEventos.visibility = View.GONE
     }
 }
