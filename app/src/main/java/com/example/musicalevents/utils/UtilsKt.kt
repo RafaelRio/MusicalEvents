@@ -72,6 +72,28 @@ class UtilsKt {
             calendar.set(Calendar.MINUTE, Integer.parseInt(horaMinuto.split(":")[1]))
         }
 
+        fun onBindViewHolder(holder: EventoListAdapterKt.ViewHolder, position: Int, eventos: MutableList<Event>, listener: EventoListAdapterKt.OnManageEventoListener) {
+            holder.ubicacion.text = eventos[position].ubicacion
+            holder.nombre.text = eventos[position].nombreEvento
+            val eventDate = Calendar.getInstance()
+            eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
+            val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
+            val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
+            holder.hora.text = "$hora:$minutos"
+            holder.bind(eventos[position], listener)
+        }
+
+        fun onBindViewHolder(holder: EventoCrudAdapterKt.ViewHolder, position: Int, eventos: MutableList<Event>, listener: EventoCrudAdapterKt.OnManageEventoListener) {
+            holder.ubicacion.text = eventos[position].ubicacion
+            holder.nombre.text = eventos[position].nombreEvento
+            val eventDate = Calendar.getInstance()
+            eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
+            val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
+            val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
+            holder.hora.text = "$hora:$minutos"
+            holder.bind(eventos[position], listener)
+        }
+
         @JvmStatic
         fun isPasswordValid(password: String): Boolean {
             val PASSWORDPATTERN =

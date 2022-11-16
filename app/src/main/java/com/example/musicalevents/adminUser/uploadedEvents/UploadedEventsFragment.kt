@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentUploadedEventsBinding
-import com.example.musicalevents.utils.EventoCrudAdapter
+import com.example.musicalevents.utils.EventoCrudAdapterKt
 
 class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
-    EventoCrudAdapter.onManageEventoListener {
+    EventoCrudAdapterKt.OnManageEventoListener {
 
     private lateinit var binding: FragmentUploadedEventsBinding
-    private lateinit var adapter: EventoCrudAdapter
+    private lateinit var adapter: EventoCrudAdapterKt
     private lateinit var presenter: UploadedEventsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +48,7 @@ class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
 
     private fun initRv() {
         adapter =
-            EventoCrudAdapter(ArrayList(), this)
+            EventoCrudAdapterKt(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         //3.- Asgino el layout al recyclerView

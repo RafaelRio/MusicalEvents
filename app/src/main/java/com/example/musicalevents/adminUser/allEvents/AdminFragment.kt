@@ -16,14 +16,14 @@ import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.login.LoginActivitykt
-import com.example.musicalevents.utils.EventoListAdapter
+import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 
-class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllEventsContract.View{
+class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, AllEventsContract.View{
 
     private lateinit var binding : FragmentAdminBinding
-    private var adapter: EventoListAdapter? = null
+    private var adapter: EventoListAdapterKt? = null
     private lateinit var presenter : AllEventsContract.Presenter
     private val currentUser : Userkt = LoginRepository.currentUser
 
@@ -59,7 +59,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     }
 
     private fun initRv(){
-        adapter = EventoListAdapter(ArrayList(), this)
+        adapter = EventoListAdapterKt(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         //3.- Asgino el layout al recyclerView
@@ -129,10 +129,5 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
     override fun onNoData() {
         binding.imvNodata.visibility = View.VISIBLE
         binding.rvEventos.visibility = View.GONE
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        requireActivity().finish()
     }
 }

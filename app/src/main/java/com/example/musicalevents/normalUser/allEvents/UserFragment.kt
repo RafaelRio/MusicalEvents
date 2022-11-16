@@ -1,29 +1,23 @@
 package com.example.musicalevents.normalUser.allEvents
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.musicalevents.R
-import com.example.musicalevents.adminUser.allEvents.AllEventsContract
-import com.example.musicalevents.adminUser.allEvents.AllEventsPresenter
 import com.example.musicalevents.data.model.Event
-import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.databinding.FragmentUserBinding
-import com.example.musicalevents.utils.EventoListAdapter
-import com.example.musicalevents.utils.UserEventoListAdapter
+import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 
-class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, UserAllEventsContract.View{
+class UserFragment : Fragment() , EventoListAdapterKt.OnManageEventoListener, UserAllEventsContract.View{
 
     private lateinit var binding : FragmentUserBinding
-    private var adapter: UserEventoListAdapter? = null
+    private var adapter: EventoListAdapterKt? = null
     private lateinit var presenter : UserAllEventsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +52,7 @@ class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, 
     }
 
     private fun initRv(){
-        adapter = UserEventoListAdapter(ArrayList(), this)
+        adapter = EventoListAdapterKt(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         //3.- Asgino el layout al recyclerView
