@@ -12,15 +12,15 @@ import com.example.musicalevents.R;
 import com.example.musicalevents.base.Event;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.databinding.ActivitySignUpBinding;
-import com.example.musicalevents.login.LoginActivity;
+import com.example.musicalevents.login.LoginActivitykt;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
+public class SignUpActivity extends AppCompatActivity implements SignUpContractKt.View {
 
     ActivitySignUpBinding binding;
-    private SignUpContract.Presenter presenter;
+    private SignUpContractKt.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         binding.btAlreadyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateUpTo(new Intent(SignUpActivity.this, LoginActivity.class));
+                navigateUpTo(new Intent(SignUpActivity.this, LoginActivitykt.class));
             }
         });
 
@@ -48,7 +48,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
                 binding.tieEmail.getText().toString(),
                 binding.tiePassword.getText().toString(),
                 binding.tieConfirmPassword.getText().toString()));
-        presenter = new SignUpPresenter(this);
+        presenter = new SignUpPresenterKt(this);
         EventBus.getDefault().register(this);
     }
 

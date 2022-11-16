@@ -3,25 +3,19 @@ package com.example.musicalevents.data.repository;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.example.musicalevents.R;
 import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
-import com.example.musicalevents.login.LoginContract;
-import com.example.musicalevents.signup.SignUpContract;
+import com.example.musicalevents.login.LoginContractKt;
+import com.example.musicalevents.signup.SignUpContractKt;
 import com.example.musicalevents.utils.UtilsKt;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.UUID;
 
-public class LoginRepository implements LoginContract.Repository, SignUpContract.Repository {
+public class LoginRepository implements LoginContractKt.Repository, SignUpContractKt.Repository {
     private static final String TAG = "AAAAAAAAAAA";
     public static Userkt currentUser;
     private static LoginRepository instance;

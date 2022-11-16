@@ -22,10 +22,10 @@ import com.example.musicalevents.utils.UtilsKt;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View {
+public class LoginActivity extends AppCompatActivity implements LoginContractKt.View {
     Userkt e1 = new Userkt();
     private ActivityLoginBinding binding;
-    private LoginContract.Presenter presenter;
+    private LoginContractKt.Presenter presenter;
 
 
     @Override
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 }
         );
 
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenterKt(this);
         //la vista se registra como subscriptor del EventBus
         EventBus.getDefault().register(this);
     }

@@ -23,7 +23,7 @@
             android:name=".signup.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".login.LoginActivitykt"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

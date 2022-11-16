@@ -11,12 +11,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
-import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAdminBinding
-import com.example.musicalevents.login.LoginActivity
+import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.utils.EventoListAdapter
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -104,7 +103,7 @@ class AdminFragment : Fragment(), EventoListAdapter.onManageEventoListener, AllE
                     }
 
                     R.id.close_session -> {
-                        startActivity(Intent(context, LoginActivity::class.java))
+                        startActivity(Intent(context, LoginActivitykt::class.java))
                         requireActivity().finish()
                         return true
                     }
