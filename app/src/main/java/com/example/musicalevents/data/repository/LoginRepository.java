@@ -3,14 +3,24 @@ package com.example.musicalevents.data.repository;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.example.musicalevents.R;
+import com.example.musicalevents.base.EventKt;
 import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
 import com.example.musicalevents.login.LoginContractKt;
 import com.example.musicalevents.signup.SignUpContractKt;
 import com.example.musicalevents.utils.UtilsKt;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -33,6 +43,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
 
     @Override
     public void login(Userkt user) {
+
 
         db.collection(UtilsKt.Companion.getPersonasTable()).document(Objects.requireNonNull(user.getEmail()))
                 .get()
@@ -64,7 +75,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
                             usedEmails.add(document.getId());
                         }
                         if (!usedEmails.contains(databaseUser.getEmail())){
-                            createUser(user, email, password, comfirmPassword);
+                            createUser(email, password);
                         }else {
                             callback.onFailure(R.string.error_userExists);
                         }
@@ -72,7 +83,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
                 });
     }
 
-    public void createUser(String user, String email, String password, String comfirmPassword) {
+    public void createUser(String email, String password) {
         Userkt databaseUser = new Userkt(email, password, false);
         db.collection("personas").document(Objects.requireNonNull(databaseUser.getEmail()))
                 .set(databaseUser)

@@ -1,6 +1,8 @@
 package com.example.musicalevents.login
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
@@ -21,6 +23,7 @@ import java.lang.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.toString
+
 
 class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
 
@@ -89,15 +92,24 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
 //            //O BIEN APPLY O BIEN COMMIT QUE SINO NO SE HACEN LOS CAMBIOS EN EK FICHERO
 //
 //        }
+
+
 //
-        if (Boolean.TRUE == u.isAdmin) {
-            //Carga una vista
-            startAdminActivity()
-        } else if (Boolean.FALSE == u.isAdmin) {
-            //Carga otra vista
-            startMainActivity()
-        }
+
+
+
+
+            if (Boolean.TRUE == u.isAdmin) {
+                //Carga una vista
+                startAdminActivity()
+            } else if (Boolean.FALSE == u.isAdmin) {
+                //Carga otra vista
+                startMainActivity()
+            }
+
+
     }
+
 
     private fun startAdminActivity() {
         startActivity(Intent(this@LoginActivitykt, AdminActivity::class.java))

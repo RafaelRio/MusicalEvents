@@ -92,4 +92,5 @@
     <string name="about_me">Hello! My name is Rafa and I am the developer behind this application. I am a Cross-platform application development student at Portada Alta. If you are a Media Manager in an musical association you can upload the next events your music group will perform indicating some relevant data. Normal users can share the events with them friends, link with Google Calendar and visit the social networks of the group</string>
     <string name="interesting_links">Interesting links</string>
     <string name="issue">For any questions or problems, write an email to rafa2000inator@gmail.com</string>
+    <string name="sendEmail">Send email</string>
 </resources>
