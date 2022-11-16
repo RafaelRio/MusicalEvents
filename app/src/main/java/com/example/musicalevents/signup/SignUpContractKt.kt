@@ -1,21 +1,20 @@
 package com.example.musicalevents.signup
 
-import com.example.musicalevents.base.BasePresenter
-import com.example.musicalevents.base.IProgressView
+import com.example.musicalevents.base.BasePresenterKt
 import com.example.musicalevents.base.OnRepositoryCallback
 import com.example.musicalevents.login.LoginContractKt
 import com.example.musicalevents.login.LoginContractKt.OnInteractorListener
 
 interface SignUpContractKt {
 
-    interface View : LoginContractKt.View, IProgressView {
+    interface View : LoginContractKt.View {
         fun setUserEmptyError()
         fun setConfirmPasswordEmptyError()
         fun setPasswordDontMatch()
         fun setEmailError()
     }
 
-    interface Presenter : BasePresenter {
+    interface Presenter : BasePresenterKt {
         fun validateSignUp(
             user: String?,
             email: String?,

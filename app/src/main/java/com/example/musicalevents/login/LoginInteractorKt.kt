@@ -28,8 +28,8 @@ class LoginInteractorKt(var listener: OnInteractorListener?) : OnRepositoryCallb
 
 
     //This methods come from the Repository callback
-    override fun onSuccess(e: Userkt?) {
-        listener!!.onSuccess(e)
+    override fun onSuccess(u: Userkt) {
+        listener!!.onSuccess(u)
     }
 
     override fun onFailure(message: Int) {

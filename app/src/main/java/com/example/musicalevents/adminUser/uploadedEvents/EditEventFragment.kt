@@ -12,7 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentEditEventBinding
-import com.example.musicalevents.utils.DatePickerFragment
+import com.example.musicalevents.utils.DatePickerKt
 import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt
 import com.google.firebase.firestore.FirebaseFirestore
@@ -143,7 +143,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
     private fun setStartDate() {
         val newFragment =
-            DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
+            DatePickerKt.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.edittieFechaInicio.setText("$dayOfMonthFormatted/$monthFormatted/$year")
@@ -164,7 +164,7 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
     private fun setEndDate() {
         val newFragment =
-            DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
+            DatePickerKt.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.edittieFechaFin.setText("$dayOfMonthFormatted/$monthFormatted/$year")

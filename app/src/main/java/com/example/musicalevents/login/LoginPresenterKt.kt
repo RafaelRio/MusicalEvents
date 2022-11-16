@@ -13,32 +13,26 @@ class LoginPresenterKt(var view : LoginContractKt.View?) : LoginContractKt.Prese
     //region metodos del contrato presenter-interactor
     override fun validateCredentials(user: Userkt?) {
         interactor!!.validateCredentials(user!!)
-        view!!.showProgress()
     }
 
     override fun onEmailEmptyError() {
-        view!!.hideProgress()
         view!!.setEmailEmptyError()
     }
 
     override fun onPasswordEmptyError() {
-        view!!.hideProgress()
         view!!.setPasswordEmptyError()
     }
 
     override fun onPasswordError() {
-        view!!.hideProgress()
         view!!.setPasswordError()
     }
 
 
-    override fun onSuccess(u: Userkt?) {
-        view!!.hideProgress()
+    override fun onSuccess(u: Userkt) {
         view!!.onSuccess(u)
     }
 
     override fun onFailure(message: Int) {
-        view!!.hideProgress()
         view!!.onFailure(message)
     }
 

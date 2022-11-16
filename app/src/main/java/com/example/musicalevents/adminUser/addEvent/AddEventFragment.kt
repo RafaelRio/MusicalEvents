@@ -14,7 +14,7 @@ import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.repository.JavaEventRepository
 import com.example.musicalevents.databinding.FragmentAddEventBinding
-import com.example.musicalevents.utils.DatePickerFragment
+import com.example.musicalevents.utils.DatePickerKt
 import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
@@ -127,8 +127,8 @@ class AddEventFragment : Fragment() {
     }
 
     private fun setStartDate() {
-        val newFragment: DatePickerFragment =
-            DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
+        val newFragment: DatePickerKt =
+            DatePickerKt.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.tieFecha.setText("$dayOfMonthFormatted/$monthFormatted/$year")
@@ -150,8 +150,8 @@ class AddEventFragment : Fragment() {
     }
 
     private fun setEndDate() {
-        val newFragment: DatePickerFragment =
-            DatePickerFragment.newInstance { _, year, month, day -> // +1 because January is zero
+        val newFragment: DatePickerKt =
+            DatePickerKt.newInstance { _, year, month, day -> // +1 because January is zero
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.tieEndFecha.setText("$dayOfMonthFormatted/$monthFormatted/$year")

@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicalevents.R
 import com.example.musicalevents.adminUser.AdminActivity
-import com.example.musicalevents.base.Event
+import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivityLoginBinding
 import com.example.musicalevents.normalUser.MainActivity
@@ -76,17 +76,10 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
         binding.tilPassword.error = getString(R.string.error_passwordFormat)
     }
 
-    override fun showProgress() {
-        //binding.progressHorizontal.setVisibility(View.VISIBLE);
-    }
-
-    override fun hideProgress() {
-        //binding.progressHorizontal.setVisibility(View.INVISIBLE);
-    }
 
     //endregion
     //region Metodos del contrato con LoginContract.View extend OnLoginListener es decir son los metodos que obtiene por herencia de la otra interfaz
-    override fun onSuccess(e: Userkt) {
+    override fun onSuccess(u: Userkt) {
 //        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
 ////        editor.putBoolean("isAdmin", e.isAdmin());
 ////        editor.apply();
@@ -97,10 +90,10 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
 //
 //        }
 //
-        if (Boolean.TRUE == e.isAdmin) {
+        if (Boolean.TRUE == u.isAdmin) {
             //Carga una vista
             startAdminActivity()
-        } else if (Boolean.FALSE == e.isAdmin) {
+        } else if (Boolean.FALSE == u.isAdmin) {
             //Carga otra vista
             startMainActivity()
         }
@@ -146,8 +139,7 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
     }
 
     @Subscribe
-    fun onEvent(event: Event) {
-        hideProgress()
+    fun onEvent(event: EventKt) {
         Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show()
     }
 }

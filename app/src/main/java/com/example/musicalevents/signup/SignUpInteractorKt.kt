@@ -45,8 +45,8 @@ class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListen
     }
 
     //Estos metodos vienen de la respuesta que nos da el Repositorio
-    override fun onSuccess(e: Userkt?) {
-        listener.onSuccess(e)
+    override fun onSuccess(u: Userkt) {
+        listener.onSuccess(u)
     }
 
     override fun onFailure(message: Int) {

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicalevents.R
-import com.example.musicalevents.base.Event
+import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivitySignUpBinding
 import com.example.musicalevents.login.LoginActivitykt
@@ -86,7 +86,7 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
     }
 
 
-    override fun onSuccess(e: Userkt?) {
+    override fun onSuccess(e: Userkt) {
         finish()
     }
 
@@ -94,13 +94,8 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showProgress() {}
-
-    override fun hideProgress() {}
-
     @Subscribe
-    fun onEvent(event: Event) {
-        hideProgress()
+    fun onEvent(event: EventKt) {
         Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -49,8 +49,8 @@ class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Pre
     }
 
 
-    override fun onSuccess(e: Userkt?) {
-        view!!.onSuccess(e)
+    override fun onSuccess(u: Userkt) {
+        view!!.onSuccess(u)
     }
 
     override fun onFailure(message: Int) {
