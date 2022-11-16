@@ -17,6 +17,7 @@ import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.databinding.FragmentUserBinding
 import com.example.musicalevents.utils.EventoListAdapter
 import com.example.musicalevents.utils.UserEventoListAdapter
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 
 class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, UserAllEventsContract.View{
@@ -33,7 +34,10 @@ class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, 
     override fun onStart() {
         super.onStart()
         val actualDate = LocalDate.now()
-        presenter.getAllEvents((actualDate.year).toString(), (actualDate.monthValue).toString(), (actualDate.dayOfMonth).toString())
+        val anio = String.format("%04d", actualDate.year)
+        val mes = String.format("%02d", actualDate.monthValue)
+        val dia = String.format("%02d", actualDate.dayOfMonth)
+        presenter.getAllEvents(System.currentTimeMillis())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -46,7 +50,9 @@ class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, 
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
-            presenter.getAllEvents(year.toString(), (month + 1).toString(), day.toString())
+            val fechaInicio = SimpleDateFormat("d/M/y").parse("$day/${month + 1}/$year")
+
+            presenter.getAllEvents(fechaInicio.time)
         }
 
     }
@@ -62,11 +68,14 @@ class UserFragment : Fragment() , UserEventoListAdapter.onManageEventoListener, 
     }
 
     override fun onListSuccess(eventList: List<Event>) {
+        binding.imvNodata.visibility = View.GONE
+        binding.rvEventos.visibility = View.VISIBLE
         adapter?.update(eventList)
     }
 
     override fun onNoData() {
-        Toast.makeText(context, "No hay datos", Toast.LENGTH_SHORT).show()
+        binding.imvNodata.visibility = View.VISIBLE
+        binding.rvEventos.visibility = View.GONE
     }
 
     override fun onInfoEvent(l: Event) {

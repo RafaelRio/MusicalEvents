@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".adminUser.allEvents.AdminFragment"
     android:orientation="vertical"
     android:background="@color/secondary_color">
 
@@ -15,9 +14,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </CalendarView>
 
+
+    <ImageView
+        android:id="@+id/imv_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/no_data"
+        android:contentDescription="@string/ivNodata"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEventos"
@@ -27,6 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/item_evento"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/imv_nodata" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@
     <string name="edited_event">Event updated successfuly</string>
 
     <string name="errUserEmpty">Empty user</string>
+    <string name="error_password_dont_match">Passwords dont match</string>
 
     <string name="errorPasswordEmpty">Empty password</string>
 

@@ -7,12 +7,12 @@ interface UserAllEventsContract {
     }
 
     interface Presenter : OnRepositoryCallback {
-        fun getAllEvents(year : String, month : String, day: String)
+        fun getAllEvents(fechaUnix: Long)
         fun onDestroy()
     }
 
     interface Interactor : OnRepositoryCallback {
-        fun getAllEvents(year : String, month : String, day: String)
+        fun getAllEvents(fechaUnix: Long)
     }
 
     interface OnRepositoryCallback {

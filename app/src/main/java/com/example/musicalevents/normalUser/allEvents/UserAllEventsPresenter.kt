@@ -10,8 +10,8 @@ class UserAllEventsPresenter(var view: UserAllEventsContract.View?) : UserAllEve
         interactor = UserAllEventsInteractor(this)
     }
 
-    override fun getAllEvents(year: String, month: String, day: String) {
-        interactor?.getAllEvents(year, month, day)
+    override fun getAllEvents(fechaUnix: Long) {
+        interactor?.getAllEvents(fechaUnix)
     }
 
     override fun onDestroy() {

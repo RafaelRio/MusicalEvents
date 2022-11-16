@@ -13,7 +13,7 @@ import com.example.musicalevents.base.Event
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivityLoginBinding
 import com.example.musicalevents.normalUser.MainActivity
-import com.example.musicalevents.signup.SignUpActivity
+import com.example.musicalevents.signup.SignUpActivityKt
 import com.example.musicalevents.utils.UtilsKt.Companion.isPasswordValid
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -59,7 +59,7 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
     }
 
     private fun startActivityLogin() {
-        startActivity(Intent(this, SignUpActivity::class.java))
+        startActivity(Intent(this, SignUpActivityKt::class.java))
     }
 
 

@@ -20,7 +20,7 @@
             android:name=".normalUser.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".signup.SignUpActivity"
+            android:name=".signup.SignUpActivityKt"
             android:exported="true" />
         <activity
             android:name=".login.LoginActivitykt"
