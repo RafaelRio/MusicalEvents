@@ -93,4 +93,6 @@
     <string name="interesting_links">Interesting links</string>
     <string name="issue">For any questions or problems, write an email to rafa2000inator@gmail.com</string>
     <string name="sendEmail">Send email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

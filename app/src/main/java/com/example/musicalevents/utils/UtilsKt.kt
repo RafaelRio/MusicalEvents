@@ -1,6 +1,9 @@
 package com.example.musicalevents.utils
 
+import android.app.Activity
+import android.content.res.Configuration
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.musicalevents.data.model.Event
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
@@ -101,6 +104,16 @@ class UtilsKt {
             val pattern = Pattern.compile(PASSWORDPATTERN);
             val matcher = pattern.matcher(password);
             return matcher.matches();
+        }
+
+        fun disableDarkMode(activity: Activity){
+            val nightModeFlags: Int = activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            when (nightModeFlags) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
         }
 
     }
