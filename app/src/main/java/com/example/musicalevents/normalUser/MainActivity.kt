@@ -1,7 +1,7 @@
 package com.example.musicalevents.normalUser
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.musicalevents.R
 import com.example.musicalevents.utils.UtilsKt
 

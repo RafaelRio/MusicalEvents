@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondary_color"
+    android:forceDarkAllowed="false"
     tools:context="signup.SignUpActivityKt">
 
     <LinearLayout
@@ -35,7 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_til"
-                android:hint="@string/tieUser"/>
+                android:hint="@string/tieUser"
+                android:text="HOLA"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

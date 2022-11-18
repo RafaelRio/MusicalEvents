@@ -116,6 +116,16 @@ class UtilsKt {
             return matcher.matches();
         }
 
+        fun disableDarkMode(activity: Activity){
+            val nightModeFlags: Int = activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+            when (nightModeFlags) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        }
+
     }
 
 }

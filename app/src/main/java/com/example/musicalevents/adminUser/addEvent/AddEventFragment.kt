@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.musicalevents.R
+import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.repository.JavaEventRepository
 import com.example.musicalevents.databinding.FragmentAddEventBinding
@@ -73,7 +75,7 @@ class AddEventFragment : Fragment() {
                 if (validateFields() >= 1) {
                     return@setOnClickListener
                 }
-
+                //ToDo Cuando en el primer intento pones la fecha y hora correctas (fin posterior) pero luego cambias hora (fin anterior) le suma 12 horas a la fecha final
                 newEvent = Event(
                     nombreEvento = tieNombreEvento.text.toString(),
                     ubicacion = tieUbicacionEvento.text.toString(),
