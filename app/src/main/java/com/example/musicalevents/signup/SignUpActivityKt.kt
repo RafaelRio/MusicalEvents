@@ -9,6 +9,7 @@ import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivitySignUpBinding
 import com.example.musicalevents.login.LoginActivitykt
+import com.example.musicalevents.utils.UtilsKt
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -22,7 +23,7 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setTitle(R.string.tvTitleSignUp)
-
+        UtilsKt.disableDarkMode(this)
 
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);

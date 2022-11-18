@@ -16,6 +16,7 @@ import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivityLoginBinding
 import com.example.musicalevents.normalUser.MainActivity
 import com.example.musicalevents.signup.SignUpActivityKt
+import com.example.musicalevents.utils.UtilsKt
 import com.example.musicalevents.utils.UtilsKt.Companion.isPasswordValid
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -42,6 +43,7 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
         decorView.systemUiVisibility = uiOptions
         // Remember that you should never show the action bar if the
         // status bar is hidden, so hide that too if necessary.
+        UtilsKt.disableDarkMode(this)
         binding.btSignUp.setOnClickListener { view -> startActivityLogin() }
         binding.btSignIn.setOnClickListener { view ->
             e1.email = binding.tieEmail.text.toString()

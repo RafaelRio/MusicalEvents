@@ -50,17 +50,17 @@ class InfoEventFragment : Fragment() {
 
         binding.apply {
             instagramButton.setOnClickListener {
-                eventCalendar.user.instagram?.let { it1 -> openLinks(it1, R.string.error_instagramnotfound)
+                eventCalendar.user.instagram?.let { it1 -> openLinks("https://www.instagram.com/$it1", R.string.error_instagramnotfound)
                 }
             }
 
             twitterButton.setOnClickListener {
-                eventCalendar.user.twitter?.let { it1 -> openLinks(it1, R.string.error_twitternotfound)
+                eventCalendar.user.twitter?.let { it1 -> openLinks("https://twitter.com/$it1", R.string.error_twitternotfound)
                 }
             }
 
             facebookButton.setOnClickListener {
-                eventCalendar.user.facebook?.let { it1 -> openLinks(it1, R.string.error_facebooknotfound)
+                eventCalendar.user.facebook?.let { it1 -> openLinks("https://www.facebook.com/$it1", R.string.error_facebooknotfound)
                 }
             }
 
