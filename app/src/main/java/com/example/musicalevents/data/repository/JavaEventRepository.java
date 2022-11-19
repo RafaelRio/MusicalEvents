@@ -92,8 +92,6 @@ public class JavaEventRepository implements UploadedEventsContract.Repository {
 
     }
 
-
-    //ToDo Cambiar este metodo para ser igual al de arriba
     public void userGetAllEvents(UserAllEventsContract.OnRepositoryCallback callback, Long fechaUnix) {
         final List<Event> allEvents = new ArrayList<>();
 

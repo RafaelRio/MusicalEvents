@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
+import io.grpc.okhttp.internal.Util
 import java.util.*
 
 class EventoListAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoListener) :
@@ -28,8 +29,7 @@ class EventoListAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoLis
     }
 
     fun update(l: List<Event>?) {
-        eventos.clear()
-        eventos.addAll(l!!)
+        UtilsKt.update(eventos, l)
         notifyDataSetChanged()
     }
 

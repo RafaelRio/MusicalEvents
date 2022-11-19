@@ -11,15 +11,14 @@ import java.util.*
 class DatePickerKt : DialogFragment(), OnDateSetListener {
     private var listener: OnDateSetListener? = null
 
-
     companion object {
-        fun newInstance(listener: DatePickerDialog.OnDateSetListener): DatePickerKt {
+        fun newInstance(listener: OnDateSetListener): DatePickerKt {
             val fragment = DatePickerKt()
             fragment.setListener(listener)
             return fragment
         }
-
     }
+
     private fun setListener(listener: OnDateSetListener?) {
         this.listener = listener
     }

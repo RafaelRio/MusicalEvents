@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class LoginRepository implements LoginContractKt.Repository, SignUpContractKt.Repository {
-    private static final String TAG = "AAAAAAAAAAA";
+    private static final String TAG = "LOGINREPOSITORY";
     public static Userkt currentUser;
     private static LoginRepository instance;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -43,8 +43,6 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
 
     @Override
     public void login(Userkt user) {
-
-
         db.collection(UtilsKt.Companion.getPersonasTable()).document(Objects.requireNonNull(user.getEmail()))
                 .get()
                 .addOnCompleteListener(task -> {

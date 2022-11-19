@@ -28,8 +28,7 @@ class EventoCrudAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoLis
     }
 
     fun update(l: List<Event>?) {
-        eventos.clear()
-        eventos.addAll(l!!)
+        UtilsKt.update(eventos, l)
         notifyDataSetChanged()
     }
 

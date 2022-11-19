@@ -2,10 +2,17 @@ package com.example.musicalevents.utils
 
 import android.app.Activity
 import android.content.res.Configuration
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.musicalevents.data.model.Event
+import com.example.musicalevents.data.repository.JavaEventRepository
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.firestore.QuerySnapshot
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
@@ -105,6 +112,11 @@ class UtilsKt {
                         AppCompatDelegate.MODE_NIGHT_NO);
                 }
             }
+        }
+
+        fun update(eventos: MutableList<Event>, events: List<Event>?){
+            eventos.clear()
+            eventos.addAll(events!!)
         }
 
         @JvmStatic

@@ -34,10 +34,6 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
 
     override fun onStart() {
         super.onStart()
-        val actualDate = LocalDate.now()
-        val anio = String.format("%04d", actualDate.year)
-        val mes = String.format("%02d", actualDate.monthValue)
-        val dia = String.format("%02d", actualDate.dayOfMonth)
         presenter.getAllEvents(System.currentTimeMillis())
     }
 

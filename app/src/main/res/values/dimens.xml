@@ -1,6 +1,17 @@
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="login_tvLogin_textSize">50sp</dimen>
-    <dimen name="login_tilPassword_marginTop">10dp</dimen>
+<!--    DP      -->
+    <dimen name="_0dp">0dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_16dp">16dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_32dp">32dp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
+
+<!--    SP      -->
+    <dimen name="_15sp">15sp</dimen>
+    <dimen name="_20sp">20sp</dimen>
+    <dimen name="_40sp">40sp</dimen>
 </resources>

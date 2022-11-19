@@ -19,9 +19,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/InfoEventTextView"
-            android:layout_marginTop="30dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            android:layout_marginTop="30dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tieNombreEvento"
@@ -33,16 +31,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/InfoEventTextView"
-            android:layout_marginTop="20dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            style="@style/InfoEventTextView">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tieUbicacionEvento"
                 android:layout_width="match_parent"
-                android:clickable="true"
-                android:focusable="false"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_til"
                 android:hint="@string/event_location" />
@@ -57,10 +50,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/InfoEventTextView"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                android:layout_weight="1">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieFecha"
@@ -77,11 +67,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/InfoEventTextView"
-                android:layout_marginTop="20dp"
                 android:layout_width="0dp"
-                android:layout_weight="0.75"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                android:layout_weight="0.75">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieHoraComienzoEvento"
@@ -102,10 +89,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/InfoEventTextView"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                android:layout_weight="1">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieEndFecha"
@@ -122,11 +106,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/InfoEventTextView"
-                android:layout_marginTop="20dp"
                 android:layout_width="0dp"
-                android:layout_weight="0.75"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                android:layout_weight="0.75">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieHoraFinEvento"
@@ -140,10 +121,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/InfoEventTextView"
-            android:layout_marginTop="20dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            style="@style/InfoEventTextView">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tieDescripcionEvento"
@@ -155,15 +133,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddEvento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="60dp"
-            android:backgroundTint="@color/primary_color"
+            style="@style/FloatingActionButton"
             android:contentDescription="@string/add_event"
-            android:foregroundTint="@color/white"
             android:src="@drawable/ic_add_event_white"
             tools:ignore="SpeakableTextPresentCheck" />
 
