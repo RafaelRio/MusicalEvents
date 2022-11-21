@@ -1,6 +1,5 @@
 package com.example.musicalevents.aboutUs
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.musicalevents.R
-import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAboutUsBinding
 
 class AboutUsFragment : Fragment() {

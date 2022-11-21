@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.musicalevents.R
-import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.data.model.Event
-import com.example.musicalevents.data.repository.JavaEventRepository
+import com.example.musicalevents.data.repository.EventRepository
 import com.example.musicalevents.databinding.FragmentAddEventBinding
 import com.example.musicalevents.utils.DatePickerKt
 import com.example.musicalevents.utils.TimePickerFragment
@@ -24,7 +22,7 @@ import java.util.*
 class AddEventFragment : Fragment() {
 
     private lateinit var binding: FragmentAddEventBinding
-    private lateinit var eventRepository: JavaEventRepository
+    private lateinit var eventRepository: EventRepository
     val calendar = Calendar.getInstance()
     var diaInicio = "0"
     var diaFin = "0"
@@ -40,7 +38,7 @@ class AddEventFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        eventRepository = JavaEventRepository()
+        eventRepository = EventRepository()
     }
 
     override fun onCreateView(

@@ -12,6 +12,8 @@ import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivityLoginBinding
+import com.example.musicalevents.mvp.login.LoginContractKt
+import com.example.musicalevents.mvp.login.LoginPresenterKt
 import com.example.musicalevents.normalUser.MainActivity
 import com.example.musicalevents.signup.SignUpActivityKt
 import com.example.musicalevents.utils.UtilsKt

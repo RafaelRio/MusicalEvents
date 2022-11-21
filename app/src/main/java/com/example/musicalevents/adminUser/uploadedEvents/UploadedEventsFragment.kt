@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentUploadedEventsBinding
+import com.example.musicalevents.mvp.uploadedevents.UploadedEventsContract
+import com.example.musicalevents.mvp.uploadedevents.UploadedEventsPresenter
 import com.example.musicalevents.utils.EventoCrudAdapterKt
 
 class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,

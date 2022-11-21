@@ -1,8 +1,9 @@
-package com.example.musicalevents.login
+package com.example.musicalevents.mvp.login
 
 import com.example.musicalevents.data.model.Userkt
 
-class LoginPresenterKt(var view : LoginContractKt.View?) : LoginContractKt.Presenter, LoginContractKt.OnInteractorListener {
+class LoginPresenterKt(var view : LoginContractKt.View?) : LoginContractKt.Presenter,
+    LoginContractKt.OnInteractorListener {
 
     private var interactor: LoginInteractorKt? = null
 

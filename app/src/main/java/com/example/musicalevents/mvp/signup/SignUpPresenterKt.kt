@@ -1,7 +1,7 @@
-package com.example.musicalevents.signup
+package com.example.musicalevents.mvp.signup
 
 import com.example.musicalevents.data.model.Userkt
-import com.example.musicalevents.signup.SignUpContractKt.OnSignUpInteractorListener
+import com.example.musicalevents.mvp.signup.SignUpContractKt.OnSignUpInteractorListener
 
 class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Presenter, OnSignUpInteractorListener {
 

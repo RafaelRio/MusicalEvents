@@ -3,6 +3,7 @@ package com.example.musicalevents.adminUser.allEvents
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -16,9 +17,11 @@ import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.login.LoginActivitykt
+import com.example.musicalevents.mvp.allevents.AllEventsContract
+import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
-import java.time.LocalDate
+
 
 class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, AllEventsContract.View{
 
@@ -66,10 +69,15 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
 
     private fun menuCreation(){
         val menuHost: MenuHost = requireActivity()
+
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 // Add menu items here
+                if (menu is MenuBuilder) {
+                    menu.setOptionalIconsVisible(true)
+                }
                 menuInflater.inflate(R.menu.admin_menu, menu)
+
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

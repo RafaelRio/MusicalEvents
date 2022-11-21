@@ -1,7 +1,6 @@
 package com.example.musicalevents.adminUser.groupInformation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.musicalevents.R
-import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.model.Userkt
-import com.example.musicalevents.data.repository.JavaEventRepository
 import com.example.musicalevents.databinding.FragmentGroupFillInformationBinding
 import com.example.musicalevents.utils.UtilsKt
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GroupInformationFillFragment : Fragment() {

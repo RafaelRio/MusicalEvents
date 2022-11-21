@@ -1,4 +1,4 @@
-package com.example.musicalevents.signup
+package com.example.musicalevents.mvp.signup
 
 import android.os.Handler
 import android.text.TextUtils

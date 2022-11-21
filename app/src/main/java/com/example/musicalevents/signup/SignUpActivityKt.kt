@@ -9,6 +9,8 @@ import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivitySignUpBinding
 import com.example.musicalevents.login.LoginActivitykt
+import com.example.musicalevents.mvp.signup.SignUpContractKt
+import com.example.musicalevents.mvp.signup.SignUpPresenterKt
 import com.example.musicalevents.utils.UtilsKt
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

@@ -3,24 +3,14 @@ package com.example.musicalevents.data.repository;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.example.musicalevents.R;
-import com.example.musicalevents.base.EventKt;
 import com.example.musicalevents.base.OnRepositoryCallback;
 import com.example.musicalevents.data.model.Userkt;
-import com.example.musicalevents.login.LoginContractKt;
-import com.example.musicalevents.signup.SignUpContractKt;
+import com.example.musicalevents.mvp.login.LoginContractKt;
+import com.example.musicalevents.mvp.signup.SignUpContractKt;
 import com.example.musicalevents.utils.UtilsKt;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Objects;

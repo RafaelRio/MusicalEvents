@@ -1,8 +1,8 @@
-package com.example.musicalevents.normalUser.allEvents
+package com.example.musicalevents.mvp.allevents
 
 import com.example.musicalevents.data.model.Event
 
-interface UserAllEventsContract {
+interface AllEventsContract {
     interface View : OnRepositoryCallback {
     }
 

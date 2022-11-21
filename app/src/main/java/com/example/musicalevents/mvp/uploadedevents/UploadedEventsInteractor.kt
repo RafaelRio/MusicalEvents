@@ -1,16 +1,17 @@
-package com.example.musicalevents.adminUser.uploadedEvents
+package com.example.musicalevents.mvp.uploadedevents
 
 import com.example.musicalevents.data.model.Event
-import com.example.musicalevents.data.repository.JavaEventRepository
+import com.example.musicalevents.data.repository.EventRepository
 
-class UploadedEventsInteractor(private var listener: UploadedEventsContract.OnRepositoryCallback?) : UploadedEventsContract.Interactor {
+class UploadedEventsInteractor(private var listener: UploadedEventsContract.OnRepositoryCallback?) :
+    UploadedEventsContract.Interactor {
 
     override fun delete(event: Event) {
-        JavaEventRepository.getInstance().delete(this, event)
+        EventRepository.instance.delete(this, event)
     }
 
     override fun getMyEvents() {
-        JavaEventRepository.getInstance().getMyEvents(this)
+        EventRepository.instance.getMyEvents(this)
     }
 
     override fun onListSuccess(eventList: List<Event>) {

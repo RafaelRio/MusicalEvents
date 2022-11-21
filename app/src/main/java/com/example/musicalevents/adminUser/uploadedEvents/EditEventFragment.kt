@@ -12,6 +12,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentEditEventBinding
+import com.example.musicalevents.mvp.uploadedevents.UploadedEventsContract
+import com.example.musicalevents.mvp.uploadedevents.UploadedEventsPresenter
 import com.example.musicalevents.utils.DatePickerKt
 import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt

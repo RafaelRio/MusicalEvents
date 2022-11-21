@@ -37,7 +37,6 @@ class InfoEventFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentInfoEventBinding.inflate(inflater, container, false)
         return binding.root
     }

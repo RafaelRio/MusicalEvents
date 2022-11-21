@@ -1,8 +1,9 @@
-package com.example.musicalevents.adminUser.uploadedEvents
+package com.example.musicalevents.mvp.uploadedevents
 
 import com.example.musicalevents.data.model.Event
 
-class UploadedEventsPresenter (var view: UploadedEventsContract.View?) : UploadedEventsContract.Presenter {
+class UploadedEventsPresenter (var view: UploadedEventsContract.View?) :
+    UploadedEventsContract.Presenter {
 
     private var interactor: UploadedEventsInteractor? = null
 

@@ -1,9 +1,9 @@
-package com.example.musicalevents.signup
+package com.example.musicalevents.mvp.signup
 
 import com.example.musicalevents.base.BasePresenterKt
 import com.example.musicalevents.base.OnRepositoryCallback
-import com.example.musicalevents.login.LoginContractKt
-import com.example.musicalevents.login.LoginContractKt.OnInteractorListener
+import com.example.musicalevents.mvp.login.LoginContractKt
+import com.example.musicalevents.mvp.login.LoginContractKt.OnInteractorListener
 
 interface SignUpContractKt {
 

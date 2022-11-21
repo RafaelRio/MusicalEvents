@@ -8,21 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.musicalevents.mvp.allevents.AllEventsContract
+import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentUserBinding
 import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 
-class UserFragment : Fragment() , EventoListAdapterKt.OnManageEventoListener, UserAllEventsContract.View{
+class UserFragment : Fragment() , EventoListAdapterKt.OnManageEventoListener, AllEventsContract.View{
 
     private lateinit var binding : FragmentUserBinding
     private var adapter: EventoListAdapterKt? = null
-    private lateinit var presenter : UserAllEventsContract.Presenter
+    private lateinit var presenter : AllEventsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = UserAllEventsPresenter(this)
+        presenter = AllEventsPresenter(this)
     }
 
     override fun onStart() {

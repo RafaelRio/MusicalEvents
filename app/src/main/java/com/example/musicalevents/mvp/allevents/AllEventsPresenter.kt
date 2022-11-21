@@ -1,4 +1,4 @@
-package com.example.musicalevents.adminUser.allEvents
+package com.example.musicalevents.mvp.allevents
 
 import com.example.musicalevents.data.model.Event
 
