@@ -1,7 +1,11 @@
 package com.example.musicalevents.adminUser.allEvents
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
@@ -23,16 +27,28 @@ import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 
 
-class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, AllEventsContract.View{
+class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
+    AllEventsContract.View {
 
-    private lateinit var binding : FragmentAdminBinding
+    private lateinit var binding: FragmentAdminBinding
     private var adapter: EventoListAdapterKt? = null
-    private lateinit var presenter : AllEventsContract.Presenter
-    private val currentUser : Userkt = LoginRepository.currentUser
+    private lateinit var presenter: AllEventsContract.Presenter
+    private lateinit var currentUser: Userkt
+    private lateinit var prefs : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = AllEventsPresenter(this)
+        prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val admin = prefs.getBoolean("admin", false)
+        val email = prefs.getString("email", "")
+        val password = prefs.getString("password", "")
+        val instagram = prefs.getString("instagram", "")
+        val twitter = prefs.getString("twitter", "")
+        val facebook = prefs.getString("facebook", "")
+        val website = prefs.getString("website", "")
+        currentUser = Userkt(email, password, admin, twitter, instagram, facebook, website)
+        LoginRepository.currentUser = currentUser
     }
 
     override fun onStart() {
@@ -40,7 +56,11 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
         presenter.getAllEvents(System.currentTimeMillis())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentAdminBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -57,7 +77,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
         }
     }
 
-    private fun initRv(){
+    private fun initRv() {
         adapter = EventoListAdapterKt(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
@@ -67,7 +87,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
         binding.rvEventos.adapter = adapter
     }
 
-    private fun menuCreation(){
+    private fun menuCreation() {
         val menuHost: MenuHost = requireActivity()
 
         menuHost.addMenuProvider(object : MenuProvider {
@@ -95,7 +115,10 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
                     }
 
                     R.id.group_info -> {
-                        val action = AdminFragmentDirections.actionAdminFragmentToGroupInformationFillFragment(currentUser)
+                        val action =
+                            AdminFragmentDirections.actionAdminFragmentToGroupInformationFillFragment(
+                                currentUser
+                            )
                         NavHostFragment.findNavController(this@AdminFragment).navigate(action)
                         return true
                     }
@@ -107,6 +130,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener, Al
                     }
 
                     R.id.close_session -> {
+                        prefs.edit().clear().apply()
                         startActivity(Intent(context, LoginActivitykt::class.java))
                         requireActivity().finish()
                         return true

@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_userFragment_to_userEventInfoFragment"
             app:destination="@id/userEventInfoFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_aboutUsFragment2"
+            app:destination="@id/aboutUsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/userEventInfoFragment"
@@ -22,4 +25,9 @@
             android:name="userEvent"
             app:argType="com.example.musicalevents.data.model.Event" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment2"
+        android:name="com.example.musicalevents.aboutUs.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>

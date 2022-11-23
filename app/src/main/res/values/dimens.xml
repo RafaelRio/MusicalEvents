@@ -1,5 +1,5 @@
 <resources>
-<!--    DP      -->
+    <!--    DP      -->
     <dimen name="_0dp">0dp</dimen>
     <dimen name="_5dp">5dp</dimen>
     <dimen name="_10dp">10dp</dimen>
@@ -10,8 +10,9 @@
     <dimen name="_40dp">40dp</dimen>
     <dimen name="_60dp">60dp</dimen>
 
-<!--    SP      -->
+    <!--    SP      -->
     <dimen name="_15sp">15sp</dimen>
     <dimen name="_20sp">20sp</dimen>
     <dimen name="_40sp">40sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

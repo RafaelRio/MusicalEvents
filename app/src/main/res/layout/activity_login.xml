@@ -74,4 +74,10 @@
         android:id="@+id/btSignIn"
         android:text="@string/btSignIn_text"
         style="@style/button"/>
+
+    <CheckBox
+        android:id="@+id/ckremember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recordarme"/>
 </LinearLayout>

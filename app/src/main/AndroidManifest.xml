@@ -14,6 +14,16 @@
         android:theme="@style/Theme.MusicalEvents"
         tools:targetApi="31">
         <activity
+            android:name=".utils.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MusicalEvents.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".adminUser.AdminActivity"
             android:exported="false" />
         <activity
@@ -25,16 +35,12 @@
         <activity
             android:name=".login.LoginActivitykt"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>

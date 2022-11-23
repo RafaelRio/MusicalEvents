@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
         <item name="colorOnSecondary">@color/secondaryDarkColor</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimary</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -46,7 +46,7 @@
         <item name="android:background">@drawable/background_til</item>
         <item name="boxStrokeWidth">@dimen/_0dp</item>
         <item name="boxStrokeWidthFocused">@dimen/_0dp</item>
-        </style>
+    </style>
 
     <style name="InfoEventLabel">
         <item name="android:layout_width">match_parent</item>
