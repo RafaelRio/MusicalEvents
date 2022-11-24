@@ -1,6 +1,5 @@
 package com.example.musicalevents.normalUser.allEvents
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -15,24 +14,24 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
-import com.example.musicalevents.adminUser.allEvents.AdminFragmentDirections
-import com.example.musicalevents.mvp.allevents.AllEventsContract
-import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.FragmentUserBinding
 import com.example.musicalevents.login.LoginActivitykt
+import com.example.musicalevents.mvp.allevents.AllEventsContract
+import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 
-class UserFragment : Fragment() , EventoListAdapterKt.OnManageEventoListener, AllEventsContract.View{
+class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
+    AllEventsContract.View {
 
-    private lateinit var binding : FragmentUserBinding
+    private lateinit var binding: FragmentUserBinding
     private var adapter: EventoListAdapterKt? = null
     private lateinit var currentUser: Userkt
-    private lateinit var prefs : SharedPreferences
-    private lateinit var presenter : AllEventsContract.Presenter
+    private lateinit var prefs: SharedPreferences
+    private lateinit var presenter: AllEventsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +53,11 @@ class UserFragment : Fragment() , EventoListAdapterKt.OnManageEventoListener, Al
         presenter.getAllEvents(System.currentTimeMillis())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentUserBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -72,7 +75,7 @@ class UserFragment : Fragment() , EventoListAdapterKt.OnManageEventoListener, Al
 
     }
 
-    private fun initRv(){
+    private fun initRv() {
         adapter = EventoListAdapterKt(ArrayList(), this)
         //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)

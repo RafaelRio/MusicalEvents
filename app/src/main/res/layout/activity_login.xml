@@ -13,26 +13,26 @@
 
     <TextView
         style="@style/fragmentTitle"
-        android:text="@string/tvLogin_login"/>
+        android:text="@string/tvLogin_login" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:boxStrokeWidth="0dp"
-        app:errorEnabled="true"
+        android:layout_marginTop="@dimen/_20dp"
         app:boxStrokeColor="@color/transparent"
-        app:boxStrokeWidthFocused="0dp">
+        app:boxStrokeWidth="@dimen/_0dp"
+        app:boxStrokeWidthFocused="@dimen/_0dp"
+        app:errorEnabled="true">
 
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tieEmail"
             android:layout_width="match_parent"
-            android:inputType="textEmailAddress|textNoSuggestions"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/background_til"
-            android:hint="@string/tieUser" />
+            android:hint="@string/tieUser"
+            android:inputType="textEmailAddress|textNoSuggestions" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,26 +41,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10dp"
-        app:endIconMode="password_toggle"
-        app:boxStrokeWidth="0dp"
-        app:errorEnabled="true"
         app:boxStrokeColor="@color/transparent"
-        app:boxStrokeWidthFocused="0dp">
-
+        app:boxStrokeWidth="@dimen/_0dp"
+        app:boxStrokeWidthFocused="@dimen/_0dp"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiePassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/background_til"
             android:hint="@string/tiePassword"
             android:inputType="textPassword|textNoSuggestions" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/ckremember"
+            android:layout_width="@dimen/_0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/chkRemember" />
+
         <Button
             android:id="@+id/btSignUp"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bodoni_regular"
             android:text="@string/btSignUp_text"
@@ -69,15 +81,13 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <Button
         android:id="@+id/btSignIn"
-        android:text="@string/btSignIn_text"
-        style="@style/button"/>
+        style="@style/button"
+        android:text="@string/btSignIn_text" />
 
-    <CheckBox
-        android:id="@+id/ckremember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recordarme"/>
+
 </LinearLayout>

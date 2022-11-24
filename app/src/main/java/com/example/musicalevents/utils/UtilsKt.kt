@@ -1,10 +1,14 @@
 package com.example.musicalevents.utils
 
 import android.app.Activity
+import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.preference.PreferenceManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.musicalevents.data.model.Event
+import com.example.musicalevents.data.model.Userkt
+import com.example.musicalevents.data.repository.LoginRepository
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 import java.util.regex.Pattern
@@ -114,8 +118,13 @@ class UtilsKt {
 
         @JvmStatic
         fun isPasswordValid(password: String): Boolean {
-            val PASSWORDPATTERN =
-                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$"
+            val PASSWORDPATTERN = "(?=.*[0-9])" +           //at least 1 digit
+                    "(?=.*[a-z])" +                         //at least 1 lower case letter
+                    "(?=.*[A-Z])" +                         //at least 1 upper case letter
+                    "(?=.*[a-zA-Z])" +                      //any letter
+                    "(?=\\S+$)" +                           //no white spaces
+                    ".{8,}" +                               //at least 8 characters
+                    "$"
             val pattern = Pattern.compile(PASSWORDPATTERN);
             val matcher = pattern.matcher(password);
             return matcher.matches();
