@@ -23,6 +23,7 @@ import com.example.musicalevents.databinding.FragmentAdminBinding
 import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.allevents.AllEventsContract
 import com.example.musicalevents.mvp.allevents.AllEventsPresenter
+import com.example.musicalevents.utils.ConfirmAddress
 import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 

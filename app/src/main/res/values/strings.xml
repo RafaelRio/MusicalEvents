@@ -43,7 +43,7 @@
     <string name="error_empty_eventName">Empty event name</string>
     <string name="error_facebooknotfound">Facebook not found</string>
     <string name="error_instagramnotfound">Instragam not found</string>
-    <string name="error_passwordFormat">No valid format</string>
+    <string name="error_passwordFormat">Password must contain uppercase, lowercase and numbers</string>
     <string name="error_twitternotfound">Twitter not found</string>
     <string name="error_userExists">User already exists</string>
     <string name="error_websitenotfound">Website not found</string>
@@ -104,4 +104,5 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

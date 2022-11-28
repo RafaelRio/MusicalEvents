@@ -15,18 +15,8 @@ class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListen
             if (TextUtils.isEmpty(user)) {
                 listener.onUserEmptyError()
                 return@Runnable
-            }
-            if (TextUtils.isEmpty(password)) {
-                listener.onPasswordEmptyError()
-                return@Runnable
-            }
-            if (TextUtils.isEmpty(comfirmPassword)) {
-                listener.onConfirmPasswordEmptyError()
-                return@Runnable
-            }
-            if (!isPasswordValid(password)) {
-                listener.onPasswordError()
-                return@Runnable
+            }else{
+                listener.onUserNoError()
             }
             if (TextUtils.isEmpty(email)) {
                 listener.onEmailEmptyError()
@@ -34,10 +24,32 @@ class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListen
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 listener.onEmailError()
                 return@Runnable
+            }else{
+                listener.onEmailNoError()
+            }
+            if (TextUtils.isEmpty(password)) {
+                listener.onPasswordEmptyError()
+                return@Runnable
+            } else{
+                listener.onPasswordNoError()
+            }
+            if (TextUtils.isEmpty(comfirmPassword)) {
+                listener.onConfirmPasswordEmptyError()
+                return@Runnable
+            }else{
+                listener.onPasswordNoError()
+            }
+            if (!isPasswordValid(password)) {
+                listener.onPasswordError()
+                return@Runnable
+            }else{
+                listener.onPasswordNoError()
             }
             if (password != comfirmPassword) {
                 listener.onPasswordDontMatch()
                 return@Runnable
+            }else{
+                listener.onPasswordNoError()
             }
             LoginRepository.getInstance(this@SignUpInteractorKt)
                 .SignUp(user, email, password, comfirmPassword)

@@ -9,9 +9,12 @@ interface SignUpContractKt {
 
     interface View : LoginContractKt.View {
         fun setUserEmptyError()
+        fun setUserNoError()
         fun setConfirmPasswordEmptyError()
         fun setPasswordDontMatch()
+        fun setPasswordNoError()
         fun setEmailError()
+        fun setEmailNoError()
     }
 
     interface Presenter : BasePresenterKt {
@@ -29,8 +32,12 @@ interface SignUpContractKt {
 
     interface OnSignUpInteractorListener : OnInteractorListener, OnRepositoryCallback {
         fun onUserEmptyError()
+        fun onUserNoError()
         fun onConfirmPasswordEmptyError()
+        fun onConfirmPasswordNoError()
         fun onEmailError()
+        fun onEmailNoError()
         fun onPasswordDontMatch()
+        fun onPasswordNoError()
     }
 }

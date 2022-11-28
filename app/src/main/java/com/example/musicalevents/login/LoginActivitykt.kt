@@ -74,19 +74,16 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
     }
 
     override fun onSuccess(u: Userkt) {
-        if (binding.ckremember.isChecked) {
-            val editor = PreferenceManager.getDefaultSharedPreferences(this).edit()
-            editor.putBoolean("admin", u.isAdmin)
-            editor.putString("email", u.email)
-            editor.putString("password", u.password)
-            editor.putString("instagram", u.instagram)
-            editor.putString("twitter", u.twitter)
-            editor.putString("facebook", u.facebook)
-            editor.putString("website", u.website)
-            LoginRepository.currentUser = u
-            editor.apply()
-        }
-
+        val editor = PreferenceManager.getDefaultSharedPreferences(this).edit()
+        editor.putBoolean("admin", u.isAdmin)
+        editor.putString("email", u.email)
+        editor.putString("password", u.password)
+        editor.putString("instagram", u.instagram)
+        editor.putString("twitter", u.twitter)
+        editor.putString("facebook", u.facebook)
+        editor.putString("website", u.website)
+        editor.apply()
+        LoginRepository.currentUser = u
         if (Boolean.TRUE == u.isAdmin) {
             //Carga una vista
             startAdminActivity()

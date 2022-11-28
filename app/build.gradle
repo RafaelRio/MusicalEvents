@@ -52,6 +52,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.10"
     implementation 'androidx.datastore:datastore-preferences-rxjava3:1.0.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
     def nav_version = "2.3.5"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -100,5 +102,8 @@ dependencies {
     implementation "androidx.room:room-runtime:2.4.3"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'com.google.android.gms:play-services-places:16.1.0'
+
+    implementation 'net.sf.biweekly:biweekly:0.6.6'
 }

@@ -3,7 +3,10 @@ package com.example.musicalevents.signup
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import com.example.musicalevents.R
 import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
@@ -12,6 +15,8 @@ import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.signup.SignUpContractKt
 import com.example.musicalevents.mvp.signup.SignUpPresenterKt
 import com.example.musicalevents.utils.UtilsKt
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -26,9 +31,6 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
         setContentView(binding.root)
         setTitle(R.string.tvTitleSignUp)
         UtilsKt.disableDarkMode(this)
-
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         binding.btAlreadyAccount.setOnClickListener {
             navigateUpTo(
                 Intent(
@@ -37,10 +39,6 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
                 )
             )
         }
-        /**
-         * Se utiliza el metodo on backpressed para elemiminar la activivity signUpActivity y restaurar
-         * la actividad anterior LoginActivity
-         */
         binding.btRegistrar.setOnClickListener { view ->
             presenter!!.validateSignUp(
                 binding.tieUser.text.toString(),
@@ -61,33 +59,58 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
     }
 
     override fun setUserEmptyError() {
-        binding.tilUser.error = getString(R.string.errUserEmpty)
+        setError(binding.tilUser, binding.tieUser, R.string.errUserEmpty)
+    }
+
+    override fun setUserNoError() {
+        setNoError(binding.tilUser, binding.tieUser)
     }
 
     override fun setEmailEmptyError() {
-        binding.tilEmail.error = getString(R.string.error_EmailEmpty)
+        setError(binding.tilEmail, binding.tieEmail, R.string.error_EmailEmpty)
     }
 
     override fun setPasswordEmptyError() {
-        binding.tilPassword.error = getString(R.string.errorPasswordEmpty)
+        setError(binding.tilPassword, binding.tiePassword, R.string.errorPasswordEmpty)
     }
 
     override fun setConfirmPasswordEmptyError() {
-        binding.tilConfirmPassword.error = getString(R.string.errorPasswordEmpty)
+        setError(binding.tilConfirmPassword, binding.tieConfirmPassword, R.string.errorPasswordEmpty)
     }
 
     override fun setPasswordError() {
-        binding.tilPassword.error = getString(R.string.error_passwordFormat)
+        setError(binding.tilPassword, binding.tiePassword, R.string.error_passwordFormat)
     }
 
     override fun setEmailError() {
-        binding.tilEmail.error = getString(R.string.error_email)
+        setError(binding.tilEmail, binding.tieEmail, R.string.error_email)
+    }
+
+    override fun setEmailNoError() {
+        setNoError(binding.tilEmail, binding.tieEmail)
     }
 
     override fun setPasswordDontMatch() {
-        Toast.makeText(this, R.string.error_password_dont_match, Toast.LENGTH_SHORT).show()
+        setError(binding.tilPassword, binding.tiePassword, R.string.error_password_dont_match)
     }
 
+    override fun setPasswordNoError() {
+        setNoError(binding.tilPassword, binding.tiePassword)
+    }
+
+    private fun setError(til: TextInputLayout, tie: TextInputEditText, @StringRes error: Int) {
+        til.isErrorEnabled = true
+        tie.background = ContextCompat.getDrawable(this, R.drawable.background_border_red)
+        til.errorIconDrawable = null
+        til.error = getString(error)
+        tie.requestFocus()
+    }
+
+    private fun setNoError(til: TextInputLayout, tie: TextInputEditText) {
+        til.isErrorEnabled = false
+        tie.background = ContextCompat.getDrawable(this, R.drawable.background_til)
+        til.errorIconDrawable = null
+    }
 
     override fun onSuccess(e: Userkt) {
         finish()

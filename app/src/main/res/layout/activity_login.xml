@@ -15,6 +15,7 @@
         style="@style/fragmentTitle"
         android:text="@string/tvLogin_login" />
 
+    <!--ToDo crear estilos para los fallos en los til-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         app:boxStrokeColor="@color/transparent"
         app:boxStrokeWidth="@dimen/_0dp"
         app:boxStrokeWidthFocused="@dimen/_0dp"
-        app:errorEnabled="true">
+        app:errorEnabled="false">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -31,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background_til"
-            android:hint="@string/tieUser"
+            android:hint="@string/SignUp_tieEmail_hint"
             android:inputType="textEmailAddress|textNoSuggestions" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -45,7 +46,7 @@
         app:boxStrokeWidth="@dimen/_0dp"
         app:boxStrokeWidthFocused="@dimen/_0dp"
         app:endIconMode="password_toggle"
-        app:errorEnabled="true">
+        app:errorEnabled="false">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiePassword"
@@ -65,13 +66,14 @@
             android:id="@+id/ckremember"
             android:layout_width="@dimen/_0dp"
             android:layout_weight="1"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="@string/chkRemember" />
 
         <Button
             android:id="@+id/btSignUp"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="@dimen/_0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bodoni_regular"
@@ -87,6 +89,7 @@
     <Button
         android:id="@+id/btSignIn"
         style="@style/button"
+        android:layout_marginTop="@dimen/_0dp"
         android:text="@string/btSignIn_text" />
 
 

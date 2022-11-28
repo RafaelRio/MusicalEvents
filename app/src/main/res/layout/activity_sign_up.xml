@@ -24,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--ToDo crear estilos para los fallos en los til-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilUser"
             style="@style/RegisterTextInputLayout"
@@ -34,6 +35,7 @@
                 android:id="@+id/tieUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/_20dp"
                 android:background="@drawable/background_til"
                 android:hint="@string/tieUser"/>
         </com.google.android.material.textfield.TextInputLayout>
