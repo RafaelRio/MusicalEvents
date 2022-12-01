@@ -18,6 +18,8 @@ class UtilsKt {
         var latitud = 0.0
         var longitud = 0.0
 
+        fun setDate()
+
         fun setDateHour(text: TextView, hour: TextView, calendar: Calendar) {
             val dayOfMonth = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
             val month = String.format("%02d", calendar[Calendar.MONTH] + 1)

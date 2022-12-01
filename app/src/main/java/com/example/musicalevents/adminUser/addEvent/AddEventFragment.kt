@@ -108,7 +108,7 @@ class AddEventFragment : Fragment() {
         super.onResume()
         try {
             binding.tieUbicacionEvento.setText(
-                getCityNameByCoordinates(
+                getAddress(
                     UtilsKt.latitud,
                     UtilsKt.longitud
                 )
@@ -116,7 +116,6 @@ class AddEventFragment : Fragment() {
         } catch (e: Exception) {
             binding.tieUbicacionEvento.setText("")
         }
-        //Util.shaBase64()
     }
 
     override fun onPause() {
@@ -124,27 +123,15 @@ class AddEventFragment : Fragment() {
         binding.tieUbicacionEvento.setText("")
     }
 
-    private fun getAddress(lat: Double, lon: Double): String {
+    private fun getAddress(lat: Double, lon: Double): String? {
         val geocoder = Geocoder(context, Locale.getDefault())
         val addresses: List<Address> =
             lat.let { it1 -> geocoder.getFromLocation(it1, lon, 10) } as List<Address>
-        return "${addresses[0].thoroughfare}, ${addresses[0].locality}, ${addresses[0].countryName}"
-    }
-
-    @Throws(IOException::class)
-    private fun getCityNameByCoordinates(lat: Double, lon: Double): String? {
-        val geocoder = Geocoder(context, Locale.getDefault())
-        val addresses: List<Address> = geocoder.getFromLocation(lat, lon, 10)
-        if (addresses.isNotEmpty()) {
-            for (adr in addresses) {
-                if (adr.locality != null && adr.locality.isNotEmpty()) {
-                    if (adr.thoroughfare != null && adr.thoroughfare.isNotEmpty()) {
-                        return "${adr.thoroughfare} ${adr.locality}"
-                    }
-                }
-            }
+        if (addresses[0].thoroughfare == null){
+            Toast.makeText(context, R.string.error_no_street, Toast.LENGTH_LONG).show()
+            return null
         }
-        return null
+        return "${addresses[0].thoroughfare}, ${addresses[0].locality}, ${addresses[0].countryName}"
     }
 
     private fun validateFields(): Int {

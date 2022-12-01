@@ -67,7 +67,7 @@ class MapFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.okay -> {
-                        Toast.makeText(context, "LAT: ${l.latitude} LONG: ${l.longitude}", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(context, "LAT: ${l.latitude} LONG: ${l.longitude}", Toast.LENGTH_LONG).show()
                         UtilsKt.latitud = l.latitude
                         UtilsKt.longitud = l.longitude
                         findNavController().navigateUp()

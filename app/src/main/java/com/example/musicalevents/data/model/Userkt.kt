@@ -12,7 +12,4 @@ data class Userkt @JvmOverloads constructor(
     var facebook: String? = "",
     var website: String? = ""
 ) : Serializable {
-    companion object {
-        const val TAG = "user"
-    }
 }
