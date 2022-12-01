@@ -11,6 +11,7 @@ import com.example.musicalevents.mvp.signup.SignUpContractKt;
 import com.example.musicalevents.utils.UtilsKt;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.squareup.okhttp.internal.Util;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -40,7 +41,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
                         Userkt databaseUser = task.getResult().toObject(Userkt.class);
                         if (databaseUser == null) {
                             callback.onFailure(R.string.error_login);
-                        } else if (Objects.equals(user.getPassword(), databaseUser.getPassword())) {
+                        } else if (Objects.equals(Util.shaBase64(Objects.requireNonNull(user.getPassword())), databaseUser.getPassword())) {
                             currentUser = databaseUser;
                             callback.onSuccess(databaseUser);
                         } else {
@@ -72,7 +73,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
     }
 
     public void createUser(String email, String password) {
-        Userkt databaseUser = new Userkt(email, password, false);
+        Userkt databaseUser = new Userkt(email, Util.shaBase64(password), false);
         db.collection("personas").document(Objects.requireNonNull(databaseUser.getEmail()))
                 .set(databaseUser)
                 .addOnSuccessListener(aVoid -> {

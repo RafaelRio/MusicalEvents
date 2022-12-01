@@ -29,7 +29,11 @@
         android:id="@+id/addEventFragment"
         android:name="com.example.musicalevents.adminUser.addEvent.AddEventFragment"
         android:label="fragment_add_event"
-        tools:layout="@layout/fragment_add_event" />
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
     <fragment
         android:id="@+id/uploadedEventsFragment"
         android:name="com.example.musicalevents.adminUser.uploadedEvents.UploadedEventsFragment"
@@ -71,4 +75,8 @@
         android:name="com.example.musicalevents.aboutUs.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.musicalevents.utils.MapFragment"
+        android:label="MapFragment" />
 </navigation>

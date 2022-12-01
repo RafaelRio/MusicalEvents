@@ -102,8 +102,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.4.3"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    implementation 'com.google.android.gms:play-services-maps:16.1.0'
-    implementation 'com.google.android.gms:play-services-places:16.1.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     implementation 'net.sf.biweekly:biweekly:0.6.6'
 }
