@@ -11,6 +11,8 @@ data class Event  @JvmOverloads constructor(
     val ubicacion: String = "",
     val fechaInicioMiliSegundos: Long = 0L,
     val fechaFinMiliSegundos: Long = 0L,
-    val descripcion : String = ""
+    val descripcion : String = "",
+    var lat : Double = 0.0,
+    var lon : Double = 0.0
 ) : Serializable{
 }

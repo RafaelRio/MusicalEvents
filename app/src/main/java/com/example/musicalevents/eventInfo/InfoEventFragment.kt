@@ -2,6 +2,8 @@ package com.example.musicalevents.eventInfo
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -52,29 +54,41 @@ class InfoEventFragment : Fragment() {
 
         binding.apply {
             instagramButton.setOnClickListener {
-                eventCalendar.user.instagram?.let { it1 -> openLinks("https://www.instagram.com/${it1}/", R.string.error_instagramnotfound)
+                eventCalendar.user.instagram?.let { it1 ->
+                    openLinks("https://www.instagram.com/${it1}/", R.string.error_instagramnotfound)
 
                 }
             }
 
             twitterButton.setOnClickListener {
-                eventCalendar.user.twitter?.let { it1 -> openLinks("https://twitter.com/$it1", R.string.error_twitternotfound)
+                eventCalendar.user.twitter?.let { it1 ->
+                    openLinks("https://twitter.com/$it1", R.string.error_twitternotfound)
                 }
             }
 
             facebookButton.setOnClickListener {
-                eventCalendar.user.facebook?.let { it1 -> openLinks("https://www.facebook.com/$it1", R.string.error_facebooknotfound)
+                eventCalendar.user.facebook?.let { it1 ->
+                    openLinks("https://www.facebook.com/$it1", R.string.error_facebooknotfound)
                 }
             }
 
             websiteButton.setOnClickListener {
-                eventCalendar.user.website?.let { it1 -> openLinks(it1, R.string.error_websitenotfound)
+                eventCalendar.user.website?.let { it1 ->
+                    openLinks(it1, R.string.error_websitenotfound)
                 }
+            }
+
+            infoUbicacionEvento.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("http://maps.google.com/maps?&daddr=${eventCalendar.lat},${eventCalendar.lon}")
+                )
+                startActivity(intent)
             }
         }
     }
 
-    private fun hideButtons(){
+    private fun hideButtons() {
         if (eventCalendar.user.instagram?.isBlank() == true) {
             binding.instagramButton.visibility = View.GONE
         }
@@ -115,7 +129,7 @@ class InfoEventFragment : Fragment() {
 
         binding.apply {
             infoNombreEvento.text = eventCalendar.nombreEvento
-            infoUbicacionEvento.text = eventCalendar.ubicacion
+            infoUbicacionEvento.text = UtilsKt.getAddress(eventCalendar.lat, eventCalendar.lon, requireContext())
             infoDescripcionEvento.text = eventCalendar.descripcion
             UtilsKt.setDateHour(infoInicioFechaEvento, infoHoraInicioEvento, calInicio)
             UtilsKt.setDateHour(infoFechaFinEvento, infoHoraFinEvento, calFin)
@@ -136,7 +150,8 @@ class InfoEventFragment : Fragment() {
                         return true
                     }
                     R.id.share_event -> {
-                        /*val texto = UtilsKt.shareEvent(eventCalendar)
+                        //ToDO arreglar el share de los eventos
+                        val texto = "Ven a ver este evento conmigo"
                         val sendIntent: Intent = Intent().apply {
                             action = Intent.ACTION_SEND
                             putExtra(Intent.EXTRA_TEXT, texto)
@@ -144,30 +159,30 @@ class InfoEventFragment : Fragment() {
                         }
 
                         val shareIntent = Intent.createChooser(sendIntent, null)
-                        startActivity(shareIntent)*/
-
-                        val ical = ICalendar()
-                        val event = VEvent()
-                        event.summary = event.setSummary("tean")
-
-                        val start = Date(eventCalendar.fechaInicioMiliSegundos)
-                        event.setDateStart(start);
-
-                        val end = Date(eventCalendar.fechaFinMiliSegundos)
-                        event.setDateEnd(end)
-
-                        ical.addEvent(event);
-                        val str = Biweekly.write(ical).go()
-
-                        val sendIntent: Intent = Intent().apply {
-                            action = Intent.ACTION_SEND
-                            /*putExtra(Intent.ACTIONCA, str)
-                            setDataAndType(Uri(str), "application/ics");*/
-                            type = "application/ics"
-                        }
-
-                        val shareIntent = Intent.createChooser(sendIntent, null)
                         startActivity(shareIntent)
+
+//                        val ical = ICalendar()
+//                        val event = VEvent()
+//                        event.summary = event.setSummary("tean")
+//
+//                        val start = Date(eventCalendar.fechaInicioMiliSegundos)
+//                        event.setDateStart(start);
+//
+//                        val end = Date(eventCalendar.fechaFinMiliSegundos)
+//                        event.setDateEnd(end)
+//
+//                        ical.addEvent(event);
+//                        val str = Biweekly.write(ical).go()
+//
+//                        val sendIntent: Intent = Intent().apply {
+//                            action = Intent.ACTION_SEND
+//                            /*putExtra(Intent.ACTIONCA, str)
+//                            setDataAndType(Uri(str), "application/ics");*/
+//                            type = "application/ics"
+//                        }
+//
+//                        val shareIntent = Intent.createChooser(sendIntent, null)
+//                        startActivity(shareIntent)
 
                         return true
                     }
@@ -186,10 +201,16 @@ class InfoEventFragment : Fragment() {
         //Fecha inicio
         startEvent.set(Calendar.YEAR, binding.infoInicioFechaEvento.text.split("/")[2].toInt())
         startEvent.set(Calendar.MONTH, binding.infoInicioFechaEvento.text.split("/")[1].toInt() - 1)
-        startEvent.set(Calendar.DAY_OF_MONTH, binding.infoInicioFechaEvento.text.split("/")[0].toInt())
+        startEvent.set(
+            Calendar.DAY_OF_MONTH,
+            binding.infoInicioFechaEvento.text.split("/")[0].toInt()
+        )
 
         //Hora inicio
-        startEvent.set(Calendar.HOUR_OF_DAY, binding.infoHoraInicioEvento.text.split(":")[0].toInt())
+        startEvent.set(
+            Calendar.HOUR_OF_DAY,
+            binding.infoHoraInicioEvento.text.split(":")[0].toInt()
+        )
         startEvent.set(Calendar.MINUTE, binding.infoHoraInicioEvento.text.split(":")[1].toInt())
 
         //Fecha fin

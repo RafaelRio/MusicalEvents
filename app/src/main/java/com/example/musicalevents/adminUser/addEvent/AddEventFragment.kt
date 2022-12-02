@@ -19,7 +19,6 @@ import com.example.musicalevents.databinding.FragmentAddEventBinding
 import com.example.musicalevents.utils.DatePickerKt
 import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt
-import java.io.IOException
 import java.util.*
 
 
@@ -85,6 +84,8 @@ class AddEventFragment : Fragment() {
                 newEvent = Event(
                     nombreEvento = tieNombreEvento.text.toString(),
                     ubicacion = tieUbicacionEvento.text.toString(),
+                    lat = UtilsKt.latitud,
+                    lon = UtilsKt.longitud,
                     descripcion = tieDescripcionEvento.text.toString(),
                     fechaInicioMiliSegundos = startDate.time,
                     fechaFinMiliSegundos = endDate.time,
@@ -108,10 +109,7 @@ class AddEventFragment : Fragment() {
         super.onResume()
         try {
             binding.tieUbicacionEvento.setText(
-                getAddress(
-                    UtilsKt.latitud,
-                    UtilsKt.longitud
-                )
+                UtilsKt.getAddress(UtilsKt.latitud, UtilsKt.longitud, requireContext())
             )
         } catch (e: Exception) {
             binding.tieUbicacionEvento.setText("")
@@ -121,17 +119,6 @@ class AddEventFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         binding.tieUbicacionEvento.setText("")
-    }
-
-    private fun getAddress(lat: Double, lon: Double): String? {
-        val geocoder = Geocoder(context, Locale.getDefault())
-        val addresses: List<Address> =
-            lat.let { it1 -> geocoder.getFromLocation(it1, lon, 10) } as List<Address>
-        if (addresses[0].thoroughfare == null){
-            Toast.makeText(context, R.string.error_no_street, Toast.LENGTH_LONG).show()
-            return null
-        }
-        return "${addresses[0].thoroughfare}, ${addresses[0].locality}, ${addresses[0].countryName}"
     }
 
     private fun validateFields(): Int {
@@ -175,9 +162,12 @@ class AddEventFragment : Fragment() {
                 mesInicio = fecha[1]
                 anioInicio = fecha[2]
                 calendar.timeInMillis = startDate.time
-                calendar.set(Calendar.YEAR, anioInicio.toInt())
-                calendar.set(Calendar.MONTH, mesInicio.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, diaInicio.toInt())
+                UtilsKt.setDate(
+                    calendar = calendar,
+                    anio = anioInicio,
+                    mes = mesInicio,
+                    dia = diaInicio
+                )
                 startDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -196,9 +186,7 @@ class AddEventFragment : Fragment() {
                 mesFin = fecha[1]
                 anioFin = fecha[2]
                 calendar.timeInMillis = endDate.time
-                calendar.set(Calendar.YEAR, anioFin.toInt())
-                calendar.set(Calendar.MONTH, mesFin.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, diaFin.toInt())
+                UtilsKt.setDate(calendar = calendar, anio = anioFin, mes = mesFin, dia = diaFin)
                 endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -208,8 +196,7 @@ class AddEventFragment : Fragment() {
         val newFragment = TimePickerFragment {
             onTimeSelected(it)
             calendar.timeInMillis = startDate.time
-            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
-            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            UtilsKt.setHour(calendar = calendar, horaMinuto = it)
             startDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
@@ -223,8 +210,7 @@ class AddEventFragment : Fragment() {
         val newFragment = TimePickerFragment {
             onTimeSelected2(it)
             calendar.timeInMillis = endDate.time
-            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
-            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
+            UtilsKt.setHour(calendar = calendar, horaMinuto = it)
             endDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")

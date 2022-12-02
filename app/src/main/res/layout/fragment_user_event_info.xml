@@ -42,10 +42,11 @@
 
         <TextView
             android:id="@+id/infoUbicacionEvento"
-            style="@style/InfoEventTextView"
+            style="@style/info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblEventLocation"
-            tools:text="Ubicacion del evento" />
+            tools:text="Ubicacion del evento"
+            app:drawableEndCompat="@drawable/ic_google_maps" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llInicio"

@@ -60,6 +60,9 @@
         <argument
             android:name="editedEvent"
             app:argType="com.example.musicalevents.data.model.Event" />
+        <action
+            android:id="@+id/action_editEventFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/groupInformationFillFragment"
