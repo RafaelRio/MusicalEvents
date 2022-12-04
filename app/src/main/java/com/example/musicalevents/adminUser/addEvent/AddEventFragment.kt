@@ -1,10 +1,6 @@
 package com.example.musicalevents.adminUser.addEvent
 
-import android.location.Address
-import android.location.Geocoder
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +17,9 @@ import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
+//ToDo quitar el setdate de utilskt
+//ToDo Terminar y probar toda la parte de normal user
+//ToDo Cambiar icono de editar por uno de un lapiz
 
 class AddEventFragment : Fragment() {
 
@@ -92,15 +91,13 @@ class AddEventFragment : Fragment() {
                 )
 
                 eventRepository.uploadEvent(newEvent)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    //Esto simplemente espera un momento para volver atrás
-                    Toast.makeText(
-                        context,
-                        R.string.success_uploading_event,
-                        Toast.LENGTH_LONG
-                    ).show()
-                    findNavController().navigateUp()
-                }, 1500)
+
+                Toast.makeText(
+                    requireContext(),
+                    R.string.success_uploading_event,
+                    Toast.LENGTH_LONG
+                ).show()
+                findNavController().navigateUp()
             }
         }
     }

@@ -105,4 +105,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
     implementation 'net.sf.biweekly:biweekly:0.6.6'
+
+    implementation 'jp.co.recruit_mp:LightCalendarView:1.0.1'
 }

@@ -106,4 +106,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="error_no_street">Street not found</string>
+    <string name="welcome">"Welcome "</string>
 </resources>

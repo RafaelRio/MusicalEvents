@@ -2,8 +2,9 @@ package com.example.musicalevents.data.model
 
 import java.io.Serializable
 
-
+//ToDo Presentacion con nombre
 data class Userkt @JvmOverloads constructor(
+    var name: String? = null,
     var email: String? = null,
     var password: String? = null,
     var isAdmin: Boolean = false,

@@ -38,6 +38,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onCreate(savedInstanceState)
         presenter = AllEventsPresenter(this)
         prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val name = prefs.getString("name", "")
         val admin = prefs.getBoolean("admin", false)
         val email = prefs.getString("email", "")
         val password = prefs.getString("password", "")
@@ -45,7 +46,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         val twitter = prefs.getString("twitter", "")
         val facebook = prefs.getString("facebook", "")
         val website = prefs.getString("website", "")
-        currentUser = Userkt(email, password, admin, twitter, instagram, facebook, website)
+        currentUser = Userkt(name, email, password, admin, twitter, instagram, facebook, website)
         LoginRepository.currentUser = currentUser
     }
 
@@ -66,6 +67,8 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
+
+        binding.tvWelcome.text = "${getString(R.string.welcome)} ${currentUser.name}"
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()

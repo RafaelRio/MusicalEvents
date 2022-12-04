@@ -1,7 +1,6 @@
 package com.example.musicalevents.utils
 
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatActivity
@@ -10,14 +9,6 @@ import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.normalUser.MainActivity
 
 class SplashActivity : AppCompatActivity() {
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
 
     override fun onStart() {
         super.onStart()
@@ -32,8 +23,6 @@ class SplashActivity : AppCompatActivity() {
 
     private fun starLogin() {
         startActivity(Intent(this@SplashActivity, LoginActivitykt::class.java))
-        //Voy a llamar de forma explicita al metodo finish() de una activity, para eliminar
-        //esta activity de la pila de actividades, porque si el usuario pulsa back no que se visualice de nuevo.
         finish()
     }
 

@@ -24,7 +24,7 @@ import com.example.musicalevents.databinding.FragmentInfoEventBinding
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
-
+//Todo Aplicar todas las traducciones
 class InfoEventFragment : Fragment() {
 
     private lateinit var binding: FragmentInfoEventBinding

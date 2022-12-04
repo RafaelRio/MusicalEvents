@@ -52,8 +52,8 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
     }
 
     @Override
-    public void SignUp(String user, String email, String password, String comfirmPassword) {
-        Userkt databaseUser = new Userkt(email, password, false);
+    public void SignUp(String name, String email, String password, String comfirmPassword) {
+        Userkt databaseUser = new Userkt(name, email, password, false);
         ArrayList<String> usedEmails = new ArrayList<>();
 
         db.collection(UtilsKt.Companion.getPersonasTable())
@@ -64,7 +64,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
                             usedEmails.add(document.getId());
                         }
                         if (!usedEmails.contains(databaseUser.getEmail())){
-                            createUser(email, password);
+                            createUser(name, email, password);
                         }else {
                             callback.onFailure(R.string.error_userExists);
                         }
@@ -72,8 +72,8 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
                 });
     }
 
-    public void createUser(String email, String password) {
-        Userkt databaseUser = new Userkt(email, Util.shaBase64(password), false);
+    public void createUser(String name, String email, String password) {
+        Userkt databaseUser = new Userkt(name, email, Util.shaBase64(password), false);
         db.collection("personas").document(Objects.requireNonNull(databaseUser.getEmail()))
                 .set(databaseUser)
                 .addOnSuccessListener(aVoid -> {

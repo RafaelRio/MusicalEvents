@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat
 
 class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     AllEventsContract.View {
-
+//Todo Arreglar los estilos de error de registro y login
     private lateinit var binding: FragmentUserBinding
     private var adapter: EventoListAdapterKt? = null
     private lateinit var currentUser: Userkt
@@ -37,6 +37,7 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onCreate(savedInstanceState)
         presenter = AllEventsPresenter(this)
         prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val name = prefs.getString("name", "")
         val admin = prefs.getBoolean("admin", false)
         val email = prefs.getString("email", "")
         val password = prefs.getString("password", "")
@@ -44,7 +45,7 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         val twitter = prefs.getString("twitter", "")
         val facebook = prefs.getString("facebook", "")
         val website = prefs.getString("website", "")
-        currentUser = Userkt(email, password, admin, twitter, instagram, facebook, website)
+        currentUser = Userkt(name, email, password, admin, twitter, instagram, facebook, website)
         LoginRepository.currentUser = currentUser
     }
 

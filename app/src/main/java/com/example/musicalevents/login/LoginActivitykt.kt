@@ -75,6 +75,7 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
 
     override fun onSuccess(u: Userkt) {
         val editor = PreferenceManager.getDefaultSharedPreferences(this).edit()
+        editor.putString("name", u.name)
         editor.putBoolean("admin", u.isAdmin)
         editor.putString("email", u.email)
         editor.putString("password", u.password)
