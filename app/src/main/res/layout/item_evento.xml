@@ -11,9 +11,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:cardBackgroundColor="@color/primary_light_color"
-        app:cardElevation="10dp"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="15dp"
+        android:layout_margin="@dimen/_5dp"
+        app:cardCornerRadius="@dimen/_16dp"
         app:strokeColor="@color/primary_color"
         app:strokeWidth="@dimen/_2dp">
 
@@ -27,22 +26,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Concierto de marchas"
-                android:textSize="25sp"
+                android:textSize="@dimen/_25sp"
                 android:fontFamily="@font/bodoni_mediumitalic"
                 android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginTop="@dimen/_10dp"/>
 
             <TextView
                 android:id="@+id/tvUbicacionEvento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Plaza del obispo"
-                android:textSize="15sp"
+                android:textSize="@dimen/_15sp"
                 android:fontFamily="@font/bodoni_regular"
                 android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginTop="@dimen/_5dp"
                 app:drawableStartCompat="@drawable/ic_location_event" />
 
             <TextView
@@ -50,13 +49,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="15:30"
-                android:textSize="15sp"
+                android:textSize="@dimen/_15sp"
                 android:fontFamily="@font/bodoni_regular"
                 android:textColor="@color/black"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginTop="@dimen/_5dp"
                 app:drawableStartCompat="@drawable/ic_hour_event"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="@dimen/_16dp"/>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
