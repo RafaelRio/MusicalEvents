@@ -13,9 +13,6 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
-import biweekly.Biweekly
-import biweekly.ICalendar
-import biweekly.component.VEvent
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentUserEventInfoBinding
@@ -156,29 +153,6 @@ class UserEventInfoFragment : Fragment() {
 
                         val shareIntent = Intent.createChooser(sendIntent, null)
                         startActivity(shareIntent)*/
-
-                        val ical = ICalendar()
-                        val event = VEvent()
-                        event.summary = event.setSummary("tean")
-
-                        val start = Date(eventCalendar.fechaInicioMiliSegundos)
-                        event.setDateStart(start);
-
-                        val end = Date(eventCalendar.fechaFinMiliSegundos)
-                        event.setDateEnd(end)
-
-                        ical.addEvent(event);
-                        val str = Biweekly.write(ical).go()
-
-                        val sendIntent: Intent = Intent().apply {
-                            action = Intent.ACTION_SEND
-                            /*putExtra(Intent.ACTIONCA, str)
-                            setDataAndType(Uri(str), "application/ics");*/
-                            type = "application/ics"
-                        }
-
-                        val shareIntent = Intent.createChooser(sendIntent, null)
-                        startActivity(shareIntent)
 
                         return true
                     }

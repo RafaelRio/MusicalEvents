@@ -2,8 +2,6 @@ package com.example.musicalevents.eventInfo
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.location.Address
-import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
@@ -15,9 +13,6 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.navArgs
-import biweekly.Biweekly
-import biweekly.ICalendar
-import biweekly.component.VEvent
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.databinding.FragmentInfoEventBinding
