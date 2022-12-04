@@ -2,16 +2,17 @@ package com.example.musicalevents.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.location.Address
 import android.location.Geocoder
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.FragmentActivity
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import com.google.android.material.textfield.TextInputEditText
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
@@ -23,17 +24,6 @@ class UtilsKt {
         val personasTable = "personas"
         var latitud = 0.0
         var longitud = 0.0
-
-        fun setDate(calendar: Calendar, anio: String, mes: String, dia: String) {
-            calendar.set(Calendar.YEAR, anio.toInt())
-            calendar.set(Calendar.MONTH, mes.toInt() - 1)
-            calendar.set(Calendar.DAY_OF_MONTH, dia.toInt())
-        }
-
-        fun setHour(calendar: Calendar, horaMinuto: String) {
-            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(horaMinuto.split(":")[0]))
-            calendar.set(Calendar.MINUTE, Integer.parseInt(horaMinuto.split(":")[1]))
-        }
 
         fun setDateHour(text: TextView, hour: TextView, calendar: Calendar) {
             val dayOfMonth = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
@@ -81,6 +71,10 @@ class UtilsKt {
                 Toast.makeText(context, R.string.error_no_street, Toast.LENGTH_LONG).show()
                 return null
             }
+            if (addresses[0].locality == null) {
+                Toast.makeText(context, R.string.error_no_locality, Toast.LENGTH_LONG).show()
+                return null
+            }
             return "${addresses[0].thoroughfare}, ${addresses[0].locality}, ${addresses[0].countryName}"
         }
 
@@ -100,6 +94,12 @@ class UtilsKt {
             holder.bind(eventos[position], listener)
         }
 
+        private fun convertLongToTime(time: Long): String {
+            val date = Date(time)
+            val format = SimpleDateFormat("dd/MM/yyyy HH:mm")
+            return format.format(date)
+        }
+
         fun disableDarkMode(activity: Activity) {
             val nightModeFlags: Int =
                 activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
@@ -117,9 +117,8 @@ class UtilsKt {
             eventos.addAll(events!!)
         }
 
-        @JvmStatic
         fun isPasswordValid(password: String): Boolean {
-            val PASSWORDPATTERN =
+            val passwordPattern =
                 "(?=.*[0-9])" +                         //at least 1 digit
                         "(?=.*[a-z])" +                         //at least 1 lower case letter
                         "(?=.*[A-Z])" +                         //at least 1 upper case letter
@@ -127,9 +126,22 @@ class UtilsKt {
                         "(?=\\S+$)" +                           //no white spaces
                         ".{8,}" +                               //at least 8 characters
                         "$"
-            val pattern = Pattern.compile(PASSWORDPATTERN);
+            val pattern = Pattern.compile(passwordPattern);
             val matcher = pattern.matcher(password);
             return matcher.matches();
+        }
+
+        fun shareEvent(eventCalendar : Event, activity: Activity){
+            val dia = convertLongToTime(eventCalendar.fechaInicioMiliSegundos)
+            val texto = "${activity.getString(R.string.come_with_me)} ${eventCalendar.nombreEvento} ${activity.getString(R.string._in)} ${eventCalendar.ubicacion} ${activity.getString(R.string.at)} $dia"
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, texto)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            activity.startActivity(shareIntent)
         }
     }
 }

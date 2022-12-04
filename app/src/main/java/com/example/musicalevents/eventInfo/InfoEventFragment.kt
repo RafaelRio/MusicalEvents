@@ -19,8 +19,6 @@ import com.example.musicalevents.databinding.FragmentInfoEventBinding
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
-//Todo Aplicar todas las traducciones
-//ToDo Tener cuidado con los nulos del geocoder
 class InfoEventFragment : Fragment() {
 
     private lateinit var binding: FragmentInfoEventBinding
@@ -146,16 +144,7 @@ class InfoEventFragment : Fragment() {
                         return true
                     }
                     R.id.share_event -> {
-                        //ToDO arreglar el share de los eventos
-                        val texto = "Ven a ver este evento conmigo"
-                        val sendIntent: Intent = Intent().apply {
-                            action = Intent.ACTION_SEND
-                            putExtra(Intent.EXTRA_TEXT, texto)
-                            type = "text/plain"
-                        }
-
-                        val shareIntent = Intent.createChooser(sendIntent, null)
-                        startActivity(shareIntent)
+                        UtilsKt.shareEvent(eventCalendar = eventCalendar, activity = requireActivity())
 
                         return true
                     }

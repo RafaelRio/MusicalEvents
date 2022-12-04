@@ -17,9 +17,6 @@ import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
-//ToDo quitar el setdate de utilskt
-//ToDo Terminar y probar toda la parte de normal user
-
 class AddEventFragment : Fragment() {
 
     private lateinit var binding: FragmentAddEventBinding
@@ -90,7 +87,6 @@ class AddEventFragment : Fragment() {
                 )
 
                 eventRepository.uploadEvent(newEvent)
-
                 Toast.makeText(
                     requireContext(),
                     R.string.success_uploading_event,
@@ -158,12 +154,9 @@ class AddEventFragment : Fragment() {
                 mesInicio = fecha[1]
                 anioInicio = fecha[2]
                 calendar.timeInMillis = startDate.time
-                UtilsKt.setDate(
-                    calendar = calendar,
-                    anio = anioInicio,
-                    mes = mesInicio,
-                    dia = diaInicio
-                )
+                calendar.set(Calendar.YEAR, anioInicio.toInt())
+                calendar.set(Calendar.MONTH, mesInicio.toInt() - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, diaInicio.toInt())
                 startDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -182,7 +175,9 @@ class AddEventFragment : Fragment() {
                 mesFin = fecha[1]
                 anioFin = fecha[2]
                 calendar.timeInMillis = endDate.time
-                UtilsKt.setDate(calendar = calendar, anio = anioFin, mes = mesFin, dia = diaFin)
+                calendar.set(Calendar.YEAR, anioFin.toInt())
+                calendar.set(Calendar.MONTH, mesFin.toInt() - 1)
+                calendar.set(Calendar.DAY_OF_MONTH, diaFin.toInt())
                 endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -192,7 +187,8 @@ class AddEventFragment : Fragment() {
         val newFragment = TimePickerFragment {
             onTimeSelected(it)
             calendar.timeInMillis = startDate.time
-            UtilsKt.setHour(calendar = calendar, horaMinuto = it)
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
+            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
             startDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
@@ -206,7 +202,8 @@ class AddEventFragment : Fragment() {
         val newFragment = TimePickerFragment {
             onTimeSelected2(it)
             calendar.timeInMillis = endDate.time
-            UtilsKt.setHour(calendar = calendar, horaMinuto = it)
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(it.split(":")[0]))
+            calendar.set(Calendar.MINUTE, Integer.parseInt(it.split(":")[1]))
             endDate.time = calendar.timeInMillis
         }
         newFragment.show(requireActivity().supportFragmentManager, "timepicker")
