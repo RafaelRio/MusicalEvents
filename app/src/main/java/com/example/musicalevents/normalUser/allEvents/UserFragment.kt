@@ -67,6 +67,8 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
 
+        binding.tvWelcome.text = "${getString(R.string.welcome)} ${currentUser.name}"
+
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
             val fechaInicio = SimpleDateFormat("d/M/y").parse("$day/${month + 1}/$year")
