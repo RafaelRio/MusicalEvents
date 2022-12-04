@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:cardBackgroundColor="@color/primary_light_color"
         android:layout_margin="@dimen/_5dp"
+        app:cardBackgroundColor="@color/primary_light_color"
         app:cardCornerRadius="@dimen/_16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/primary_color"
         app:strokeWidth="@dimen/_2dp">
 
@@ -23,45 +23,43 @@
 
             <TextView
                 android:id="@+id/tvNombreEvento"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Concierto de marchas"
-                android:textSize="@dimen/_25sp"
-                android:fontFamily="@font/bodoni_mediumitalic"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/_20dp"
-                android:layout_marginTop="@dimen/_10dp"/>
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:fontFamily="@font/bodoni_mediumitalic"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/_25sp"
+                app:drawableEndCompat="@drawable/ic_next"
+                tools:text="Concierto de marchas" />
 
             <TextView
                 android:id="@+id/tvUbicacionEvento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Plaza del obispo"
-                android:textSize="@dimen/_15sp"
-                android:fontFamily="@font/bodoni_regular"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/_20dp"
                 android:layout_marginTop="@dimen/_5dp"
-                app:drawableStartCompat="@drawable/ic_location_event" />
+                android:fontFamily="@font/bodoni_regular"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/_15sp"
+                app:drawableStartCompat="@drawable/ic_location_event"
+                tools:text="Plaza del obispo" />
 
             <TextView
                 android:id="@+id/tvHoraEvento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="15:30"
-                android:textSize="@dimen/_15sp"
-                android:fontFamily="@font/bodoni_regular"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/_20dp"
                 android:layout_marginTop="@dimen/_5dp"
+                android:layout_marginBottom="@dimen/_16dp"
+                android:fontFamily="@font/bodoni_regular"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="@dimen/_15sp"
                 app:drawableStartCompat="@drawable/ic_hour_event"
-                android:layout_marginBottom="@dimen/_16dp"/>
-
+                tools:text="15:30" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
 
     </com.google.android.material.card.MaterialCardView>
 

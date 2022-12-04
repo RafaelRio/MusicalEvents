@@ -134,7 +134,7 @@
             android:id="@+id/fabEditEvento"
             style="@style/FloatingActionButton"
             android:contentDescription="@string/edit_event"
-            android:src="@drawable/ic_add_event_white"
+            android:src="@drawable/ic_edit"
             tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

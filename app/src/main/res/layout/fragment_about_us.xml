@@ -27,7 +27,7 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/bodoni_regular"
             android:text="@string/about_me"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryTextColor"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/titleAboutUs" />
 
@@ -37,7 +37,7 @@
             android:layout_height="1dp"
             android:layout_margin="20dp"
             android:alpha="0.25"
-            android:background="@color/black"
+            android:background="@color/primaryTextColor"
             app:layout_constraintTop_toBottomOf="@id/aboutMe" />
 
         <TextView

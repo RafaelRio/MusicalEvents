@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable-anydpi/ic_add_event_white.xml" value="0.2615" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable-anydpi/ic_location_event.xml" value="0.2645" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_blue_button.xml" value="0.2425" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_border_red.xml" value="0.2475" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_event_cardview.xml" value="0.1785" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/background_til.xml" value="0.2425" />
+        <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/drawable/ic_next.xml" value="0.1895" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/font/font.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout-v29/activity_sign_up.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/rafa2/Desktop/MusicalEvents/app/src/main/res/layout/activity_admin.xml" value="0.22826086956521738" />

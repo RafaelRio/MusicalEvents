@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/bodoni_semibold"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryTextColor"
             android:backgroundTint="@color/transparent"
             android:text="@string/btAlreadyAccount"
             android:textAllCaps="false"

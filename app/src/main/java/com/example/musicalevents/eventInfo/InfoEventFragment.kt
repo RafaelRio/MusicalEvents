@@ -20,6 +20,7 @@ import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
 //Todo Aplicar todas las traducciones
+//ToDo Tener cuidado con los nulos del geocoder
 class InfoEventFragment : Fragment() {
 
     private lateinit var binding: FragmentInfoEventBinding
@@ -155,29 +156,6 @@ class InfoEventFragment : Fragment() {
 
                         val shareIntent = Intent.createChooser(sendIntent, null)
                         startActivity(shareIntent)
-
-//                        val ical = ICalendar()
-//                        val event = VEvent()
-//                        event.summary = event.setSummary("tean")
-//
-//                        val start = Date(eventCalendar.fechaInicioMiliSegundos)
-//                        event.setDateStart(start);
-//
-//                        val end = Date(eventCalendar.fechaFinMiliSegundos)
-//                        event.setDateEnd(end)
-//
-//                        ical.addEvent(event);
-//                        val str = Biweekly.write(ical).go()
-//
-//                        val sendIntent: Intent = Intent().apply {
-//                            action = Intent.ACTION_SEND
-//                            /*putExtra(Intent.ACTIONCA, str)
-//                            setDataAndType(Uri(str), "application/ics");*/
-//                            type = "application/ics"
-//                        }
-//
-//                        val shareIntent = Intent.createChooser(sendIntent, null)
-//                        startActivity(shareIntent)
 
                         return true
                     }

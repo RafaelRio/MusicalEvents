@@ -19,7 +19,6 @@ import java.util.*
 
 //ToDo quitar el setdate de utilskt
 //ToDo Terminar y probar toda la parte de normal user
-//ToDo Cambiar icono de editar por uno de un lapiz
 
 class AddEventFragment : Fragment() {
 
