@@ -59,57 +59,31 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
     }
 
     override fun setUserEmptyError() {
-        setError(binding.tilUser, binding.tieUser, R.string.errUserEmpty)
-    }
-
-    override fun setUserNoError() {
-        setNoError(binding.tilUser, binding.tieUser)
+        binding.tilUser.error = getString(R.string.errUserEmpty)
     }
 
     override fun setEmailEmptyError() {
-        setError(binding.tilEmail, binding.tieEmail, R.string.error_EmailEmpty)
+        binding.tilEmail.error = getString(R.string.error_EmailEmpty)
     }
 
     override fun setPasswordEmptyError() {
-        setError(binding.tilPassword, binding.tiePassword, R.string.errorPasswordEmpty)
+        binding.tilPassword.error = getString(R.string.errorPasswordEmpty)
     }
 
     override fun setConfirmPasswordEmptyError() {
-        setError(binding.tilConfirmPassword, binding.tieConfirmPassword, R.string.errorPasswordEmpty)
+        binding.tilConfirmPassword.error = getString(R.string.errorPasswordEmpty)
     }
 
     override fun setPasswordError() {
-        setError(binding.tilPassword, binding.tiePassword, R.string.error_passwordFormat)
+        binding.tilPassword.error = getString(R.string.error_passwordFormat)
     }
 
     override fun setEmailError() {
-        setError(binding.tilEmail, binding.tieEmail, R.string.error_email)
-    }
-
-    override fun setEmailNoError() {
-        setNoError(binding.tilEmail, binding.tieEmail)
+        binding.tilEmail.error = getString(R.string.error_email)
     }
 
     override fun setPasswordDontMatch() {
-        setError(binding.tilPassword, binding.tiePassword, R.string.error_password_dont_match)
-    }
-
-    override fun setPasswordNoError() {
-        setNoError(binding.tilPassword, binding.tiePassword)
-    }
-
-    private fun setError(til: TextInputLayout, tie: TextInputEditText, @StringRes error: Int) {
-        til.isErrorEnabled = true
-        tie.background = ContextCompat.getDrawable(this, R.drawable.background_border_red)
-        til.errorIconDrawable = null
-        til.error = getString(error)
-        tie.requestFocus()
-    }
-
-    private fun setNoError(til: TextInputLayout, tie: TextInputEditText) {
-        til.isErrorEnabled = false
-        tie.background = ContextCompat.getDrawable(this, R.drawable.background_til)
-        til.errorIconDrawable = null
+        Toast.makeText(this, R.string.error_password_dont_match, Toast.LENGTH_SHORT).show()
     }
 
     override fun onSuccess(e: Userkt) {

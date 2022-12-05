@@ -39,8 +39,8 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
         val uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN
         decorView.systemUiVisibility = uiOptions
         UtilsKt.disableDarkMode(this)
-        binding.btSignUp.setOnClickListener { view -> startActivityLogin() }
-        binding.btSignIn.setOnClickListener { view ->
+        binding.btSignUp.setOnClickListener { startActivityLogin() }
+        binding.btSignIn.setOnClickListener {
             e1.email = binding.tieEmail.text.toString()
             e1.password = binding.tiePassword.text.toString()
             presenter!!.validateCredentials(e1)

@@ -24,10 +24,6 @@ class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Pre
         view!!.setUserEmptyError()
     }
 
-    override fun onUserNoError() {
-        view!!.setUserNoError()
-    }
-
     override fun onEmailEmptyError() {
         view!!.setEmailEmptyError()
     }
@@ -40,10 +36,6 @@ class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Pre
         view!!.setConfirmPasswordEmptyError()
     }
 
-    override fun onConfirmPasswordNoError() {
-        view!!.setPasswordNoError()
-    }
-
     override fun onPasswordError() {
         view!!.setPasswordError()
     }
@@ -52,16 +44,8 @@ class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Pre
         view!!.setEmailError()
     }
 
-    override fun onEmailNoError() {
-        view!!.setEmailNoError()
-    }
-
     override fun onPasswordDontMatch() {
         view!!.setPasswordDontMatch()
-    }
-
-    override fun onPasswordNoError() {
-        view!!.setPasswordNoError()
     }
 
     override fun onSuccess(u: Userkt) {
@@ -71,7 +55,6 @@ class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Pre
     override fun onFailure(message: Int) {
         view!!.onFailure(message)
     }
-
 
     override fun onDestroy() {
         view = null
