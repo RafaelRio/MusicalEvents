@@ -3,22 +3,14 @@ package com.example.musicalevents.signup
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import com.example.musicalevents.R
-import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.databinding.ActivitySignUpBinding
 import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.signup.SignUpContractKt
 import com.example.musicalevents.mvp.signup.SignUpPresenterKt
 import com.example.musicalevents.utils.UtilsKt
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
 
 class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
 
@@ -39,7 +31,7 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
                 )
             )
         }
-        binding.btRegistrar.setOnClickListener { view ->
+        binding.btRegistrar.setOnClickListener {
             presenter!!.validateSignUp(
                 binding.tieUser.text.toString(),
                 binding.tieEmail.text.toString(),
@@ -48,14 +40,12 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
             )
         }
         presenter = SignUpPresenterKt(this)
-        EventBus.getDefault().register(this)
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        //Se evitaria un futuro memory leaks
         presenter!!.onDestroy()
-        EventBus.getDefault().unregister(this)
     }
 
     override fun setUserEmptyError() {
@@ -86,16 +76,11 @@ class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
         Toast.makeText(this, R.string.error_password_dont_match, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onSuccess(e: Userkt) {
+    override fun onSuccess(u: Userkt) {
         finish()
     }
 
     override fun onFailure(message: Int) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    @Subscribe
-    fun onEvent(event: EventKt) {
-        Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -7,8 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
-import io.grpc.okhttp.internal.Util
-import java.util.*
 
 class EventoListAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoListener) :
     RecyclerView.Adapter<EventoListAdapterKt.ViewHolder>() {

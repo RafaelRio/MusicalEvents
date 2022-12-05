@@ -2,7 +2,8 @@ package com.example.musicalevents.utils
 
 import android.content.Intent
 import android.os.Handler
-import android.preference.PreferenceManager
+import android.os.Looper
+import androidx.preference.PreferenceManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.login.LoginActivitykt
@@ -12,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             if (saveSession()) {
                 startApp()
             } else {

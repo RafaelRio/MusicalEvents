@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoEventFragment"
-        android:name="com.example.musicalevents.eventInfo.InfoEventFragment"
+        android:name="com.example.musicalevents.adminUser.eventInfo.InfoEventFragment"
         android:label="fragment_info_event"
         tools:layout="@layout/fragment_info_event" >
         <argument

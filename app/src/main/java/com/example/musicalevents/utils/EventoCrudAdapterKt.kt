@@ -50,12 +50,12 @@ class EventoCrudAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoLis
         var ubicacion: TextView
         var hora: TextView
         fun bind(l: Event, listener: OnManageEventoListener) {
-            itemView.setOnClickListener { view: View? ->
+            itemView.setOnClickListener {
                 listener.onEditEvento(
                     l
                 )
             }
-            itemView.setOnLongClickListener { view: View? ->
+            itemView.setOnLongClickListener {
                 listener.onDeleteEvento(l)
                 true
             }

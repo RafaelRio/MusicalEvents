@@ -63,7 +63,7 @@ class UtilsKt {
             holder.bind(eventos[position], listener)
         }
 
-        fun getAddress(lat: Double, lon: Double, context :Context): String? {
+        fun getAddress(lat: Double, lon: Double, context: Context): String? {
             val geocoder = Geocoder(context, Locale.getDefault())
             val addresses: List<Address> =
                 lat.let { it1 -> geocoder.getFromLocation(it1, lon, 10) } as List<Address>
@@ -131,9 +131,12 @@ class UtilsKt {
             return matcher.matches();
         }
 
-        fun shareEvent(eventCalendar : Event, activity: Activity){
+        fun shareEvent(eventCalendar: Event, activity: Activity) {
             val dia = convertLongToTime(eventCalendar.fechaInicioMiliSegundos)
-            val texto = "${activity.getString(R.string.come_with_me)} ${eventCalendar.nombreEvento} ${activity.getString(R.string._in)} ${eventCalendar.ubicacion} ${activity.getString(R.string.at)} $dia"
+            val texto =
+                "${activity.getString(R.string.come_with_me)} ${eventCalendar.nombreEvento} ${
+                    activity.getString(R.string._in)
+                } ${eventCalendar.ubicacion} ${activity.getString(R.string.at)} $dia"
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_TEXT, texto)

@@ -1,6 +1,7 @@
 package com.example.musicalevents.mvp.signup
 
 import android.os.Handler
+import android.os.Looper
 import android.text.TextUtils
 import android.util.Patterns
 import com.example.musicalevents.base.OnRepositoryCallback
@@ -12,33 +13,33 @@ class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListen
     OnRepositoryCallback {
 
     fun validateSignUp(user: String?, email: String?, password: String, comfirmPassword: String) {
-        Handler().postDelayed(Runnable { // A gestionar las alternativas del caso de uso
+        Handler(Looper.getMainLooper()).postDelayed({
             if (TextUtils.isEmpty(user)) {
                 listener.onUserEmptyError()
-                return@Runnable
+                return@postDelayed
             }
             if (TextUtils.isEmpty(email)) {
                 listener.onEmailEmptyError()
-                return@Runnable
+                return@postDelayed
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 listener.onEmailError()
-                return@Runnable
+                return@postDelayed
             }
             if (TextUtils.isEmpty(password)) {
                 listener.onPasswordEmptyError()
-                return@Runnable
+                return@postDelayed
             }
             if (TextUtils.isEmpty(comfirmPassword)) {
                 listener.onConfirmPasswordEmptyError()
-                return@Runnable
+                return@postDelayed
             }
             if (!isPasswordValid(password)) {
                 listener.onPasswordError()
-                return@Runnable
+                return@postDelayed
             }
             if (password != comfirmPassword) {
                 listener.onPasswordDontMatch()
-                return@Runnable
+                return@postDelayed
             }
             LoginRepository.getInstance(this@SignUpInteractorKt)
                 .SignUp(user, email, password, comfirmPassword)

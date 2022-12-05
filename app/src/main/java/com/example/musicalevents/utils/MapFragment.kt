@@ -2,7 +2,6 @@ package com.example.musicalevents.utils
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment

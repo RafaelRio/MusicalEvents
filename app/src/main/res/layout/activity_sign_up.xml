@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondary_color"
-    tools:context="signup.SignUpActivityKt">
+    android:background="@color/secondary_color">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_margin="20dp"
-        android:layout_marginBottom="50dp">
+        android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginEnd="@dimen/_20dp"
+        android:layout_margin="@dimen/_20dp"
+        android:layout_marginBottom="@dimen/_60dp">
 
         <TextView
             android:id="@+id/tvTitleSignUp"
@@ -24,7 +23,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!--ToDo crear estilos para los fallos en los til-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilUser"
             style="@style/RegisterTextInputLayout"
@@ -35,7 +33,6 @@
                 android:id="@+id/tieUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_20dp"
                 android:background="@drawable/background_til"
                 android:hint="@string/tieUser"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -43,7 +40,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
             style="@style/RegisterTextInputLayout"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/_32dp"
             app:startIconDrawable="@drawable/ic_action_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -91,19 +88,19 @@
             android:id="@+id/btAlreadyAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20dp"
             android:fontFamily="@font/bodoni_semibold"
             android:textColor="@color/primaryTextColor"
             android:backgroundTint="@color/transparent"
             android:text="@string/btAlreadyAccount"
             android:textAllCaps="false"
-            android:textSize="15sp"
+            android:textSize="@dimen/_15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword"/>
 
         <Button
             android:id="@+id/btRegistrar"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/_5dp"
             style="@style/button"
             android:text="@string/btSignUp_text"
             app:layout_constraintBottom_toBottomOf="parent"

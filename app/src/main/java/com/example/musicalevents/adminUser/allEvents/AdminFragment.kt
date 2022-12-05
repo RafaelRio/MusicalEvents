@@ -3,7 +3,7 @@ package com.example.musicalevents.adminUser.allEvents
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
@@ -37,7 +37,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = AllEventsPresenter(this)
-        prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val name = prefs.getString("name", "")
         val admin = prefs.getBoolean("admin", false)
         val email = prefs.getString("email", "")
@@ -68,13 +68,15 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
 
-        binding.tvWelcome.text = "${getString(R.string.welcome)} ${currentUser.name}"
+        binding.tvWelcome.text = "${getString(R.string.welcome)} ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
             val fechaInicio = SimpleDateFormat("d/M/y").parse("$day/${month + 1}/$year")
 
-            presenter.getAllEvents(fechaInicio.time)
+            if (fechaInicio != null) {
+                presenter.getAllEvents(fechaInicio.time)
+            }
         }
     }
 

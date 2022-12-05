@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondary_color"
-    tools:context=".adminUser.uploadedEvents.UploadedEventsFragment">
+    android:background="@color/secondary_color">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,13 +2,12 @@ package com.example.musicalevents.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import com.example.musicalevents.R
 import com.example.musicalevents.adminUser.AdminActivity
-import com.example.musicalevents.base.EventKt
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.databinding.ActivityLoginBinding
@@ -17,11 +16,6 @@ import com.example.musicalevents.mvp.login.LoginPresenterKt
 import com.example.musicalevents.normalUser.MainActivity
 import com.example.musicalevents.signup.SignUpActivityKt
 import com.example.musicalevents.utils.UtilsKt
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import java.lang.Boolean
-import kotlin.Int
-import kotlin.toString
 
 
 class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
@@ -46,15 +40,11 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
             presenter!!.validateCredentials(e1)
         }
         presenter = LoginPresenterKt(this)
-        EventBus.getDefault().register(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        //Se evitaria un futuro memory leaks
         presenter!!.onDestroy()
-        //Se quita como subcriptor del EventBus
-        EventBus.getDefault().unregister(this)
     }
 
     private fun startActivityLogin() {
@@ -85,10 +75,10 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
         editor.putString("website", u.website)
         editor.apply()
         LoginRepository.currentUser = u
-        if (Boolean.TRUE == u.isAdmin) {
+        if (u.isAdmin) {
             //Carga una vista
             startAdminActivity()
-        } else if (Boolean.FALSE == u.isAdmin) {
+        } else if (!u.isAdmin) {
             //Carga otra vista
             startMainActivity()
         }
@@ -106,10 +96,5 @@ class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
 
     override fun onFailure(message: Int) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    @Subscribe
-    fun onEvent(event: EventKt) {
-        Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show()
     }
 }
