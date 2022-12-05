@@ -1,17 +1,24 @@
 package com.example.musicalevents.utils
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
+import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.data.model.Event
+
 
 class EventoListAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoListener) :
     RecyclerView.Adapter<EventoListAdapterKt.ViewHolder>() {
     var eventos: MutableList<Event>
+    private var context: Context? = null
     var listener: OnManageEventoListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_evento, parent, false)
@@ -20,7 +27,9 @@ class EventoListAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoLis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         UtilsKt.onBindViewHolder(holder = holder, position = position, eventos = eventos, listener = listener)
+
     }
+
 
     override fun getItemCount(): Int {
         return eventos.size

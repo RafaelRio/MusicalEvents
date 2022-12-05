@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.location.Address
 import android.location.Geocoder
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -55,11 +57,16 @@ class UtilsKt {
         ) {
             holder.ubicacion.text = eventos[position].ubicacion
             holder.nombre.text = eventos[position].nombreEvento
+            val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in)
             val eventDate = Calendar.getInstance()
             eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
+            val anio = String.format("%02d", eventDate[Calendar.YEAR])
+            val mes = String.format("%02d", eventDate[Calendar.MONTH])
+            val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
             val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
             val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
-            holder.hora.text = "$hora:$minutos"
+            holder.hora.text = "$dia/$mes/$anio - $hora:$minutos"
+            holder.itemView.startAnimation(animation)
             holder.bind(eventos[position], listener)
         }
 
@@ -88,9 +95,14 @@ class UtilsKt {
             holder.nombre.text = eventos[position].nombreEvento
             val eventDate = Calendar.getInstance()
             eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
+            val anio = String.format("%02d", eventDate[Calendar.YEAR])
+            val mes = String.format("%02d", eventDate[Calendar.MONTH])
+            val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
             val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
             val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
-            holder.hora.text = "$hora:$minutos"
+            val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in)
+            holder.itemView.startAnimation(animation)
+            holder.hora.text = "$dia/$mes/$anio - $hora:$minutos"
             holder.bind(eventos[position], listener)
         }
 
