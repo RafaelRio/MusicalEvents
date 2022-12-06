@@ -64,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_til"
+                android:inputType="textPassword|textNoSuggestions"
                 android:hint="@string/SignUp_tiePassword_hint" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +79,7 @@
                 android:id="@+id/tieConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword|textNoSuggestions"
                 android:background="@drawable/background_til"
                 android:hint="@string/SignUp_tieConfirmPassword_hint" />
         </com.google.android.material.textfield.TextInputLayout>

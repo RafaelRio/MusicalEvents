@@ -61,7 +61,7 @@ class UtilsKt {
             val eventDate = Calendar.getInstance()
             eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
             val anio = String.format("%02d", eventDate[Calendar.YEAR])
-            val mes = String.format("%02d", eventDate[Calendar.MONTH])
+            val mes = String.format("%02d", (eventDate[Calendar.MONTH] + 1))
             val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
             val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
             val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
@@ -96,7 +96,7 @@ class UtilsKt {
             val eventDate = Calendar.getInstance()
             eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
             val anio = String.format("%02d", eventDate[Calendar.YEAR])
-            val mes = String.format("%02d", eventDate[Calendar.MONTH])
+            val mes = String.format("%02d", (eventDate[Calendar.MONTH] + 1))
             val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
             val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
             val minutos = String.format("%02d", eventDate[Calendar.MINUTE])

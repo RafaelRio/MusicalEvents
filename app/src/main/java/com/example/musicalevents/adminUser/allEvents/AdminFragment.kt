@@ -3,7 +3,6 @@ package com.example.musicalevents.adminUser.allEvents
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.preference.PreferenceManager
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
@@ -11,6 +10,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.NavHostFragment
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
@@ -68,7 +68,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
 
-        binding.tvWelcome.text = "${getString(R.string.welcome)} ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
+        binding.tvWelcome.text = "${getString(R.string.welcome)}, ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
@@ -82,11 +82,8 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
 
     private fun initRv() {
         adapter = EventoListAdapterKt(ArrayList(), this)
-        //2.- OBLIGATORIOMENTE se debe indicae que diseño (layout) tendra el recycler view
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        //3.- Asgino el layout al recyclerView
         binding.rvEventos.layoutManager = linearLayoutManager
-        //4.- Asigno a la vista sus datos (modelo)
         binding.rvEventos.adapter = adapter
     }
 
@@ -95,7 +92,6 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                // Add menu items here
                 if (menu is MenuBuilder) {
                     menu.setOptionalIconsVisible(true)
                 }

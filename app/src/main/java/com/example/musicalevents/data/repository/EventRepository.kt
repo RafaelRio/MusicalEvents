@@ -13,7 +13,6 @@ import java.util.*
 
 class EventRepository : UploadedEventsContract.Repository {
     companion object{
-        private const val TAG = "JAVAREPOSITORY"
         val instance: EventRepository = EventRepository()
     }
 
@@ -52,14 +51,15 @@ class EventRepository : UploadedEventsContract.Repository {
                         val df: DateFormat = SimpleDateFormat("dd/MM/yyyy")
                         val cal = Calendar.getInstance()
                         cal.timeInMillis = fechaUnix!!
-                        val fechaSeleccionada = df.format(cal.time)
+                        val selectedDate = df.format(cal.time)
+
                         val (_, _, _, _, fechaInicioMiliSegundos) = document.toObject(
                             Event::class.java
                         )
-                        val eventDate = Calendar.getInstance()
-                        eventDate.timeInMillis = fechaInicioMiliSegundos
-                        val fechaEvento = df.format(eventDate.time)
-                        if (fechaEvento == fechaSeleccionada) {
+
+                        cal.timeInMillis = fechaInicioMiliSegundos
+                        val eventDate = df.format(cal.time)
+                        if (eventDate == selectedDate) {
                             allEvents.add(document.toObject(Event::class.java))
                         }
                     }
