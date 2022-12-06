@@ -7,7 +7,7 @@ import android.util.Patterns
 import com.example.musicalevents.base.OnRepositoryCallback
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
-import com.example.musicalevents.utils.UtilsKt.Companion.isPasswordValid
+import com.example.musicalevents.utils.UtilsKt.isPasswordValid
 
 class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListener) :
     OnRepositoryCallback {

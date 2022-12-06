@@ -50,11 +50,6 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         LoginRepository.currentUser = currentUser
     }
 
-    override fun onStart() {
-        super.onStart()
-        presenter.getAllEvents(System.currentTimeMillis())
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -81,6 +76,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     }
 
     private fun initRv() {
+        presenter.getAllEvents(System.currentTimeMillis())
         adapter = EventoListAdapterKt(ArrayList(), this)
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.rvEventos.layoutManager = linearLayoutManager

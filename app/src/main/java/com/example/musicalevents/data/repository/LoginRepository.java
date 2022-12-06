@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class LoginRepository implements LoginContractKt.Repository, SignUpContractKt.Repository {
-    private static final String TAG = "LOGINREPOSITORY";
     public static Userkt currentUser;
     private static LoginRepository instance;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -34,7 +33,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
 
     @Override
     public void login(Userkt user) {
-        db.collection(UtilsKt.Companion.getPersonasTable()).document(Objects.requireNonNull(user.getEmail()))
+        db.collection(UtilsKt.personasTable).document(Objects.requireNonNull(user.getEmail()))
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -52,11 +51,11 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
     }
 
     @Override
-    public void SignUp(String name, String email, String password, String comfirmPassword) {
+    public void SignUp(String name, String email, String password, String confirmPassword) {
         Userkt databaseUser = new Userkt(name, email, password, false);
         ArrayList<String> usedEmails = new ArrayList<>();
 
-        db.collection(UtilsKt.Companion.getPersonasTable())
+        db.collection(UtilsKt.personasTable)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -74,11 +73,10 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
 
     public void createUser(String name, String email, String password) {
         Userkt databaseUser = new Userkt(name, email, Util.shaBase64(password), false);
-        db.collection("personas").document(Objects.requireNonNull(databaseUser.getEmail()))
+        db.collection(UtilsKt.personasTable).document(Objects.requireNonNull(databaseUser.getEmail()))
                 .set(databaseUser)
                 .addOnSuccessListener(aVoid -> {
                     callback.onSuccess(databaseUser);
-                })
-                .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
+                });
     }
 }

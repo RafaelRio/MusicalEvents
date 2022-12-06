@@ -3,7 +3,6 @@ package com.example.musicalevents.normalUser.allEvents
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.preference.PreferenceManager
 import android.view.*
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
@@ -11,6 +10,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.NavHostFragment
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
@@ -22,6 +22,7 @@ import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.allevents.AllEventsContract
 import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
+import com.example.musicalevents.utils.UtilsKt
 import java.text.SimpleDateFormat
 
 class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
@@ -35,22 +36,8 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = AllEventsPresenter(this)
-        prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val name = prefs.getString("name", "")
-        val admin = prefs.getBoolean("admin", false)
-        val email = prefs.getString("email", "")
-        val password = prefs.getString("password", "")
-        val instagram = prefs.getString("instagram", "")
-        val twitter = prefs.getString("twitter", "")
-        val facebook = prefs.getString("facebook", "")
-        val website = prefs.getString("website", "")
-        currentUser = Userkt(name, email, password, admin, twitter, instagram, facebook, website)
+        UtilsKt.getCurrentUser(requireContext())
         LoginRepository.currentUser = currentUser
-    }
-
-    override fun onStart() {
-        super.onStart()
-        presenter.getAllEvents(System.currentTimeMillis())
     }
 
     override fun onCreateView(
@@ -66,7 +53,8 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
         presenter.getAllEvents(System.currentTimeMillis())
-        binding.tvWelcome.text = "${getString(R.string.welcome)}, ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
+        binding.tvWelcome.text =
+            "${getString(R.string.welcome)}, ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
@@ -80,6 +68,7 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     }
 
     private fun initRv() {
+        presenter.getAllEvents(System.currentTimeMillis())
         adapter = EventoListAdapterKt(ArrayList(), this)
         val linearLayoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         binding.rvEventos.layoutManager = linearLayoutManager

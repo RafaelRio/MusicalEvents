@@ -3,7 +3,7 @@ package com.example.musicalevents.data.repository
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.mvp.allevents.AllEventsContract
 import com.example.musicalevents.mvp.uploadedevents.UploadedEventsContract
-import com.example.musicalevents.utils.UtilsKt.Companion.eventosTable
+import com.example.musicalevents.utils.UtilsKt.eventosTable
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class EventRepository : UploadedEventsContract.Repository {
-    companion object{
+    companion object {
         val instance: EventRepository = EventRepository()
     }
 
@@ -41,26 +41,30 @@ class EventRepository : UploadedEventsContract.Repository {
             }
     }
 
-    fun getAllEvents(callback: AllEventsContract.OnRepositoryCallback, fechaUnix: Long?) {
+    fun getAllEvents(callback: AllEventsContract.OnRepositoryCallback, fechaUnix: Long) {
         val allEvents: MutableList<Event> = ArrayList()
         db.collection(eventosTable)
             .get()
             .addOnCompleteListener { task: Task<QuerySnapshot> ->
                 if (task.isSuccessful) {
                     for (document in task.result) {
-                        val df: DateFormat = SimpleDateFormat("dd/MM/yyyy")
-                        val cal = Calendar.getInstance()
-                        cal.timeInMillis = fechaUnix!!
-                        val selectedDate = df.format(cal.time)
 
-                        val (_, _, _, _, fechaInicioMiliSegundos) = document.toObject(
-                            Event::class.java
-                        )
+                        var cal = Calendar.getInstance().apply { timeInMillis = fechaUnix }
+                        val selectedYear = cal.get(Calendar.YEAR)
+                        val selectedMonth = cal.get(Calendar.MONTH)
+                        val selectedDay = cal.get(Calendar.DAY_OF_MONTH)
 
-                        cal.timeInMillis = fechaInicioMiliSegundos
-                        val eventDate = df.format(cal.time)
-                        if (eventDate == selectedDate) {
-                            allEvents.add(document.toObject(Event::class.java))
+                       val event = document.toObject(Event::class.java)
+
+                        cal = Calendar.getInstance().apply { timeInMillis = event.fechaInicioMiliSegundos }
+                        val eventYear = cal.get(Calendar.YEAR)
+                        val eventMonth = cal.get(Calendar.MONTH)
+                        val eventDay = cal.get(Calendar.DAY_OF_MONTH)
+
+                        val areDatesEqual = (selectedYear == eventYear) && (selectedMonth == eventMonth) && (selectedDay == eventDay)
+
+                        if (areDatesEqual) {
+                            allEvents.add(event)
                         }
                     }
                     callback.onListSuccess(allEvents)
