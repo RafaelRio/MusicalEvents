@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
+import android.view.animation.AnimationUtils
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -73,7 +74,9 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
                 presenter.getAllEvents(fechaInicio.time)
             }
         }
-    }
+
+        binding.calendarView.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in))
+}
 
     private fun initRv() {
         presenter.getAllEvents(System.currentTimeMillis())
