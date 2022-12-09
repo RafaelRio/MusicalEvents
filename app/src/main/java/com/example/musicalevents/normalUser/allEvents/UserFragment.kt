@@ -66,8 +66,6 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
             }
         }
 
-        binding.calendarView.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in))
-
     }
 
     private fun initRv() {

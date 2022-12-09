@@ -25,7 +25,6 @@ class InfoEventFragment : Fragment() {
     private val args: InfoEventFragmentArgs by navArgs()
     private lateinit var eventCalendar: Event
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         eventCalendar = args.calendarEvent
@@ -193,7 +192,7 @@ class InfoEventFragment : Fragment() {
         intent.putExtra(CalendarContract.Events.TITLE, binding.infoNombreEvento.text)
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
         intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
-        
+
         if(intent.resolveActivity(requireActivity().packageManager) != null){
             startActivity(intent);
         }else{

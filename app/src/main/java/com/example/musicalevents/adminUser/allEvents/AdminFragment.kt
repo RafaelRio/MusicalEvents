@@ -74,8 +74,6 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
                 presenter.getAllEvents(fechaInicio.time)
             }
         }
-
-        binding.calendarView.startAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in))
 }
 
     private fun initRv() {
