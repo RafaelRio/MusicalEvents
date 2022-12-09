@@ -55,11 +55,11 @@ object UtilsKt {
         eventos: MutableList<Event>,
         listener: EventoListAdapterKt.OnManageEventoListener
     ) {
-        holder.ubicacion.text = eventos[position].ubicacion
-        holder.nombre.text = eventos[position].nombreEvento
+        holder.ubicacion.text = eventos[position].location
+        holder.nombre.text = eventos[position].eventName
         val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in)
         val eventDate = Calendar.getInstance()
-        eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
+        eventDate.timeInMillis = eventos[position].startDate
         val anio = String.format("%02d", eventDate[Calendar.YEAR])
         val mes = String.format("%02d", (eventDate[Calendar.MONTH] + 1))
         val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
@@ -91,10 +91,10 @@ object UtilsKt {
         eventos: MutableList<Event>,
         listener: EventoCrudAdapterKt.OnManageEventoListener
     ) {
-        holder.ubicacion.text = eventos[position].ubicacion
-        holder.nombre.text = eventos[position].nombreEvento
+        holder.ubicacion.text = eventos[position].location
+        holder.nombre.text = eventos[position].eventName
         val eventDate = Calendar.getInstance()
-        eventDate.timeInMillis = eventos[position].fechaInicioMiliSegundos
+        eventDate.timeInMillis = eventos[position].startDate
         val anio = String.format("%02d", eventDate[Calendar.YEAR])
         val mes = String.format("%02d", (eventDate[Calendar.MONTH] + 1))
         val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
@@ -166,11 +166,11 @@ object UtilsKt {
     }
 
     fun shareEvent(eventCalendar: Event, activity: Activity) {
-        val dia = convertLongToTime(eventCalendar.fechaInicioMiliSegundos)
+        val dia = convertLongToTime(eventCalendar.startDate)
         val texto =
-            "${activity.getString(R.string.come_with_me)} ${eventCalendar.nombreEvento} ${
+            "${activity.getString(R.string.come_with_me)} ${eventCalendar.eventName} ${
                 activity.getString(R.string._in)
-            } ${eventCalendar.ubicacion} ${activity.getString(R.string.at)} $dia"
+            } ${eventCalendar.location} ${activity.getString(R.string.at)} $dia"
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, texto)

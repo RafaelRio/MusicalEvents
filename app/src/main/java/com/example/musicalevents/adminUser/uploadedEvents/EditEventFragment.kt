@@ -50,20 +50,20 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEditEventBinding.inflate(inflater, container, false)
-        binding.editTieUbicacionEvento.setText(editedEvent.ubicacion)
+        binding.editTieUbicacionEvento.setText(editedEvent.location)
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        binding.editTieUbicacionEvento.setText(editedEvent.ubicacion)
+        binding.editTieUbicacionEvento.setText(editedEvent.location)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        startDate = Date(editedEvent.fechaInicioMiliSegundos)
-        endDate = Date(editedEvent.fechaFinMiliSegundos)
+        startDate = Date(editedEvent.startDate)
+        endDate = Date(editedEvent.endDate)
 
         bindingFields()
         binding.apply {
@@ -129,9 +129,9 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
     private fun bindingFields() {
 
         binding.apply {
-            editTieNombreEvento.setText(editedEvent.nombreEvento)
-            editTieUbicacionEvento.setText(editedEvent.ubicacion)
-            editTieDescripcionEvento.setText(editedEvent.descripcion)
+            editTieNombreEvento.setText(editedEvent.eventName)
+            editTieUbicacionEvento.setText(editedEvent.location)
+            editTieDescripcionEvento.setText(editedEvent.description)
 
             calendar.timeInMillis = startDate.time
             UtilsKt.setDateHour(edittieFechaInicio, edittieHoraComienzo, calendar)

@@ -50,8 +50,8 @@ class AddEventFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startDate = Date(newEvent.fechaInicioMiliSegundos)
-        endDate = Date(newEvent.fechaFinMiliSegundos)
+        startDate = Date(newEvent.startDate)
+        endDate = Date(newEvent.endDate)
         binding.apply {
             tieFecha.setOnClickListener {
                 setStartDate()
@@ -77,13 +77,13 @@ class AddEventFragment : Fragment() {
                 }
 
                 newEvent = Event(
-                    nombreEvento = tieNombreEvento.text.toString(),
-                    ubicacion = tieUbicacionEvento.text.toString(),
+                    eventName = tieNombreEvento.text.toString(),
+                    location = tieUbicacionEvento.text.toString(),
                     lat = UtilsKt.latitud,
                     lon = UtilsKt.longitud,
-                    descripcion = tieDescripcionEvento.text.toString(),
-                    fechaInicioMiliSegundos = startDate.time,
-                    fechaFinMiliSegundos = endDate.time,
+                    description = tieDescripcionEvento.text.toString(),
+                    startDate = startDate.time,
+                    endDate = endDate.time,
                 )
 
                 eventRepository.uploadEvent(newEvent)

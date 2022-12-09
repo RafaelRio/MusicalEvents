@@ -116,15 +116,15 @@ class InfoEventFragment : Fragment() {
     private fun bindingFields() {
 
         val calInicio = Calendar.getInstance()
-        calInicio.timeInMillis = eventCalendar.fechaInicioMiliSegundos
+        calInicio.timeInMillis = eventCalendar.startDate
 
         val calFin = Calendar.getInstance()
-        calFin.timeInMillis = eventCalendar.fechaFinMiliSegundos
+        calFin.timeInMillis = eventCalendar.endDate
 
         binding.apply {
-            infoNombreEvento.text = eventCalendar.nombreEvento
+            infoNombreEvento.text = eventCalendar.eventName
             infoUbicacionEvento.text = UtilsKt.getAddress(eventCalendar.lat, eventCalendar.lon, requireContext())
-            infoDescripcionEvento.text = eventCalendar.descripcion
+            infoDescripcionEvento.text = eventCalendar.description
             UtilsKt.setDateHour(infoInicioFechaEvento, infoHoraInicioEvento, calInicio)
             UtilsKt.setDateHour(infoFechaFinEvento, infoHoraFinEvento, calFin)
         }
@@ -193,6 +193,11 @@ class InfoEventFragment : Fragment() {
         intent.putExtra(CalendarContract.Events.TITLE, binding.infoNombreEvento.text)
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
         intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
-        startActivity(intent)
+        
+        if(intent.resolveActivity(requireActivity().packageManager) != null){
+            startActivity(intent);
+        }else{
+            Toast.makeText(context, R.string.error_googlecalendar, Toast.LENGTH_SHORT).show();
+        }
     }
 }

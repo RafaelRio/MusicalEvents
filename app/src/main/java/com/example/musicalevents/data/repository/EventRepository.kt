@@ -7,8 +7,6 @@ import com.example.musicalevents.utils.UtilsKt.eventosTable
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 
 class EventRepository : UploadedEventsContract.Repository {
@@ -56,7 +54,7 @@ class EventRepository : UploadedEventsContract.Repository {
 
                        val event = document.toObject(Event::class.java)
 
-                        cal = Calendar.getInstance().apply { timeInMillis = event.fechaInicioMiliSegundos }
+                        cal = Calendar.getInstance().apply { timeInMillis = event.startDate }
                         val eventYear = cal.get(Calendar.YEAR)
                         val eventMonth = cal.get(Calendar.MONTH)
                         val eventDay = cal.get(Calendar.DAY_OF_MONTH)

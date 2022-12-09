@@ -68,4 +68,5 @@
     <string name="_in">en</string>
     <string name="at">ás</string>
     <string name="error_no_locality">Localidade non atopada</string>
+    <string name="error_googlecalendar">Non se atopou ningunha aplicación que admita esta acción</string>
 </resources>
