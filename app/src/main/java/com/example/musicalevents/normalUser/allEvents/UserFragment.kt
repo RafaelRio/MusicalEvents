@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
-import android.view.animation.AnimationUtils
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -23,7 +22,6 @@ import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.allevents.AllEventsContract
 import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
-import com.example.musicalevents.utils.UtilsKt
 import java.text.SimpleDateFormat
 
 class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
@@ -37,7 +35,25 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = AllEventsPresenter(this)
-        UtilsKt.getCurrentUser(requireContext())
+        prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val name = prefs.getString("name", "")
+        val admin = prefs.getBoolean("admin", false)
+        val email = prefs.getString("email", "")
+        val password = prefs.getString("password", "")
+        val instagram = prefs.getString("instagram", "")
+        val twitter = prefs.getString("twitter", "")
+        val facebook = prefs.getString("facebook", "")
+        val website = prefs.getString("website", "")
+        currentUser = Userkt(
+            name = name,
+            email = email,
+            isAdmin = admin,
+            password = password,
+            instagram = instagram,
+            twitter = twitter,
+            facebook = facebook,
+            website = website
+        )
         LoginRepository.currentUser = currentUser
     }
 

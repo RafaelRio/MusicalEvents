@@ -23,6 +23,7 @@ import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.allevents.AllEventsContract
 import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
+import com.example.musicalevents.utils.UtilsKt
 import java.text.SimpleDateFormat
 
 
@@ -47,7 +48,16 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         val twitter = prefs.getString("twitter", "")
         val facebook = prefs.getString("facebook", "")
         val website = prefs.getString("website", "")
-        currentUser = Userkt(name, email, password, admin, twitter, instagram, facebook, website)
+        currentUser = Userkt(
+            name = name,
+            email = email,
+            isAdmin = admin,
+            password = password,
+            instagram = instagram,
+            twitter = twitter,
+            facebook = facebook,
+            website = website
+        )
         LoginRepository.currentUser = currentUser
     }
 

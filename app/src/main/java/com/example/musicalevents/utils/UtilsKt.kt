@@ -129,28 +129,6 @@ object UtilsKt {
         eventos.addAll(events!!)
     }
 
-    fun getCurrentUser(context: Context): Userkt {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-        val name = prefs.getString("name", "")
-        val admin = prefs.getBoolean("admin", false)
-        val email = prefs.getString("email", "")
-        val password = prefs.getString("password", "")
-        val instagram = prefs.getString("instagram", "")
-        val twitter = prefs.getString("twitter", "")
-        val facebook = prefs.getString("facebook", "")
-        val website = prefs.getString("website", "")
-        return Userkt(
-            name = name,
-            email = email,
-            password = password,
-            isAdmin = admin,
-            twitter = twitter,
-            instagram = instagram,
-            facebook = facebook,
-            website = website
-        )
-    }
-
     fun isPasswordValid(password: String): Boolean {
         val passwordPattern =
             "(?=.*[0-9])" +                         //at least 1 digit
