@@ -12,7 +12,7 @@
         <TextView
             style="@style/fragmentTitle"
             android:id="@+id/tvTitleLinks"
-            android:text="@string/group_links"
+            android:text="@string/profile"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,12 +26,38 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTitleLinks">
 
             <LinearLayout
-                android:id="@+id/llInsta"
+                android:id="@+id/llName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llTop">
+
+                <ImageView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_user" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/background_til"
+                    android:hint="@string/tieUser" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llInsta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llName">
 
                 <ImageView
                     android:layout_width="@dimen/_0dp"

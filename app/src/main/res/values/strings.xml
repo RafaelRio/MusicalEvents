@@ -100,4 +100,5 @@
     <string name="at">at</string>
     <string name="error_no_locality">Locality not found</string>
     <string name="error_googlecalendar">There is no app that support this action</string>
+    <string name="profile">Profile</string>
 </resources>

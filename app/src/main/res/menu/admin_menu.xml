@@ -12,7 +12,7 @@
 
     <item android:id="@+id/group_info"
         android:icon="@drawable/ic_group"
-        android:title="@string/group_info"/>
+        android:title="@string/profile"/>
 
     <item android:id="@+id/about_us"
         android:icon="@drawable/ic_group"

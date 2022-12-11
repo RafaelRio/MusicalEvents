@@ -55,6 +55,7 @@ class GroupInformationFillFragment : Fragment() {
             etTwitter.setText(editedUser.twitter)
             etFacebook.setText(editedUser.facebook)
             etWebsite.setText(editedUser.website)
+            etName.setText(editedUser.name)
         }
     }
 
@@ -66,7 +67,7 @@ class GroupInformationFillFragment : Fragment() {
                         "email" to editedUser.email,
                         "admin" to editedUser.isAdmin,
                         "password" to editedUser.password,
-
+                        "name" to etName.text.toString(),
                         "instagram" to etInsta.text.toString(),
                         "twitter" to etTwitter.text.toString(),
                         "facebook" to etFacebook.text.toString(),
@@ -80,6 +81,7 @@ class GroupInformationFillFragment : Fragment() {
             editedUser.twitter = etTwitter.text.toString()
             editedUser.facebook = etFacebook.text.toString()
             editedUser.website = etWebsite.text.toString()
+            editedUser.name = etName.text.toString()
         }
     }
 }
