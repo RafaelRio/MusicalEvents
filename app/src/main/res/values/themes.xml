@@ -74,6 +74,10 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="RoundedCornersDialog" parent="@style/Theme.MaterialComponents.Dialog">
+        <item name="dialogCornerRadius">16dp</item>
+    </style>
+
     <style name="fragmentTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

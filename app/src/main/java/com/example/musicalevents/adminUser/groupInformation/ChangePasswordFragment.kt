@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.musicalevents.R
+import com.example.musicalevents.databinding.FragmentChangePasswordBinding
 
-class ChangePasswordFragment : DialogFragment() {
+class ChangePasswordFragment : Fragment() {
+
+    private lateinit var binding : FragmentChangePasswordBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -17,8 +21,8 @@ class ChangePasswordFragment : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_password, container, false)
+        binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 

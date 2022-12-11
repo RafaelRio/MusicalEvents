@@ -85,9 +85,8 @@
         android:id="@+id/mapFragment"
         android:name="com.example.musicalevents.utils.MapFragment"
         android:label="MapFragment" />
-    <dialog
+    <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.musicalevents.adminUser.groupInformation.ChangePasswordFragment"
-        android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" />
+        android:label="ChangePasswordFragment" />
 </navigation>
