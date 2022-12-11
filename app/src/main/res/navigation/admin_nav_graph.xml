@@ -72,6 +72,9 @@
         <argument
             android:name="usuarioAct"
             app:argType="com.example.musicalevents.data.model.Userkt" />
+        <action
+            android:id="@+id/action_groupInformationFillFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -82,4 +85,9 @@
         android:id="@+id/mapFragment"
         android:name="com.example.musicalevents.utils.MapFragment"
         android:label="MapFragment" />
+    <dialog
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.musicalevents.adminUser.groupInformation.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>

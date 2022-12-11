@@ -102,4 +102,6 @@
     <string name="error_googlecalendar">There is no app that support this action</string>
     <string name="profile">Profile</string>
     <string name="change_password">Change password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

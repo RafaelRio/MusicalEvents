@@ -46,6 +46,10 @@ class GroupInformationFillFragment : Fragment() {
                 findNavController().navigateUp()
             }
 
+            btChangePassword.setOnClickListener {
+                findNavController().navigate(R.id.action_groupInformationFillFragment_to_changePasswordFragment)
+            }
+
         }
     }
 
