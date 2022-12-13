@@ -18,6 +18,7 @@
             android:fontFamily="@font/bodoni_semibold"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/_20sp"
+            android:layout_marginStart="@dimen/_16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Bienvenido usuario" />
@@ -42,7 +43,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvEventos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:listitem="@layout/item_evento"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imv_nodata"/>
