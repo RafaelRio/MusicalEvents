@@ -46,7 +46,6 @@ object UtilsKt {
     ) {
         holder.ubicacion.text = eventos[position].location
         holder.nombre.text = eventos[position].eventName
-        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in)
         val eventDate = Calendar.getInstance()
         eventDate.timeInMillis = eventos[position].startDate
         val anio = String.format("%02d", eventDate[Calendar.YEAR])
@@ -54,8 +53,10 @@ object UtilsKt {
         val dia = String.format("%02d", eventDate[Calendar.DAY_OF_MONTH])
         val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
         val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
-        holder.hora.text = "$dia/$mes/$anio - $hora:$minutos"
+        val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in)
+        eventos.sortBy { it.eventName }
         holder.itemView.startAnimation(animation)
+        holder.hora.text = "$dia/$mes/$anio - $hora:$minutos"
         holder.bind(eventos[position], listener)
     }
 
@@ -90,6 +91,7 @@ object UtilsKt {
         val hora = String.format("%02d", eventDate[Calendar.HOUR_OF_DAY])
         val minutos = String.format("%02d", eventDate[Calendar.MINUTE])
         val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.slide_in)
+        eventos.sortBy { it.eventName }
         holder.itemView.startAnimation(animation)
         holder.hora.text = "$dia/$mes/$anio - $hora:$minutos"
         holder.bind(eventos[position], listener)
