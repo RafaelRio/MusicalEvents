@@ -34,7 +34,8 @@
         </activity>
         <activity
             android:name=".adminUser.AdminActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="locale|orientation"/>
         <activity
             android:name=".normalUser.MainActivity"
             android:exported="true" />

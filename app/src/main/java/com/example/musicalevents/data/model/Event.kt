@@ -5,8 +5,6 @@ import java.io.Serializable
 import java.util.*
 
 //ToDo Crear una pantalla de perfil para cambiar nombre y contraseña (opcional) y que salga el correo pero que no se pueda modificar
-//ToDo Pantalla de ajustes para cambiar el idioma
-//ToDo Que el item de evento tenga una foto de la agrupacion que la ha subido, si no tiene saldrá una por defecto
 data class Event  @JvmOverloads constructor(
     val uuid: String = UUID.randomUUID().toString(),
     val eventName: String = "",
