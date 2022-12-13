@@ -134,10 +134,24 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
             editTieDescripcionEvento.setText(editedEvent.description)
 
             calendar.timeInMillis = startDate.time
-            UtilsKt.setDateHour(edittieFechaInicio, edittieHoraComienzo, calendar)
+            val dayOfMonth = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
+            val month = String.format("%02d", calendar[Calendar.MONTH] + 1)
+            val year = String.format("%04d", calendar[Calendar.YEAR])
+            val hourOfDay = String.format("%02d", calendar[Calendar.HOUR_OF_DAY])
+            val minute = String.format("%02d", calendar[Calendar.MINUTE])
+
+            edittieFechaInicio.setText("$dayOfMonth/$month/$year")
+            edittieHoraComienzo.setText("$hourOfDay:$minute")
 
             calendar.timeInMillis = endDate.time
-            UtilsKt.setDateHour(edittieFechaFin, edittieHoraFin, calendar)
+            val dayOfMonth2 = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
+            val month2 = String.format("%02d", calendar[Calendar.MONTH] + 1)
+            val year2 = String.format("%04d", calendar[Calendar.YEAR])
+            val hourOfDay2 = String.format("%02d", calendar[Calendar.HOUR_OF_DAY])
+            val minute2 = String.format("%02d", calendar[Calendar.MINUTE])
+
+            edittieFechaFin.setText("$dayOfMonth2/$month2/$year2")
+            edittieHoraFin.setText("$hourOfDay2:$minute2")
         }
     }
 

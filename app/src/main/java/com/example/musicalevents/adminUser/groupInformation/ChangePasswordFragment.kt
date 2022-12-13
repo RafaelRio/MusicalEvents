@@ -19,7 +19,7 @@ class ChangePasswordFragment : Fragment() {
     private lateinit var binding: FragmentChangePasswordBinding
     private var currentUser = LoginRepository.currentUser
     private val db = FirebaseFirestore.getInstance()
-    
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

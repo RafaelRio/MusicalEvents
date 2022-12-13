@@ -57,6 +57,7 @@ class GroupInformationFillFragment : Fragment() {
 
     private fun bindingFields() {
         binding.apply {
+            etEmail.text = editedUser.email
             etInsta.setText(editedUser.instagram)
             etTwitter.setText(editedUser.twitter)
             etFacebook.setText(editedUser.facebook)
