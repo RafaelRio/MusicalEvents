@@ -38,17 +38,6 @@ object UtilsKt {
         hour.text = "$hourOfDay:$minute"
     }
 
-    fun setDateHour(text: TextInputEditText, hour: TextInputEditText, calendar: Calendar) {
-        val dayOfMonth = String.format("%02d", calendar[Calendar.DAY_OF_MONTH])
-        val month = String.format("%02d", calendar[Calendar.MONTH] + 1)
-        val year = String.format("%04d", calendar[Calendar.YEAR])
-        val hourOfDay = String.format("%02d", calendar[Calendar.HOUR_OF_DAY])
-        val minute = String.format("%02d", calendar[Calendar.MINUTE])
-
-        text.setText("$dayOfMonth/$month/$year")
-        hour.setText("$hourOfDay:$minute")
-    }
-
     fun onBindViewHolder(
         holder: EventoListAdapterKt.ViewHolder,
         position: Int,

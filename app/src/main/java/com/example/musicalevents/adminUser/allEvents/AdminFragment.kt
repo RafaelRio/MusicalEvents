@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
-import android.view.animation.AnimationUtils
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -23,7 +22,6 @@ import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.mvp.allevents.AllEventsContract
 import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
-import com.example.musicalevents.utils.UtilsKt
 import java.text.SimpleDateFormat
 
 
@@ -34,7 +32,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     private var adapter: EventoListAdapterKt? = null
     private lateinit var presenter: AllEventsContract.Presenter
     private lateinit var currentUser: Userkt
-    private lateinit var prefs : SharedPreferences
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +72,9 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         super.onViewCreated(view, savedInstanceState)
         menuCreation()
 
-        binding.tvWelcome.text = "${getString(R.string.welcome)}, ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
+        binding.tvWelcome.text = "${getString(R.string.welcome)}, ${
+            currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }?.trim()
+        }"
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()
@@ -84,7 +84,7 @@ class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
                 presenter.getAllEvents(fechaInicio.time)
             }
         }
-}
+    }
 
     private fun initRv() {
         presenter.getAllEvents(System.currentTimeMillis())

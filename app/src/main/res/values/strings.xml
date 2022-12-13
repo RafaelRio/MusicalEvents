@@ -20,14 +20,14 @@
 
     <string name="chkRemember">Remember me</string>
 
-    <string name="delete_succeded">Event deleted successfuly</string>
+    <string name="delete_succeded">Event deleted successfully</string>
 
     <string name="edit_event">Edit event</string>
 
-    <string name="edited_event">Event updated successfuly</string>
+    <string name="edited_event">Event updated successfully</string>
 
     <string name="errUserEmpty">Empty user</string>
-    <string name="error_password_dont_match">Passwords dont match</string>
+    <string name="error_password_dont_match">Passwords don\'t match</string>
 
     <string name="errorPasswordEmpty">Empty password</string>
 
@@ -42,7 +42,7 @@
     <string name="error_empty_eventLocation">Empty location</string>
     <string name="error_empty_eventName">Empty event name</string>
     <string name="error_facebooknotfound">Facebook not found</string>
-    <string name="error_instagramnotfound">Instragam not found</string>
+    <string name="error_instagramnotfound">Instagram not found</string>
     <string name="error_passwordFormat">Password must contain uppercase, lowercase and numbers</string>
     <string name="error_twitternotfound">Twitter not found</string>
     <string name="error_userExists">User already exists</string>
@@ -57,7 +57,7 @@
     <string name="event_name">Event name</string>
     <string name="event_startdate">Start date</string>
     <string name="event_starthour">Start hour</string>
-    <string name="event_updated_successfuly">Event updated successfuly</string>
+    <string name="event_updated_successfuly">Event updated successfully</string>
 
     <string name="facebook" translatable="false">Facebook</string>
 
@@ -83,7 +83,7 @@
 
     <string name="twitter" translatable="false">Twitter</string>
 
-    <string name="updatedLinks">Profile updated successfuly</string>
+    <string name="updatedLinks">Profile updated successfully</string>
 
     <string name="website">Website</string>
     <string name="error_login">Incorrect user</string>
@@ -99,14 +99,11 @@
     <string name="_in">in</string>
     <string name="at">at</string>
     <string name="error_no_locality">Locality not found</string>
-    <string name="error_googlecalendar">There is no app that support this action</string>
     <string name="profile">Profile</string>
     <string name="change_password">Change password</string>
-
     <string name="your_password">Your password</string>
     <string name="new_password">New password</string>
     <string name="cancel">Cancel</string>
     <string name="not_your_password">Incorrect password</string>
     <string name="updated_password">Password updated successfully</string>
-    <string name="languages">Select language</string>
 </resources>

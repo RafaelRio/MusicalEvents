@@ -71,7 +71,8 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
         menuCreation()
         presenter.getAllEvents(System.currentTimeMillis())
         binding.tvWelcome.text =
-            "${getString(R.string.welcome)}, ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }}"
+            "${getString(R.string.welcome)}, ${currentUser.name?.replaceFirstChar { currentUser.name!![0].uppercaseChar() }
+                ?.trim()}"
 
         binding.calendarView.setOnDateChangeListener { _, year, month, day ->
             initRv()

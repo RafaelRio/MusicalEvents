@@ -69,5 +69,11 @@
     <string name="_in">en</string>
     <string name="at">a les</string>
     <string name="error_no_locality">Localitat no trobada</string>
-    <string name="error_googlecalendar">No s\'ha trobat cap aplicació que suporti aquesta acció</string>
+    <string name="profile">Perfil</string>
+    <string name="change_password">Canvia la contrasenya</string>
+    <string name="your_password">La teva contrasenya</string>
+    <string name="new_password">Nova contrasenya</string>
+    <string name="cancel">Cancel · lar</string>
+    <string name="not_your_password">contrasenya incorrecta</string>
+    <string name="updated_password">La contrasenya s\'ha actualitzat correctament</string>
 </resources>

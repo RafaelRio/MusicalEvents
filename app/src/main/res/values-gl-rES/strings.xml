@@ -68,5 +68,11 @@
     <string name="_in">en</string>
     <string name="at">ás</string>
     <string name="error_no_locality">Localidade non atopada</string>
-    <string name="error_googlecalendar">Non se atopou ningunha aplicación que admita esta acción</string>
+    <string name="profile">Perfil</string>
+    <string name="change_password">Cambie o contrasinal</string>
+    <string name="your_password">O teu contrasinal</string>
+    <string name="new_password">Novo contrasinal</string>
+    <string name="cancel">Cancelar</string>
+    <string name="not_your_password">Contrasinal incorrecto</string>
+    <string name="updated_password">O contrasinal actualizouse correctamente</string>
 </resources>
