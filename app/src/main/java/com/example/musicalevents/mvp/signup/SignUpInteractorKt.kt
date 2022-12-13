@@ -43,7 +43,7 @@ class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListen
             }
             LoginRepository.getInstance(this@SignUpInteractorKt)
                 .SignUp(user, email, password, comfirmPassword)
-        }, 2000)
+        }, 2)
     }
 
     //Estos metodos vienen de la respuesta que nos da el Repositorio
