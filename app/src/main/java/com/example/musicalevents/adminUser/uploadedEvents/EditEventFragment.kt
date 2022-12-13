@@ -96,11 +96,11 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                             hashMapOf(
                                 "uuid" to editedEvent.uuid,
                                 "user" to editedEvent.user,
-                                "nombreEvento" to editTieNombreEvento.text.toString(),
-                                "ubicacion" to editTieUbicacionEvento.text.toString(),
-                                "fechaInicioMiliSegundos" to startDate.time,
-                                "fechaFinMiliSegundos" to endDate.time,
-                                "descripcion" to editTieDescripcionEvento.text.toString(),
+                                "eventName" to editTieNombreEvento.text.toString(),
+                                "location" to editTieUbicacionEvento.text.toString(),
+                                "startDate" to startDate.time,
+                                "endDate" to endDate.time,
+                                "description" to editTieDescripcionEvento.text.toString(),
                                 "lat" to editedEvent.lat,
                                 "lon" to editedEvent.lon
                             )
