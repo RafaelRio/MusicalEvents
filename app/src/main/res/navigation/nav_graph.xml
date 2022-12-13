@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_userFragment_to_aboutUsFragment2"
             app:destination="@id/aboutUsFragment2" />
+        <action
+            android:id="@+id/action_userFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/userEventInfoFragment"
@@ -30,4 +33,19 @@
         android:name="com.example.musicalevents.aboutUs.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.musicalevents.normalUser.profile.UserProfileFragment"
+        android:label="UserProfileFragment" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_changePasswordFragment2"
+            app:destination="@id/changePasswordFragment2" />
+        <argument
+            android:name="userProf"
+            app:argType="com.example.musicalevents.data.model.Userkt" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment2"
+        android:name="com.example.musicalevents.adminUser.groupInformation.ChangePasswordFragment"
+        android:label="ChangePasswordFragment" />
 </navigation>

@@ -83,7 +83,7 @@
 
     <string name="twitter" translatable="false">Twitter</string>
 
-    <string name="updatedLinks">Links updated successfuly</string>
+    <string name="updatedLinks">Profile updated successfuly</string>
 
     <string name="website">Website</string>
     <string name="error_login">Incorrect user</string>

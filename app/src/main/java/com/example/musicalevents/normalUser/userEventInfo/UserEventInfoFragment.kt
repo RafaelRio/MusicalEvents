@@ -123,7 +123,8 @@ class UserEventInfoFragment : Fragment() {
 
         binding.apply {
             infoNombreEvento.text = eventCalendar.eventName
-            infoUbicacionEvento.text = UtilsKt.getAddress(eventCalendar.lat, eventCalendar.lon, requireContext())
+            infoUbicacionEvento.text =
+                UtilsKt.getAddress(eventCalendar.lat, eventCalendar.lon, requireContext())
             infoDescripcionEvento.text = eventCalendar.description
             UtilsKt.setDateHour(infoInicioFechaEvento, infoHoraInicioEvento, startCalendar)
             UtilsKt.setDateHour(infoFechaFinEvento, infoHoraFinEvento, endCalendar)
@@ -144,7 +145,10 @@ class UserEventInfoFragment : Fragment() {
                         return true
                     }
                     R.id.share_event -> {
-                        UtilsKt.shareEvent(eventCalendar = eventCalendar, activity = requireActivity())
+                        UtilsKt.shareEvent(
+                            eventCalendar = eventCalendar,
+                            activity = requireActivity()
+                        )
 
                         return true
                     }
@@ -194,11 +198,7 @@ class UserEventInfoFragment : Fragment() {
         intent.putExtra(CalendarContract.Events.EVENT_LOCATION, binding.infoUbicacionEvento.text)
         intent.putExtra(CalendarContract.Events.DESCRIPTION, binding.infoDescripcionEvento.text)
 
+        startActivity(intent);
 
-        if(intent.resolveActivity(requireActivity().packageManager) != null){
-            startActivity(intent);
-        }else{
-            Toast.makeText(context, R.string.error_googlecalendar, Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -51,7 +51,7 @@
     <string name="tiePassword">Clave</string>
     <string name="tieUser">Usuario</string>
     <string name="tvTitleSignUp">Registro</string>
-    <string name="updatedLinks">Enlaces actualizados con éxito</string>
+    <string name="updatedLinks">Perfil actualizado con éxito</string>
     <string name="website">Sitio web</string>
     <string name="error_login">Usuario incorrecto</string>
     <string name="sign_out">Cerrar sesión</string>

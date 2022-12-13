@@ -26,12 +26,41 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTitleLinks">
 
             <LinearLayout
+                android:id="@+id/llEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llTop">
+
+                <ImageView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_email" />
+
+                <TextView
+                    android:id="@+id/etEmail"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    android:layout_weight="2"
+                    android:clickable="false"
+                    android:background="@drawable/background_til"
+                    android:gravity="center_vertical"
+                    android:hint="@string/SignUp_tieEmail_hint" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/llName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llTop">
+                android:layout_marginTop="@dimen/_20dp"
+                app:layout_constraintTop_toBottomOf="@+id/llEmail">
 
                 <ImageView
                     android:layout_width="@dimen/_0dp"
@@ -48,109 +77,6 @@
                     android:background="@drawable/background_til"
                     android:hint="@string/tieUser" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llInsta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/_20dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llName">
-
-                <ImageView
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/instagram_icon" />
-
-                <EditText
-                    android:id="@+id/etInsta"
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_20dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/background_til"
-                    android:hint="@string/instagram" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llTwitter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20dp"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llInsta">
-
-                <ImageView
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/twitter_icon" />
-
-                <EditText
-                    android:id="@+id/etTwitter"
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_20dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/background_til"
-                    android:hint="@string/twitter" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llFacebook"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20dp"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llTwitter">
-
-                <ImageView
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/facebook_icon" />
-
-                <EditText
-                    android:id="@+id/etFacebook"
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_20dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/background_til"
-                    android:hint="@string/facebook" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llWebsite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20dp"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llFacebook">
-
-                <ImageView
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:src="@drawable/website_icon" />
-
-                <EditText
-                    android:id="@+id/etWebsite"
-                    android:layout_width="@dimen/_0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_20dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/background_til"
-                    android:hint="@string/website" />
             </LinearLayout>
 
             <Button

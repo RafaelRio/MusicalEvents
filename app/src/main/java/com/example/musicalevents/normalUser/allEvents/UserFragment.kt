@@ -129,6 +129,12 @@ class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
                         return true
                     }
 
+                    R.id.profile -> {
+                        val action = UserFragmentDirections.actionUserFragmentToUserProfileFragment(currentUser)
+                        NavHostFragment.findNavController(this@UserFragment).navigate(action)
+                        return true
+                    }
+
                     R.id.close_session -> {
                         prefs.edit().clear().apply()
                         startActivity(Intent(context, LoginActivitykt::class.java))
