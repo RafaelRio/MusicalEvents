@@ -31,6 +31,9 @@ class ChangePasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            btnCancel.setOnClickListener{
+                findNavController().navigateUp()
+            }
             btnChange.setOnClickListener {
 
                 //Comprobacion de que la contraseña introducida coincide con la del usuario
