@@ -17,6 +17,10 @@ import com.example.musicalevents.normalUser.MainActivity
 import com.example.musicalevents.signup.SignUpActivityKt
 import com.example.musicalevents.utils.UtilsKt
 
+/**
+ * Activity que controla todas las opciones del Login
+ * @author Rafa
+ */
 
 class LoginActivitykt : AppCompatActivity(), LoginContractKt.View {
 

@@ -4,6 +4,11 @@ import com.example.musicalevents.data.repository.LoginRepository
 import java.io.Serializable
 import java.util.*
 
+/**
+ * Clase objeto de los eventos
+ * @author Rafa
+ */
+
 data class Event  @JvmOverloads constructor(
     val uuid: String = UUID.randomUUID().toString(),
     val eventName: String = "",

@@ -24,7 +24,10 @@ import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 
-
+/**
+ * Fragment que se carga al iniciar la aplicación si tienes permisos de escritura sobre la base de datos
+ * @author Rafa
+ */
 class AdminFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     AllEventsContract.View {
 

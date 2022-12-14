@@ -17,6 +17,11 @@ import com.example.musicalevents.utils.TimePickerFragment
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
+/**
+ * Fragment que carga la pantalla para añadir un evento a la base de datos
+ * @author Rafa
+ */
+
 class AddEventFragment : Fragment() {
 
     private lateinit var binding: FragmentAddEventBinding

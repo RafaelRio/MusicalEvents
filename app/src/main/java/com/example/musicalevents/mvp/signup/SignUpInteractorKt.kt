@@ -9,6 +9,10 @@ import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.utils.UtilsKt.isPasswordValid
 
+/**
+ * Interactor que comunica repositorio con presenter del registro
+ * @author Rafa
+ */
 class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListener) :
     OnRepositoryCallback {
 
@@ -42,7 +46,7 @@ class SignUpInteractorKt(var listener: SignUpContractKt.OnSignUpInteractorListen
                 return@postDelayed
             }
             LoginRepository.getInstance(this@SignUpInteractorKt)
-                .SignUp(user, email, password, comfirmPassword)
+                .signUp(user, email, password, comfirmPassword)
         }, 2)
     }
 

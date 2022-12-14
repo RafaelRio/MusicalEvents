@@ -12,6 +12,11 @@ import com.example.musicalevents.mvp.signup.SignUpContractKt
 import com.example.musicalevents.mvp.signup.SignUpPresenterKt
 import com.example.musicalevents.utils.UtilsKt
 
+/**
+ * Activity que controla todas las opciones de registro
+ * @author Rafa
+ */
+
 class SignUpActivityKt : AppCompatActivity(), SignUpContractKt.View {
 
     private lateinit var binding: ActivitySignUpBinding

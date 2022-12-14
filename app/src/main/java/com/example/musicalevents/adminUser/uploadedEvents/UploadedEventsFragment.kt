@@ -16,6 +16,11 @@ import com.example.musicalevents.mvp.uploadedevents.UploadedEventsContract
 import com.example.musicalevents.mvp.uploadedevents.UploadedEventsPresenter
 import com.example.musicalevents.utils.EventoCrudAdapterKt
 
+/**
+ * Fragment que carga la vista con una lista de eventos subidos por el usuario logeado
+ * @author Rafa
+ */
+
 class UploadedEventsFragment : Fragment(), UploadedEventsContract.View,
     EventoCrudAdapterKt.OnManageEventoListener {
 

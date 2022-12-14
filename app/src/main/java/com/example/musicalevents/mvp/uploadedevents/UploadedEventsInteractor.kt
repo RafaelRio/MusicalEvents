@@ -3,6 +3,10 @@ package com.example.musicalevents.mvp.uploadedevents
 import com.example.musicalevents.data.model.Event
 import com.example.musicalevents.data.repository.EventRepository
 
+/**
+ * Interactor que comunica repositorio con presenter de mis eventos
+ * @author Rafa
+ */
 class UploadedEventsInteractor(private var listener: UploadedEventsContract.OnRepositoryCallback?) :
     UploadedEventsContract.Interactor {
 

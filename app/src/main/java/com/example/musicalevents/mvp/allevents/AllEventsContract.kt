@@ -2,6 +2,10 @@ package com.example.musicalevents.mvp.allevents
 
 import com.example.musicalevents.data.model.Event
 
+/**
+ * Contrato para MVP de todos lo eventos subidos a la base de datos
+ * @author Rafa
+ */
 interface AllEventsContract {
     interface View : OnRepositoryCallback {
     }

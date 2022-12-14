@@ -4,15 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicalevents.R
-import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.data.model.Event
 
-
+/**
+ * Adapter que permite el listado de eventos
+ * @author Rafa
+ */
 class EventoListAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoListener) :
     RecyclerView.Adapter<EventoListAdapterKt.ViewHolder>() {
     var eventos: MutableList<Event>

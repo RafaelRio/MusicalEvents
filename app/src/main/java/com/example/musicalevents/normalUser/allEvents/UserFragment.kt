@@ -24,6 +24,10 @@ import com.example.musicalevents.mvp.allevents.AllEventsPresenter
 import com.example.musicalevents.utils.EventoListAdapterKt
 import java.text.SimpleDateFormat
 
+/**
+ * Fragment que catrga la pantalla principal si eres un usuario sin permisos en la base de datos
+ * @author Rafa
+ */
 class UserFragment : Fragment(), EventoListAdapterKt.OnManageEventoListener,
     AllEventsContract.View {
     private lateinit var binding: FragmentUserBinding

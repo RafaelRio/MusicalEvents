@@ -14,6 +14,10 @@ import com.squareup.okhttp.internal.Util;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Repositorio que conecta con la base de datos para realizar las operaciones de login y registro de los usuarios
+ */
+
 public class LoginRepository implements LoginContractKt.Repository, SignUpContractKt.Repository {
     public static Userkt currentUser;
     private static LoginRepository instance;
@@ -49,7 +53,7 @@ public class LoginRepository implements LoginContractKt.Repository, SignUpContra
     }
 
     @Override
-    public void SignUp(String name, String email, String password, String confirmPassword) {
+    public void signUp(String name, String email, String password, String confirmPassword) {
         Userkt databaseUser = new Userkt(name, email, password, false);
         ArrayList<String> usedEmails = new ArrayList<>();
 

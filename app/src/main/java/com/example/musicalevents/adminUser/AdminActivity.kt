@@ -1,12 +1,14 @@
 package com.example.musicalevents.adminUser
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.musicalevents.R
 import com.example.musicalevents.utils.UtilsKt
-import java.util.*
 
+/**
+ * Activity que contiene todos los fragments del usuario que tiene permisos de escritura sobre la base de datos
+ * @author Rafa
+ */
 class AdminActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

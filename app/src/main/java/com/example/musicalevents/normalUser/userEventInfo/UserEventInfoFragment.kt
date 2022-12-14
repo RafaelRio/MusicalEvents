@@ -19,6 +19,11 @@ import com.example.musicalevents.databinding.FragmentUserEventInfoBinding
 import com.example.musicalevents.utils.UtilsKt
 import java.util.*
 
+/**
+ * Fragment que carga la pantalla de detalles de evento
+ * @author Rafa
+ */
+
 class UserEventInfoFragment : Fragment() {
 
     private lateinit var binding: FragmentUserEventInfoBinding

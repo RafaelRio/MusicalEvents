@@ -5,6 +5,10 @@ import com.example.musicalevents.base.OnRepositoryCallback
 import com.example.musicalevents.mvp.login.LoginContractKt
 import com.example.musicalevents.mvp.login.LoginContractKt.OnInteractorListener
 
+/**
+ * Contrato del registro
+ * @author Rafa
+ */
 interface SignUpContractKt {
 
     interface View : LoginContractKt.View {
@@ -24,7 +28,7 @@ interface SignUpContractKt {
     }
 
     interface Repository {
-        fun SignUp(user: String?, email: String?, password: String?, comfirmPassword: String?)
+        fun signUp(user: String?, email: String?, password: String?, comfirmPassword: String?)
     }
 
     interface OnSignUpInteractorListener : OnInteractorListener, OnRepositoryCallback {

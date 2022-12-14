@@ -4,6 +4,11 @@ import com.example.musicalevents.base.BasePresenterKt
 import com.example.musicalevents.base.OnRepositoryCallback
 import com.example.musicalevents.data.model.Userkt
 
+/**
+ * Contrato del Login
+ * @author Rafa
+ */
+
 interface LoginContractKt {
     interface View : OnRepositoryCallback {
         fun setEmailEmptyError()

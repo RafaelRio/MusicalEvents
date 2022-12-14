@@ -9,6 +9,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
 
+/**
+ * Repositorio que conecta con la base de datos para hacer operaciones con los eventos
+ * @author Rafa
+ */
+
 class EventRepository : UploadedEventsContract.Repository {
     companion object {
         val instance: EventRepository = EventRepository()

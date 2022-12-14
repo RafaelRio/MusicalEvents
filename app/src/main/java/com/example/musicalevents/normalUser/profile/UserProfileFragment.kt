@@ -14,6 +14,10 @@ import com.example.musicalevents.databinding.FragmentUserProfileBinding
 import com.example.musicalevents.utils.UtilsKt
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Fragment que carga la vista que actualiza el perfil de usuario sin permisos de escritura en base de datos
+ * @author Rafa
+ */
 class UserProfileFragment : Fragment() {
 
     private val args: UserProfileFragmentArgs by navArgs()

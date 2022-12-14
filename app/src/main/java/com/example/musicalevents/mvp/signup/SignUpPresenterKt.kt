@@ -3,6 +3,10 @@ package com.example.musicalevents.mvp.signup
 import com.example.musicalevents.data.model.Userkt
 import com.example.musicalevents.mvp.signup.SignUpContractKt.OnSignUpInteractorListener
 
+/**
+ * Presenter que comunica interactor y vista del registro
+ * @author Rafa
+ */
 class SignUpPresenterKt(var view: SignUpContractKt.View?) : SignUpContractKt.Presenter, OnSignUpInteractorListener {
 
     private var interactor: SignUpInteractorKt? = null

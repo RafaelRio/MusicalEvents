@@ -20,6 +20,10 @@ import com.example.musicalevents.utils.UtilsKt
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
+/**
+ * Fragment que carga la pantalla para realizar la edición de los eventos
+ * @author Rafa
+ */
 class EditEventFragment : Fragment(), UploadedEventsContract.View {
 
     private lateinit var binding: FragmentEditEventBinding

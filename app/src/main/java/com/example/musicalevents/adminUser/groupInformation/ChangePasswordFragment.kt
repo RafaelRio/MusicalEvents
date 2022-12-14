@@ -14,6 +14,11 @@ import com.example.musicalevents.utils.UtilsKt
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.okhttp.internal.Util
 
+/**
+ * Fragment que edita la contraseña del usuario
+ * @author Rafa
+ */
+
 class ChangePasswordFragment : Fragment() {
 
     private lateinit var binding: FragmentChangePasswordBinding
@@ -81,9 +86,5 @@ class ChangePasswordFragment : Fragment() {
                 }
             }
         }
-
-
     }
-
-
 }

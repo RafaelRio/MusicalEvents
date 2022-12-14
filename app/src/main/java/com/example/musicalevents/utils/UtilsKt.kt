@@ -19,6 +19,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
+/**
+ * Clase de utilidades, constantes de firebase
+ * @author Rafa
+ */
 object UtilsKt {
 
     //Constantes de firebase

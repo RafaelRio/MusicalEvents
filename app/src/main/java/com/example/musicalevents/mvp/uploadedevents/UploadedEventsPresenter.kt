@@ -2,6 +2,11 @@ package com.example.musicalevents.mvp.uploadedevents
 
 import com.example.musicalevents.data.model.Event
 
+/**
+ * Presenter que comunica interactor con vista de mis eventos
+ * @author Rafa
+ */
+
 class UploadedEventsPresenter (var view: UploadedEventsContract.View?) :
     UploadedEventsContract.Presenter {
 

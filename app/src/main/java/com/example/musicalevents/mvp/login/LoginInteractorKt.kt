@@ -7,6 +7,10 @@ import com.example.musicalevents.data.repository.LoginRepository
 import com.example.musicalevents.mvp.login.LoginContractKt.OnInteractorListener
 import com.example.musicalevents.utils.UtilsKt.isPasswordValid
 
+/**
+ * Interactor que comunica repositorio y presenter del login
+ * @author Rafa
+ */
 class LoginInteractorKt(var listener: OnInteractorListener?) : OnRepositoryCallback {
 
     fun validateCredentials(user: Userkt) {

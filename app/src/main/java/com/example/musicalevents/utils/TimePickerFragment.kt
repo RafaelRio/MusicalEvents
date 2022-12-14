@@ -8,6 +8,10 @@ import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
+/**
+ * Clase que carga un TimePickerDialog
+ * @author Rafa
+ */
 class TimePickerFragment(val listener: (String) -> Unit) : DialogFragment(),
     TimePickerDialog.OnTimeSetListener {
     override fun onTimeSet(p0: TimePicker?, hour: Int, minute: Int) {

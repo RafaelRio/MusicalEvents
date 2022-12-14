@@ -2,6 +2,10 @@ package com.example.musicalevents.mvp.login
 
 import com.example.musicalevents.data.model.Userkt
 
+/**
+ * Presenter que comunica interactor y vista de Login
+ * @author Rafa
+ */
 class LoginPresenterKt(var view : LoginContractKt.View?) : LoginContractKt.Presenter,
     LoginContractKt.OnInteractorListener {
 

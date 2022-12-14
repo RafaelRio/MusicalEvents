@@ -9,6 +9,10 @@ import com.example.musicalevents.R
 import com.example.musicalevents.data.model.Event
 import java.util.*
 
+/**
+ * Adapter que permite la edicion y eliminacion de los eventos
+ * @author Rafa
+ */
 class EventoCrudAdapterKt(eventos: ArrayList<Event>, listener: OnManageEventoListener) :
     RecyclerView.Adapter<EventoCrudAdapterKt.ViewHolder>() {
     var eventos: MutableList<Event>

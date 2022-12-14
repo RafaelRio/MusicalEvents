@@ -2,6 +2,10 @@ package com.example.musicalevents.mvp.uploadedevents
 
 import com.example.musicalevents.data.model.Event
 
+/**
+ * Contrato de mis eventos
+ * @author Rafa
+ */
 interface UploadedEventsContract {
 
     interface View : OnRepositoryCallback {

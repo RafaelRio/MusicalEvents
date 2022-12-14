@@ -14,6 +14,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+/**
+ * Fragment que carga la vista de un mapa donde se puede elegir la ubicación de un evento
+ * @author Rafa
+ */
 class MapFragment : Fragment() {
 
     var l: LatLng = LatLng(0.0, 0.0)

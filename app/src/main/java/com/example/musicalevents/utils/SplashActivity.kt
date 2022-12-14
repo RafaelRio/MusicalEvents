@@ -9,6 +9,10 @@ import com.example.musicalevents.adminUser.AdminActivity
 import com.example.musicalevents.login.LoginActivitykt
 import com.example.musicalevents.normalUser.MainActivity
 
+/**
+ * Activity que mediante SharedPreferences carga una vista u otra dependiendo el tipo de usuario
+ * @author Rafa
+ */
 class SplashActivity : AppCompatActivity() {
 
     override fun onStart() {
@@ -19,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
             } else {
                 starLogin()
             }
-        }, 200)
+        }, 100)
     }
 
     private fun starLogin() {

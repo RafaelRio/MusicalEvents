@@ -10,6 +10,10 @@ import androidx.fragment.app.Fragment
 import com.example.musicalevents.R
 import com.example.musicalevents.databinding.FragmentAboutUsBinding
 
+/**
+ * Fragment que carga la vista con información sobre el creador
+ * @author Rafa
+ */
 class AboutUsFragment : Fragment() {
 
     private lateinit var binding: FragmentAboutUsBinding
