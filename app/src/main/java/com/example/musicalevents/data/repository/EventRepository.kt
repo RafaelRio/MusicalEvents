@@ -28,9 +28,7 @@ class EventRepository : UploadedEventsContract.Repository {
 
     fun getMyEvents(callback: UploadedEventsContract.OnRepositoryCallback) {
         val misEventos: MutableList<Event> = ArrayList()
-        db.collection(eventosTable)
-            .whereEqualTo("user.email", currentUser.email)
-            .get()
+        db.collection(eventosTable).whereEqualTo("user.email", currentUser.email).get()
             .addOnCompleteListener { task: Task<QuerySnapshot> ->
                 if (task.isSuccessful) {
                     for (document in task.result) {

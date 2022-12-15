@@ -28,34 +28,22 @@ class MapFragment : Fragment() {
     ): View? {
 
         menuCreation()
-        // Initialize view
         val view = inflater.inflate(R.layout.fragment_map, container, false)
 
-        // Initialize map fragment
         val supportMapFragment =
             childFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment?
 
-        // Async map
         supportMapFragment!!.getMapAsync { googleMap: GoogleMap ->
-            // When map is loaded
             googleMap.setOnMapClickListener { latLng: LatLng ->
-                // When clicked on map
-                // Initialize marker options
                 val markerOptions = MarkerOptions()
-                // Set position of marker
                 markerOptions.position(latLng)
-                // Set title of marker
                 markerOptions.title(latLng.latitude.toString() + " : " + latLng.longitude)
-                // Remove all marker
                 googleMap.clear()
-                // Animating to zoom the marker
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
-                // Add marker on map
                 googleMap.addMarker(markerOptions)
                 l = markerOptions.position
             }
         }
-        // Return view
         return view
     }
 

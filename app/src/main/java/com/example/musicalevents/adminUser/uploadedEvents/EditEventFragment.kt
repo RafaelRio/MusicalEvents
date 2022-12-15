@@ -79,10 +79,6 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                 setEndDate()
             }
 
-            editTieUbicacionEvento.setOnClickListener {
-                findNavController().navigate(R.id.action_editEventFragment_to_mapFragment)
-            }
-
             edittieHoraComienzo.setOnClickListener {
                 setStartHour()
             }
@@ -115,18 +111,6 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                     .show()
                 findNavController().navigateUp()
             }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        try {
-            binding.editTieUbicacionEvento.setText(
-                UtilsKt.getAddress(UtilsKt.latitud, UtilsKt.longitud, requireContext())
-            )
-            editedEvent.lat = UtilsKt.latitud
-            editedEvent.lon = UtilsKt.longitud
-        } catch (e: Exception) {
         }
     }
 

@@ -33,8 +33,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTieUbicacionEvento"
                 android:layout_width="match_parent"
-                android:clickable="true"
+                android:clickable="false"
                 android:focusable="false"
+                android:textColor="@color/gray"
                 android:inputType="textNoSuggestions"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_til"
