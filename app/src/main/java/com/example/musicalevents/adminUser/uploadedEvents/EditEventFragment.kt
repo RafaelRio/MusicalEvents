@@ -30,14 +30,8 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
     private val args: EditEventFragmentArgs by navArgs()
     private lateinit var editedEvent: Event
     private val db = FirebaseFirestore.getInstance()
-    val calendar = Calendar.getInstance()
+    val calendar: Calendar = Calendar.getInstance()
     private var errorCount = 0
-    private var startDay: String = "0"
-    private var startMonth: String = "1"
-    private var startYear: String = "0"
-    private var endDay: String = "0"
-    private var endMonth: String = "1"
-    private var endYear: String = "0"
     lateinit var startDate: Date
     lateinit var endDate: Date
     private lateinit var presenter: UploadedEventsContract.Presenter
@@ -176,16 +170,11 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.edittieFechaInicio.setText("$dayOfMonthFormatted/$monthFormatted/$year")
 
-                val fecha = binding.edittieFechaInicio.text.toString().split("/")
-                startDay = fecha[0]
-                startMonth = fecha[1]
-                startYear = fecha[2]
-
                 calendar.timeInMillis = startDate.time
 
-                calendar.set(Calendar.YEAR, startYear.toInt())
-                calendar.set(Calendar.MONTH, startMonth.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, startDay.toInt())
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, day)
 
                 startDate.time = calendar.timeInMillis
             }
@@ -199,17 +188,11 @@ class EditEventFragment : Fragment(), UploadedEventsContract.View {
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.edittieFechaFin.setText("$dayOfMonthFormatted/$monthFormatted/$year")
 
-                val fecha = binding.edittieFechaFin.text.toString().split("/")
-
-                endDay = fecha[0]
-                endMonth = fecha[1]
-                endYear = fecha[2]
-
                 calendar.timeInMillis = endDate.time
 
-                calendar.set(Calendar.YEAR, endYear.toInt())
-                calendar.set(Calendar.MONTH, endMonth.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, endDay.toInt())
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, day)
                 endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")

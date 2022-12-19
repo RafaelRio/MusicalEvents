@@ -16,6 +16,7 @@ import java.util.Objects;
 
 /**
  * Repositorio que conecta con la base de datos para realizar las operaciones de login y registro de los usuarios
+ * @author Rafa
  */
 
 public class LoginRepository implements LoginContractKt.Repository, SignUpContractKt.Repository {

@@ -4,6 +4,7 @@ import java.io.Serializable
 
 /**
  * Clase objeto de los usuarios
+ * @author Rafa
  */
 
 data class Userkt @JvmOverloads constructor(

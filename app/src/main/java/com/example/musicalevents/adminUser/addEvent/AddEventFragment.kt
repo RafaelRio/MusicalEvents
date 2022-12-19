@@ -27,12 +27,6 @@ class AddEventFragment : Fragment() {
     private lateinit var binding: FragmentAddEventBinding
     private lateinit var eventRepository: EventRepository
     val calendar = Calendar.getInstance()
-    var diaInicio = "0"
-    var diaFin = "0"
-    var mesInicio = "0"
-    var mesFin = "0"
-    var anioInicio = "0"
-    var anioFin = "0"
     lateinit var startDate: Date
     lateinit var endDate: Date
     var newEvent = Event()
@@ -153,15 +147,10 @@ class AddEventFragment : Fragment() {
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.tieFecha.setText("$dayOfMonthFormatted/$monthFormatted/$year")
-                val fecha: Array<String> =
-                    binding.tieFecha.text.toString().split("/").toTypedArray()
-                diaInicio = fecha[0]
-                mesInicio = fecha[1]
-                anioInicio = fecha[2]
                 calendar.timeInMillis = startDate.time
-                calendar.set(Calendar.YEAR, anioInicio.toInt())
-                calendar.set(Calendar.MONTH, mesInicio.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, diaInicio.toInt())
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, day)
                 startDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
@@ -173,16 +162,10 @@ class AddEventFragment : Fragment() {
                 val monthFormatted = String.format("%02d", month + 1)
                 val dayOfMonthFormatted = String.format("%02d", day)
                 binding.tieEndFecha.setText("$dayOfMonthFormatted/$monthFormatted/$year")
-
-                val fecha: Array<String> =
-                    binding.tieEndFecha.text.toString().split("/").toTypedArray()
-                diaFin = fecha[0]
-                mesFin = fecha[1]
-                anioFin = fecha[2]
                 calendar.timeInMillis = endDate.time
-                calendar.set(Calendar.YEAR, anioFin.toInt())
-                calendar.set(Calendar.MONTH, mesFin.toInt() - 1)
-                calendar.set(Calendar.DAY_OF_MONTH, diaFin.toInt())
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, day)
                 endDate.time = calendar.timeInMillis
             }
         newFragment.show(requireActivity().supportFragmentManager, "datePicker")
